@@ -1,0 +1,42 @@
+.wrapperPreloader {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    z-index: 999;
+    width: 100%;
+    position: fixed;
+}
+#loader {
+    position: relative;
+    left: -9999px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    animation: dotTyping 1.5s infinite linear;
+    }
+
+    @keyframes dotTyping {
+    0% {
+        box-shadow: 9984px 0 0 0 #3658A2, 9999px 0 0 0 #3658A2, 10014px 0 0 0 #3658A2;
+    }
+    16.667% {
+        box-shadow: 9984px -10px 0 0 #3658A2, 9999px 0 0 0 #3658A2, 10014px 0 0 0 #3658A2;
+    }
+    33.333% {
+        box-shadow: 9984px 0 0 0 #3658A2, 9999px 0 0 0 #3658A2, 10014px 0 0 0 #3658A2;
+    }
+    50% {
+        box-shadow: 9984px 0 0 0 #3658A2, 9999px -10px 0 0 #3658A2, 10014px 0 0 0 #3658A2;
+    }
+    66.667% {
+        box-shadow: 9984px 0 0 0 #3658A2, 9999px 0 0 0 #3658A2, 10014px 0 0 0 #3658A2;
+    }
+    83.333% {
+        box-shadow: 9984px 0 0 0 #3658A2, 9999px 0 0 0 #3658A2, 10014px -10px 0 0 #3658A2;
+    }
+    100% {
+        box-shadow: 9984px 0 0 0 #3658A2, 9999px 0 0 0 #3658A2, 10014px 0 0 0 #3658A2;
+    }
+}
