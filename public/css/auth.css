@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+/*------------
+Resset Css
+------------*/
+*, ::after, ::before, h1, h2, h3, h4, h5, h6, p {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+#auth {
+  display: flex;
+  height: 100vh;
+}
+
+#auth .imagesAuth {
+  width: 55%;
+  height: 100%;
+}
+
+#auth .imagesAuth img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#auth .sectionFormAuth {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 6rem;
+}
+
+#auth .sectionFormAuth .headAuth {
+  text-align: center;
+  color: #535353;
+  margin-bottom: 3.5rem;
+}
+
+#auth .sectionFormAuth .headAuth h1 {
+  font-weight: 500;
+  font-size: 52px;
+  transition: .5s;
+  margin-bottom: 1rem;
+}
+
+#auth .sectionFormAuth .headAuth p {
+  font-weight: 400;
+  font-size: 22px;
+  transition: .5s;
+}
+
+#auth .sectionFormAuth .formAuth {
+  width: 100%;
+}
+
+#auth .sectionFormAuth .formAuth .inputForm {
+  position: relative;
+}
+
+#auth .sectionFormAuth .formAuth .inputForm .icon {
+  position: absolute;
+  display: flex;
+  left: 15px;
+  align-items: center;
+  height: 100%;
+}
+
+#auth .sectionFormAuth .formAuth .inputForm .icon label img {
+  max-width: 20px;
+}
+
+#auth .sectionFormAuth .formAuth .inputForm .form-control {
+  background-color: #E5E5E5;
+  padding: 1rem 1rem 1rem 3.4rem !important;
+  border-radius: 10px;
+  box-shadow: none;
+  font-weight: 300;
+  border: 2px solid #E5E5E5;
+}
+
+#auth .sectionFormAuth .formAuth .inputForm .form-control:focus {
+  border: 2px solid #3658A2;
+}
+
+#auth .sectionFormAuth .formAuth .inputForm .form-control::placeholder {
+  color: #535353;
+  font-weight: 300;
+}
+
+#auth .sectionFormAuth .formAuth .inputForm .wrapperToggle {
+  position: absolute;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  right: 15px;
+}
+
+#auth .sectionFormAuth .formAuth .inputForm .wrapperToggle i {
+  font-size: 18px;
+}
+
+#auth .sectionFormAuth .formAuth .passwordForm .form-control {
+  padding: 1rem 3.4rem 1rem 3.4rem !important;
+}
+
+#auth .sectionFormAuth .formAuth .forgotPassword {
+  color: #535353;
+  font-weight: 300;
+  transition: .3s;
+}
+
+#auth .sectionFormAuth .formAuth .forgotPassword:hover {
+  color: #2b2727;
+  transition: .3s;
+}
+
+#auth .sectionFormAuth .formAuth .actionUser .btnPrimary {
+  background-color: #3658A2;
+  color: #fff;
+  font-weight: 500;
+  padding: .8rem 5rem;
+  border-radius: 50px;
+  font-size: 18px;
+  transition: .3s;
+  margin-bottom: 1rem;
+}
+
+#auth .sectionFormAuth .formAuth .actionUser .btnPrimary:hover {
+  background-color: #3658A2;
+  transition: .3s;
+}
+
+#auth .sectionFormAuth .formAuth .actionUser .text {
+  color: #535353;
+  font-weight: 300;
+}
+
+#auth .sectionFormAuth .formAuth .actionUser .text a {
+  color: #535353;
+  transition: .3s;
+}
+
+#auth .sectionFormAuth .formAuth .actionUser .text a:hover {
+  color: #2b2727;
+  transition: .3s;
+}
+
+@media screen and (max-width: 1200px) {
+  .imagesAuth {
+    display: none;
+  }
+  .sectionFormAuth {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sectionFormAuth {
+    width: 100% !important;
+    padding: 3rem !important;
+  }
+  .sectionFormAuth .headAuth {
+    margin-bottom: 2.5rem !important;
+  }
+  .sectionFormAuth .headAuth h1 {
+    font-size: 42px !important;
+  }
+  .sectionFormAuth .headAuth p {
+    font-size: 16px !important;
+  }
+}
