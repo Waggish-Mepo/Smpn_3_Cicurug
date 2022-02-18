@@ -62,7 +62,7 @@ Route::prefix('management')->group(function () {
     Route::prefix('berita')->name('berita.')->group(function () {
         Route::get('/', [BeritaController::class, 'index'])->name('index');
         Route::post('/create', [BeritaController::class, 'create'])->name('create');
-        Route::get('/edit/{id}', [BeritaController::class, 'edit'])->name('edit');
+        Route::post('/edit/{id}', [BeritaController::class, 'edit'])->name('edit');
         Route::get('/delete/{id}', [BeritaController::class, 'delete'])->name('delete');
     });
 
