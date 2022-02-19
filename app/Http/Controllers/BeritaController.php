@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+
 class BeritaController extends Controller
 {
     public function index()
@@ -17,23 +18,23 @@ class BeritaController extends Controller
     {
 
 
-    $file = $request->file('image');
-    $thumbname = time() . '-' . $file->getClientOriginalName();
-    $file->move(public_path() . '/thumbBerita' . '/', $thumbname);
+        $file = $request->file('image');
+        $thumbname = time() . '-' . $file->getClientOriginalName();
+        $file->move(public_path() . '/thumbBerita' . '/', $thumbname);
 
         DB::table('beritas')->insert([
-            'post_id'=>Carbon::now()->timestamp,
-            'title'=>$request->title,
-            'excerpt'=>$request->excerpt,
-            'slug'=> Str::slug($request->title, '-'),
-            'body'=>$request->body,
-            'image'=>$thumbname
+            'post_id' => Carbon::now()->timestamp,
+            'title' => $request->title,
+            'excerpt' => $request->excerpt,
+            'slug' => Str::slug($request->title, '-'),
+            'body' => $request->body,
+            'image' => $thumbname
         ]);
 
-        return redirect()->back()->with('message','sukses nambah berita');
+        return redirect()->back()->with('message', 'sukses nambah berita');
     }
 
-    public function edit(Request $request ,$id)
+    public function edit(Request $request, $id)
     {
         if ($request->hasFile('image')) {
 
@@ -41,30 +42,29 @@ class BeritaController extends Controller
             $thumbname = time() . '-' . $file->getClientOriginalName();
             $file->move(public_path() . '/thumbBerita' . '/', $thumbname);
 
-            DB::table('beritas')->where('id',$id)->update([
-                'title'=>$request->title,
-                'excerpt'=>$request->excerpt,
-                'slug'=> Str::slug($request->title, '-'),
-                'body'=>$request->body,
-                'image'=>$thumbname
+            DB::table('beritas')->where('id', $id)->update([
+                'title' => $request->title,
+                'excerpt' => $request->excerpt,
+                'slug' => Str::slug($request->title, '-'),
+                'body' => $request->body,
+                'image' => $thumbname
             ]);
-        }
-        else {
-            DB::table('beritas')->where('id',$id)->update([
-                'title'=>$request->title,
-                'excerpt'=>$request->excerpt,
-                'slug'=> Str::slug($request->title, '-'),
-                'body'=>$request->body,
+        } else {
+            DB::table('beritas')->where('id', $id)->update([
+                'title' => $request->title,
+                'excerpt' => $request->excerpt,
+                'slug' => Str::slug($request->title, '-'),
+                'body' => $request->body,
             ]);
         }
 
-        return redirect()->back()->with('message','sukses edit berita');
+        return redirect()->back()->with('message', 'sukses edit berita');
     }
 
     public function delete($id)
     {
-        DB::table('beritas')->where('id',$id)->delete();
+        DB::table('beritas')->where('id', $id)->delete();
 
-        return redirect()->back()->with('message','sukses delete berita');
+        return redirect()->back()->with('message', 'sukses delete berita');
     }
 }
