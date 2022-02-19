@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -45,9 +45,9 @@
             </div>
         </div>
     </div>
-@endsection
+@endsection --}}
 
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -57,18 +57,18 @@
     <title>Login | SMPN 3 CICURUG</title>
 
     <!--Bootstrap Assets-->
-    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../vendor/bootstrap/icons-1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/icons-1.7.2/font/bootstrap-icons.css">
 
     <!--Auth Css-->
-    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="/css/auth.css">
 </head>
 
 <body>
 
     <div id="auth">
         <div class="imagesAuth">
-            <img src="../img/auth.png" alt="">
+            <img src="/img/auth.png" alt="">
         </div>
         <div class="sectionFormAuth">
             <div class="headAuth">
@@ -81,10 +81,11 @@
                 </div>
             @endif
             <form method="POST" action="{{ route('password.email') }}" class="formAuth">
+                @csrf
                 <div class="mb-3 inputForm passwordForm">
                     <div class="icon">
                         <label for="newPassword">
-                            <img src="../img/iconLock.svg" alt="">
+                            <img src="/img/iconLock.svg" alt="">
                         </label>
                     </div>
                     <div class="wrapperToggle">
@@ -101,7 +102,7 @@
                 </div>
                 <div class="actionUser d-flex justify-content-center flex-column align-items-center">
                     <button type="submit" class="btn btnPrimary">Submit</button>
-                    <p class="text">Batal mengubah password ? <a href="{{ route('auth.login') }}">masuk!</a>
+                    <p class="text">Batal mengubah password ? <a href="{{ route('login') }}">masuk!</a>
                     </p>
                 </div>
             </form>
@@ -113,7 +114,7 @@
 
     <!--Vendor-->
     <!--Bootstrap JS-->
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!--Script Auth-->
     <script>
         const togglePassword = document.querySelector('#togglePassword');
@@ -129,4 +130,4 @@
     </script>
 </body>
 
-</html> --}}
+</html>

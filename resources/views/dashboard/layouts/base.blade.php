@@ -44,8 +44,9 @@
                 <!-- nav-header -->
                 <div class="user-action">
                     <div class="dropdown notification">
-                        <button class="dropdown-toggle notification-toggle" type="button" id="notificationButton" data-bs-toggle="dropdown">
-                          <img src="{{ url('assets/img/notificationBell.svg') }}" alt="">
+                        <button class="dropdown-toggle notification-toggle" type="button" id="notificationButton"
+                            data-bs-toggle="dropdown">
+                            <img src="{{ url('assets/img/notificationBell.svg') }}" alt="">
                         </button>
 
                         <ul class="dropdown-menu notificationList" aria-labelledby="notificationButton">
@@ -54,8 +55,10 @@
                                     <ion-icon name="mail"></ion-icon>
                                 </div>
                                 <div class="wraperMessage">
-                                    <p class="label">Selamat Datang Admin</p>
-                                    <p class="message">Selamat datang! Kami merasa terhormat untuk menerima Anda.</p>
+                                    <p class="label">Selamat Datang {{ auth()->user()->name }}</p>
+                                    <p class="message">Selamat datang! Kami merasa terhormat untuk menerima Anda.
+                                    </p>
+                                    </p>
                                 </div>
                                 <p class="time">19.30</p>
                             </li>
@@ -76,13 +79,23 @@
                         </div>
                     </div>
                     <div class="logoutAction">
-                        <img src="{{ url('assets/img/powerIcon.svg') }}" alt="">
+                        <div class="logoutAction">
+                            <form action="/logout" method="post" onsubmit="return confirm('ingin logout')">
+                                @csrf
+                                <button type="submit" class="me-1 border-0 bg-transparent d-flex align-item-center">
+                                    <div class="delete-confirm d-flex align-item-center">
+                                        <span class="mx-1">Logout</span>
+                                        <img src="{{ url('assets/img/powerIcon.svg') }}" alt="">
+                                    </div>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
             </div>
             <div class="contentMain">
-           @yield('content')
+                @yield('content')
 
             </div>
         </div>
@@ -110,11 +123,9 @@
     <script src="{{ url('assets/js/app.js') }}"></script>
 
 
-@yield('js')
+    @yield('js')
 
 
 </body>
 
 </html>
-
-
