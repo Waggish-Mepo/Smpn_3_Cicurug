@@ -45,8 +45,8 @@
                 <div class="navbar-nav">
                   <div class="menu">
                     <a class="nav-link"href="{{ url('landingpage.html') }}">Beranda</a>
-                    <a class="nav-link active" href="#service">Berita</a>
-                    <a class="nav-link" href="#">Ekstrakurikuler</a>
+                    <a class="nav-link " href="#service">Berita</a>
+                    <a class="nav-link active" href="#">Ekstrakurikuler</a>
                     <a class="nav-link" href="#aboutPlantsasri">Prestasi</a>
                     <a class="nav-link" href="#contact">Tentang Kami </a>
                   </div>
@@ -80,21 +80,21 @@
                         </div>
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="{{ url('assets/img/ImgJumbotron.svg') }}" class="d-block w-100" alt="...">
+                            <img src="{{ url('assets/img/70876373_132557981440711_2978303521897578496_n 1.svg') }}" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                               <h5>First slide label</h5>
                               <p>Some representative placeholder content for the first slide.</p>
                             </div>
                           </div>
                           <div class="carousel-item">
-                            <img src="{{ url('assets/img/ImgJumbotron.svg') }}" class="d-block w-100" alt="...">
+                            <img src="{{ url('assets/img/70876373_132557981440711_2978303521897578496_n 1.svg') }}" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                               <h5>Second slide label</h5>
                               <p>Some representative placeholder content for the second slide.</p>
                             </div>
                           </div>
                           <div class="carousel-item">
-                            <img src="{{ url('assets/img/ImgJumbotron.svg') }}" class="d-block w-100" alt="...">
+                            <img src="{{ url('assets/img/70876373_132557981440711_2978303521897578496_n 1.svg') }}" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                               <h5>Third slide label</h5>
                               <p>Some representative placeholder content for the third slide.</p>
@@ -117,28 +117,12 @@
                 <div class="beritaWrapper">
                     <div class="container">
                         <div class="headNews">
-                            <h1>Berita</h1>
-                            <p>Berita Seputar SMPN 3 CICURUG</p>
+                            <h1>Ekstrakurikuler</h1>
+                            <p>Ekstrakurikuler Yang Ada Di SMPN 3 CICURUG</p>
                         </div>
                         <div class="beritaContainer">
                             <div class="firstRow">
                                 @foreach (DB::table('beritas')->get() as $item )
-
-                                <a href="" class="news">
-                                    <center>
-                                        <div class="imgNews">
-                                            <img src="{{ url('thumbBerita/'.$item->image) }}" alt="">
-                                        </div>
-                                        <h5>
-                                            {{ $item->title }}
-                                        </h5>
-                                    </center>
-                                </a>
-
-                                @endforeach
-                            </div>
-                            <div class="secRow">
-                                @foreach (DB::table('beritas')->orderBy('id', 'DESC')->get() as $item )
 
                                 <a href="" class="news">
                                     <center>
@@ -331,49 +315,6 @@ $('.firstRow').slick({
             ]
         });
 
-        $('.secRow').slick({
-            infinite: false,
-            slidesToShow: 3.2,
-            slidesToScroll: 1,
-            arrows : false,
-            dots : false,
-            responsive: [
-            {
-                breakpoint: 1400,
-                    settings: {
-                        slidesToShow: 2.8,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                breakpoint: 1200,
-                    settings: {
-                        slidesToShow: 2.3,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                breakpoint: 991,
-                    settings: {
-                        slidesToShow: 1.5,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1,
-                    }
-                }
-            ]
-        });
 </script>
 
 </body>

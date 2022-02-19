@@ -78,6 +78,214 @@
         <li class="breadcrumb-item"><a href="#">SMPN 3 CICURUG</a></li>
         <li class="breadcrumb-item active">Dashboard</li>
     </ol>
+
+    <ul class="nav nav-pills mb-3 tabsMenu" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="new-request-tab" data-bs-toggle="pill" data-bs-target="#newRequestTab" type="button" role="tab" aria-controls="newRequestTab" aria-selected="true">Banner</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="list-request-tab" data-bs-toggle="pill" data-bs-target="#listRequestTab" type="button" role="tab" aria-controls="listRequestTab" aria-selected="false">Kata Sambutan</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="kegiatan-tab" data-bs-toggle="pill" data-bs-target="#kegiatanTab" type="button" role="tab" aria-controls="kegiatanTab" aria-selected="false">Kegiatan</button>
+          </li>
+    </ul>
+
+    <div class="tab-content" id="pills-tabContent">
+
+        <div class="tab-pane fade show active" id="newRequestTab" role="tabpanel" aria-labelledby="new-request-tab">
+            <div class="wrapperTable table-responsive">
+                <table id="bannerTable" class="tables" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%">#</th>
+                            <th style="width: 70%">Banner</th>
+                            <th style="width: 15%">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><img src="" alt=""></td>
+                            <td><!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editBanner">
+                                  Edit
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="editBanner" tabindex="-1" aria-labelledby="editBannerLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="editBannerLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        ...
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="listRequestTab" role="tabpanel" aria-labelledby="list-request-tab">
+
+            <div class="wrapperTable table-responsive">
+                <table id="sambutanTable" class="tables" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%">#</th>
+                            <th style="width: 30%">Gambar</th>
+                            <th style="width: 30%">Judul</th>
+                            <th style="width: 30%">Kata - Kata</th>
+                            <th style="width: 5%">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td><!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editSambutan">
+                                  Edit
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="editSambutan" tabindex="-1" aria-labelledby="editSambutanLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="editSambutanLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        ...
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="tab-pane fade show" id="kegiatanTab" role="tabpanel" aria-labelledby="kegiatan-tab">
+
+            <div class="d-flex justify-content-end">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahKegiatan">
+                    Tambah
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="tambahKegiatan" tabindex="-1" aria-labelledby="tambahKegiatanLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="tambahKegiatanLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrapperTable table-responsive">
+                <table id="kegiatanTable" class="tables" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%">#</th>
+                            <th style="width: 70%">foto</th>
+                            <th style="width: 15%">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><img src="" alt=""></td>
+                            <td>
+
+                                <a href="" class="btn btn-danger">Hapus</a>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editKegiatan">
+                                  Edit
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="editKegiatan" tabindex="-1" aria-labelledby="editKegiatanLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="editKegiatanLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        ...
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
 @endsection
 
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('#bannerTable').DataTable({
+                "info": false,
+                "bSort": false,
+            });
+        } );
 
+        $(document).ready(function() {
+            $('#sambutanTable').DataTable({
+                "info": false,
+                "bSort": false,
+            });
+        } );
+
+        $(document).ready(function() {
+            $('#kegiatanTable').DataTable({
+                "info": false,
+                "bSort": false,
+            });
+        } );
+    </script>
+@endsection

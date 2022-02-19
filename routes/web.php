@@ -30,6 +30,14 @@ Route::get('/berita', function () {
 
     return view('berita');
 });
+Route::get('/berita/detail', function () {
+
+    return view('detailBerita');
+});
+Route::get('/ekstrakurikuler', function () {
+
+    return view('eskul');
+});
 
 Auth::routes();
 

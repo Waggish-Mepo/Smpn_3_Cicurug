@@ -109,36 +109,22 @@
 
                         <div class="container">
                             <div class="row">
+
+                                @foreach (DB::table('beritas')->limit(3)->get() as $item )
+
                                 <a href="" class="col-12 col-md-4 news">
                                     <center>
                                         <div class="imgNews">
-                                            <img src="{{ url('assets/img/95KAPOLSEK_APRESIASI_SISWA 1 (1).svg') }}" alt="">
+                                            <img src="{{ url('thumbBerita/'.$item->image) }}" alt="">
                                         </div>
                                         <h5>
-                                            Kapolsek Apresiasi Tiga Siswa SMPN 3 Cicurug Kabupaten Sukabumi.
+                                            {{ $item->title }}
                                         </h5>
                                     </center>
                                 </a>
-                                <a href="" class="col-12 col-md-4 news">
-                                    <center>
-                                        <div class="imgNews">
-                                            <img src="{{ url('assets/img/75446723_147266949969814_7906375067779465216_n 1.svg') }}" alt="">
-                                        </div>
-                                        <h5>
-                                            Pertemuan Antar Kelas Siswa SMPN 3 Cicurug.
-                                        </h5>
-                                    </center>
-                                </a>
-                                <a href="" class="col-12 col-md-4 news">
-                                    <center>
-                                        <div class="imgNews">
-                                            <img src="{{ url('assets/img/73361273_147266406636535_6211017966989869056_n 1.svg') }}" alt="">
-                                        </div>
-                                        <h5>
-                                            Upacara Bendera SMPN 3 Cicurug Memperingati HUT RI Ke-72.
-                                        </h5>
-                                    </center>
-                                </a>
+
+                                @endforeach
+
                             </div>
                         </div>
                     </div>
