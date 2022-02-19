@@ -55,14 +55,14 @@ Route::prefix('management')->group(function () {
     Route::prefix('beranda')->name('beranda.')->group(function () {
         Route::get('/', [BerandaController::class, 'index'])->name('index');
         Route::prefix('banner')->name('banner.')->group(function () {
-            Route::get('/edit/{id}', [BerandaController::class, 'edit'])->name('edit');
+            Route::post('/edit/{id}', [BerandaController::class, 'editBanner'])->name('edit');
         });
         Route::prefix('about')->name('about.')->group(function () {
-            Route::get('/edit/{id}', [BerandaController::class, 'edit'])->name('edit');
+            Route::post('/edit/{id}', [BerandaController::class, 'editAbout'])->name('edit');
         });
         Route::prefix('activity')->name('activity.')->group(function () {
-            Route::post('/create', [BeritaController::class, 'create'])->name('create');
-            Route::get('/edit/{id}', [BerandaController::class, 'edit'])->name('edit');
+            Route::post('/create', [BerandaController::class, 'create'])->name('create');
+            Route::post('/edit/{id}', [BerandaController::class, 'editActivity'])->name('edit');
             Route::get('/delete/{id}', [BerandaController::class, 'delete'])->name('delete');
         });
     });
