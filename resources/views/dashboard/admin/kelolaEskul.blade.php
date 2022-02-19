@@ -1,7 +1,9 @@
 @extends('dashboard.layouts.base')
 
 @section('css')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"
+integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog=="
+crossorigin="anonymous" referrerpolicy="no-referrer">
 @endsection
 
 @section('sidebar')
@@ -142,24 +144,6 @@
                     Tambah
                 </button>
 
-                <!-- Modal -->
-                <div class="modal fade" id="tambaheskul" tabindex="-1" aria-labelledby="tambaheskulLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="tambaheskulLabel">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                        ...
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
             </div>
 
             <div class="wrapperTable table-responsive">
@@ -174,46 +158,133 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        @foreach ( DB::table('ekskuls')->get() as $key=>$item )
+
                         <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td><!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editeskul">
+                            <td>{{ $key+1 }}</td>
+                            <td><img src="{{ url('thumbEskul/' . $item->image) }}" alt=""></td>
+                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->body }}</td>
+                            <td>
+                                <a class="btn btn-danger" href="{{ route('ekstrakurikuler.delete', ['id'=>$item->id]) }}">Hapus</a>
+
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editeskul" data-id="{{ $item->id}}" data-title="{{ $item->title }}" data-body="{{ $item->body }}" data-image="{{ $item->image }}">
                                   Edit
                                 </button>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="editeskul" tabindex="-1" aria-labelledby="editeskulLabel" aria-hidden="true">
-                                  <div class="modal-dialog">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="editeskulLabel">Modal title</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                      </div>
-                                      <div class="modal-body">
-                                        ...
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
                             </td>
                         </tr>
+
+                        @endforeach
                     </tbody>
                 </table>
             </div>
 
         </div>
 
+
+                <!-- Modal Create -->
+                <div class="modal fade" id="tambaheskul" tabindex="-1" aria-labelledby="tambaheskulLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="tambaheskulLabel">Tambah Ekskul</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <form action="{{ route('ekstrakurikuler.create') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">title</label>
+                                    <input type="text" class="form-control" id="title" name="title" placeholder="isi title " required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+                                    <textarea class="form-control" name="body" placeholder="Masukan Konten" id="editor"></textarea>
+                                </div>
+
+                                <input type="file" name="image" class="dropify" data-max-width="320" data-max-width="180"
+                                    required />
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Modal Edit -->
+                <div class="modal fade" id="editeskul" tabindex="-1" aria-labelledby="editeskulLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content" id="editData">
+
+                    </div>
+                    </div>
+                </div>
+
     </div>
 @endsection
 
 @section('js')
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"
+    integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+    $('.dropify').dropify();
+    </script>
+
+
+    <script>
+
+    $('#editeskul').on('shown.bs.modal', function(e) {
+        var html = `<div class="modal-header">
+              <h5 class="modal-title" id="editeskulLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form action="/management/ekstrakurikuler/edit/${$(e.relatedTarget).data('id')}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="title" class="form-label">title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="isi title " value="${$(e.relatedTarget).data('title')}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+                        <textarea class="form-control" name="body" placeholder="Masukan Konten" id="editor">${$(e.relatedTarget).data('body')}</textarea>
+                    </div>
+
+
+                    <input type="file" name="image" class="dropify" data-max-width="320" data-max-width="180"
+                    data-default-file="/thumbBerita/${$(e.relatedTarget).data('image')}" />
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>`;
+
+
+        $('#editData').html(html);
+        $('.dropify').dropify();
+    });
+
+    </script>
+
     <script>
         $(document).ready(function() {
             $('#bannerTable').DataTable({
