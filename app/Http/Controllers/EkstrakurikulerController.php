@@ -16,22 +16,20 @@ class EkstrakurikulerController extends Controller
 
     public function create(Request $request)
     {
-
-
-    $file = $request->file('image');
-    $thumbname = time() . '-' . $file->getClientOriginalName();
-    $file->move(public_path() . '/thumbEskul' . '/', $thumbname);
+        $file = $request->file('image');
+        $thumbname = time() . '-' . $file->getClientOriginalName();
+        $file->move(public_path() . '/thumbEskul' . '/', $thumbname);
 
         DB::table('ekskuls')->insert([
-            'title'=>$request->title,
-            'body'=>$request->body,
-            'image'=>$thumbname
+            'title' => $request->title,
+            'body' => $request->body,
+            'image' => $thumbname
         ]);
 
-        return redirect()->back()->with('message','Sukses Menambah Ekstrakurikuler');
+        return redirect()->back()->with('message', 'Sukses Menambah Ekstrakurikuler');
     }
 
-    public function edit(Request $request ,$id)
+    public function edit(Request $request, $id)
     {
         if ($request->hasFile('image')) {
 
@@ -39,27 +37,25 @@ class EkstrakurikulerController extends Controller
             $thumbname = time() . '-' . $file->getClientOriginalName();
             $file->move(public_path() . '/thumbEskul' . '/', $thumbname);
 
-            DB::table('ekskuls')->where('id',$id)->update([
-                'title'=>$request->title,
-                'body'=>$request->body,
-                'image'=>$thumbname
+            DB::table('ekskuls')->where('id', $id)->update([
+                'title' => $request->title,
+                'body' => $request->body,
+                'image' => $thumbname
             ]);
-        }
-        else {
-            DB::table('eskuls')->where('id',$id)->update([
-                'title'=>$request->title,
-                'body'=>$request->body,
+        } else {
+            DB::table('eskuls')->where('id', $id)->update([
+                'title' => $request->title,
+                'body' => $request->body,
             ]);
         }
 
-        return redirect()->back()->with('message','sukses edit Ekstrakurikuler');
+        return redirect()->back()->with('message', 'sukses edit Ekstrakurikuler');
     }
 
     public function delete($id)
     {
-        DB::table('ekskuls')->where('id',$id)->delete();
+        DB::table('ekskuls')->where('id', $id)->delete();
 
-        return redirect()->back()->with('message','sukses delete Ekstrakurikuler');
+        return redirect()->back()->with('message', 'sukses delete Ekstrakurikuler');
     }
-
 }

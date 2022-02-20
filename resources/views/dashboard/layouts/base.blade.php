@@ -20,6 +20,7 @@
     <!--Styling Index-->
     <link rel="stylesheet" href="{{ url('assets/css/index.css') }}">
 
+
     @yield('css')
 </head>
 
@@ -55,7 +56,7 @@
                                     <ion-icon name="mail"></ion-icon>
                                 </div>
                                 <div class="wraperMessage">
-                                    <p class="label">Selamat Datang {{ auth()->user()->name }}</p>
+                                    <p class="label">Selamat Datang </p>
                                     <p class="message">Selamat datang! Kami merasa terhormat untuk menerima Anda.
                                     </p>
                                     </p>
@@ -122,9 +123,10 @@
     <!--App JS-->
     <script src="{{ url('assets/js/app.js') }}"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     @yield('js')
-
 
 </body>
 
