@@ -121,109 +121,47 @@
         <li class="breadcrumb-item active">Kelola Berita</li>
     </ol>
 
-    <ul class="nav nav-pills mb-3 tabsMenu" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="new-request-tab" data-bs-toggle="pill" data-bs-target="#newRequestTab" type="button" role="tab" aria-controls="newRequestTab" aria-selected="true">Banner</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="list-request-tab" data-bs-toggle="pill" data-bs-target="#listRequestTab" type="button" role="tab" aria-controls="listRequestTab" aria-selected="false">Daftar Berita</button>
-        </li>
-    </ul>
+    <div class="d-flex justify-content-end">
 
-    <div class="tab-content" id="pills-tabContent">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createData">
+            Create
+        </button>
 
-        <div class="tab-pane fade show active" id="newRequestTab" role="tabpanel" aria-labelledby="new-request-tab">
+    </div>
 
-            <div class="wrapperTable table-responsive">
-                <table id="beritaTable" class="tables" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Judul</th>
-                            <th>alias</th>
-                            <th>artikel</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (DB::table('beritas')->get() as $key=>$item)
-                        <tr>
-                            <td style="width: 5%">{{ $key+1 }}</td>
-                            <td style="width: 20%">{{ $item->title }}</td>
-                            <td style="width: 20%">{{ $item->excerpt }}</td>
-                            <td style="width: 25%">{!! $item->body !!}</td>
-                            <td style="width: 20%">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#updateData" data-id="{{ $item->id }}"
-                                            data-title="{{ $item->title }}" data-excerpt="{{ $item->excerpt }}"
-                                            data-body="{{ $item->body }}" data-image="{{ $item->image }}">
-                                            Edit
-                                        </button>
-                                <a class="btn btn-danger" href="{{ route('berita.delete', ['id'=>$item->id]) }}">Hapus</a>
-                                </div>
-                            </td>
-
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-
-        <div class="tab-pane fade" id="listRequestTab" role="tabpanel" aria-labelledby="list-request-tab">
-
-            <div class="d-flex justify-content-end">
-
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createData">
-                    Create
-                </button>
-
-            </div>
-
-            <div class="wrapperTable table-responsive">
-                <table id="bannerTable" class="tables" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th style="width: 15%">#</th>
-                            <th style="width: 70%">Banner</th>
-                            <th style="width: 15%">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias cumque architecto. Recusandae corporis ad temporibus, quaerat maiores tempora voluptatum nulla blanditiis ab error laboriosam tenetur magnam repellendus. Ipsum, fugit?<img src="" alt=""></td>
-                            <td><!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editBanner">
-                                  Edit
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="editBanner" tabindex="-1" aria-labelledby="editBannerLabel" aria-hidden="true">
-                                  <div class="modal-dialog">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="editBannerLabel">Modal title</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                      </div>
-                                      <div class="modal-body">
-                                        ...
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
+    <div class="wrapperTable table-responsive">
+        <table id="beritaTable" class="tables" style="width:100%">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Judul</th>
+                    <th>alias</th>
+                    <th>artikel</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (DB::table('beritas')->get() as $key => $item)
+                    <tr>
+                        <td style="width: 5%">{{ $key + 1 }}</td>
+                        <td style="width: 20%">{{ $item->title }}</td>
+                        <td style="width: 20%">{{ $item->excerpt }}</td>
+                        <td style="width: 25%">{!! $item->body !!}</td>
+                        <td style="width: 20%">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#updateData" data-id="{{ $item->id }}"
+                                data-title="{{ $item->title }}" data-excerpt="{{ $item->excerpt }}"
+                                data-body="{{ $item->body }}" data-image="{{ $item->image }}">
+                                Edit
+                            </button>
+                            <a class="btn btn-danger"
+                                href="{{ route('berita.delete', ['id' => $item->id]) }}">Hapus</a>
+                        </td>
+                    </tr>
+            @endforeach
+        </tbody>
+    </table>
+    </div>
 
     </div>
 
@@ -278,8 +216,6 @@
         </div>
     </div>
 @endsection
-
-
 
 
 @section('js')
@@ -370,7 +306,7 @@
                     </div>
 
 
-                    <input type="file" name="image" class="dropify" data-max-width="2000" data-max-width="2000"
+                    <input type="file" name="image" class="dropify" data-max-width="290" data-max-width="190"
                     data-default-file="/thumbBerita/${$(e.relatedTarget).data('image')}" />
 
 
@@ -395,14 +331,13 @@
                 "info": false,
                 "bSort": false,
             });
-        } );
+        });
 
         $(document).ready(function() {
             $('#beritaTable').DataTable({
                 "info": false,
                 "bSort": false,
             });
-        } );
+        });
     </script>
-
 @endsection

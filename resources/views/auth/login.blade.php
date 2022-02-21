@@ -123,7 +123,7 @@
                         </label>
                     </div>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                        value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Username">
+                        value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">

@@ -77,7 +77,7 @@ Route::prefix('management')->group(function () {
     Route::prefix('ekstrakurikuler')->name('ekstrakurikuler.')->group(function () {
         Route::get('/', [EkstrakurikulerController::class, 'index'])->name('index');
         Route::post('/create', [EkstrakurikulerController::class, 'create'])->name('create');
-        Route::get('/edit/{id}', [EkstrakurikulerController::class, 'edit'])->name('edit');
+        Route::post('/edit/{id}', [EkstrakurikulerController::class, 'edit'])->name('edit');
         Route::get('/delete/{id}', [EkstrakurikulerController::class, 'delete'])->name('delete');
     });
 

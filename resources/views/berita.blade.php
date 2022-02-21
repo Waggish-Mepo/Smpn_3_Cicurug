@@ -137,22 +137,6 @@
 
                                 @endforeach
                             </div>
-                            <div class="secRow">
-                                @foreach (DB::table('beritas')->orderBy('id', 'DESC')->get() as $item )
-
-                                <a href="" class="news">
-                                    <center>
-                                        <div class="imgNews">
-                                            <img src="{{ url('thumbBerita/'.$item->image) }}" alt="">
-                                        </div>
-                                        <h5>
-                                            {{ $item->title }}
-                                        </h5>
-                                    </center>
-                                </a>
-
-                                @endforeach
-                            </div>
                         </div>
                     </div>
                 </div>

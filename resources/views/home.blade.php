@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,6 +22,7 @@
     <link rel="stylesheet" href="{{ url('assets/css/landingpage.css') }}">
 
 </head>
+
 <body>
     <div class="wrapperPreloader">
         <div id="loader"></div>
@@ -32,35 +34,49 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
 
-              <a class="navbar-brand" href="#">
-                  <img src="{{ url('assets/img/Smpn 3 Cicurug.png') }}">
-              </a>
+                <a class="navbar-brand" href="#">
+                    <img src="{{ url('assets/img/Smpn 3 Cicurug.png') }}">
+                </a>
 
-              <button class="navbar-toggler" type="button">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+                <button class="navbar-toggler" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-              <div class="navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <div class="menu">
-                    <a class="nav-link active"href="{{ url('landingpage.html') }}">Beranda</a>
-                    <a class="nav-link" href="{{ url('berita.html') }}">Berita</a>
-                    <a class="nav-link" href="#">Ekstrakurikuler</a>
-                    <a class="nav-link" href="#aboutPlantsasri">Prestasi</a>
-                    <a class="nav-link" href="#contact">Tentang Kami </a>
-                  </div>
+                <div class="navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <div class="menu">
+                            <a class="nav-link active" href="{{ url('landingpage.html') }}">Beranda</a>
+                            <a class="nav-link" href="{{ url('berita.html') }}">Berita</a>
+                            <a class="nav-link" href="#">Ekstrakurikuler</a>
+                            <a class="nav-link" href="#aboutPlantsasri">Prestasi</a>
+                            <a class="nav-link" href="#contact">Tentang Kami </a>
+                        </div>
 
-                  <div class="getStarted">
-                      <div class="polygon">
-                          <div class="clipath"></div>
-                      </div>
-                      <div class="buttonWrapper">
-                        <a href="#" class="nav-link">Masuk</a>
-                      </div>
-                  </div>
+                        <div class="getStarted">
+                            <div class="polygon">
+                                <div class="clipath"></div>
+                            </div>
+                            <div class="buttonWrapper">
+                                @auth
+                                    <li class="nav-link">
+                                        <form action="/logout" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn dropdown-list">
+                                                Logout<i class="bi bi-arrow-bar-right"></i>
+                                            </button>
+                                        </form>
+                                    </li>
+                                @else
+                                    <li class="nav-item">
+                                        <a href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i>
+                                            Login</a>
+                                    </li>
+                                @endauth
+                            </div>
+                        </div>
 
+                    </div>
                 </div>
-              </div>
 
             </div>
         </nav>
@@ -74,10 +90,10 @@
                 ),
                 url('{{'thumbBanner/'.DB::table('banners')->first()->image}}');">
                 <h1 class="page-heading">
-                  <span class="page-heading-primary">
-                      <img src="{{ url('assets/img/smpn3.png') }}" alt="">
-                  </span>
-                  <span class="page-heading-secondary">SMPN 3 CICURUG</span>
+                    <span class="page-heading-primary">
+                        <img src="{{ url('assets/img/smpn3.png') }}" alt="">
+                    </span>
+                    <span class="page-heading-secondary">SMPN 3 CICURUG</span>
                 </h1>
             </div>
         </div>
@@ -112,19 +128,18 @@
                         <div class="container">
                             <div class="row">
 
-                                @foreach (DB::table('beritas')->limit(3)->get() as $item )
-
-                                <a href="" class="col-12 col-md-4 news">
-                                    <center>
-                                        <div class="imgNews">
-                                            <img src="{{ url('thumbBerita/'.$item->image) }}" alt="">
-                                        </div>
-                                        <h5>
-                                            {{ $item->title }}
-                                        </h5>
-                                    </center>
-                                </a>
-
+                                @foreach (DB::table('beritas')->limit(3)->get()
+    as $item)
+                                    <a href="" class="col-12 col-md-4 news">
+                                        <center>
+                                            <div class="imgNews">
+                                                <img src="{{ url('thumbBerita/' . $item->image) }}" alt="">
+                                            </div>
+                                            <h5>
+                                                {{ $item->title }}
+                                            </h5>
+                                        </center>
+                                    </a>
                                 @endforeach
 
                             </div>
@@ -132,9 +147,9 @@
                     </div>
                 </div>
                 <center>
-                <div class="moreNews">
-                    <a href="" class="btnMore">Selengkapnya</a>
-                </div>
+                    <div class="moreNews">
+                        <a href="" class="btnMore">Selengkapnya</a>
+                    </div>
                 </center>
                 <!-- End News -->
             </div>
@@ -193,7 +208,8 @@
                             <img src="{{ url('assets/img/school.svg') }}" alt="">
 
                             <h3>Visi</h3>
-                            <p class="small">“Menjadi pusat ilmu pengetahuan dan teknologi yang unggul dan berdaya saing, melalui upaya ...
+                            <p class="small">“Menjadi pusat ilmu pengetahuan dan teknologi yang unggul dan
+                                berdaya saing, melalui upaya ...
                             </p>
                             <div class="dimmer"></div>
                             <div class="go-corner" href="#">
@@ -205,7 +221,8 @@
                         <a class="cardVm Misi" href="#">
                             <img src="{{ url('assets/img/book 1.svg') }}" alt="">
                             <h3>Misi</h3>
-                            <p class="small">Menyediakan akses yang luas dan adil, serta pendidikan yang berkualitas.
+                            <p class="small">Menyediakan akses yang luas dan adil, serta pendidikan yang
+                                berkualitas.
                             </p>
                             <div class="dimmer"></div>
                             <div class="go-corner" href="#">
@@ -288,7 +305,8 @@
                 <div class="contentFooter">
                     <div class="line">
                         <img src="{{ url('assets/img/smpn3.png') }}" alt="">
-                        <p>Smpn 3 Cicurug terakreditasi A, mencetak Alumni yang berkualitas bagi negara, hampir 75% para alumni sukses di masadepannya.</p>
+                        <p>Smpn 3 Cicurug terakreditasi A, mencetak Alumni yang berkualitas bagi negara, hampir 75% para
+                            alumni sukses di masadepannya.</p>
                     </div>
 
                     <div class="line">
@@ -315,9 +333,12 @@
 
                     <div class="line">
                         <h3>Kontak</h3>
-                        <a href="https://wa.me/085156293673"><h2 class="phone">+6285156293673</h2></a>
+                        <a href="https://wa.me/085156293673">
+                            <h2 class="phone">+6285156293673</h2>
+                        </a>
                         <div class="linkToPages">
-                            <p class="address" style="margin-bottom: .5rem;">Jl. Cibuntu Satu, Kutajaya, Kec. Cicurug, Kabupaten Sukabumi, Jawa Barat 43359.</p>
+                            <p class="address" style="margin-bottom: .5rem;">Jl. Cibuntu Satu, Kutajaya, Kec.
+                                Cicurug, Kabupaten Sukabumi, Jawa Barat 43359.</p>
                         </div>
                         <div class="socialMedia">
                             <a href="#" class="social">
@@ -337,27 +358,27 @@
 
 
     <!--Vendor-->
-        <!--Jquery-->
-        <script src="{{ url('assets/vendor/jquery/jquery.min.js') }}"></script>
-        <!--Bootstrap JS-->
-        <script src="{{ url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <!--Ion Icon-->
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-        <!--Slick Js-->
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script src="{{ url('assets/vendor/slick/slick.min.js') }}"></script>
+    <!--Jquery-->
+    <script src="{{ url('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <!--Bootstrap JS-->
+    <script src="{{ url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!--Ion Icon-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!--Slick Js-->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="{{ url('assets/vendor/slick/slick.min.js') }}"></script>
 
-     <script>
-         //Preloader
+    <script>
+        //Preloader
         $(window).on('load', function() {
             $('.wrapperPreloader').fadeOut('slow');
         });
 
         //Navbar Mobile Version Toggle triger
-        $(document).ready(function () {
-            $(".navbar-toggler").click(function(){
+        $(document).ready(function() {
+            $(".navbar-toggler").click(function() {
                 $(".navbar-collapse").toggleClass("showNavbar");
             });
         });
@@ -370,17 +391,16 @@
             slidesToShow: 3,
             slidesToScroll: 3,
             adaptiveHeight: true,
-            arrows :false,
-            responsive: [
-                {
-                breakpoint: 991,
+            arrows: false,
+            responsive: [{
+                    breakpoint: 991,
                     settings: {
                         slidesToShow: 2,
                         slidesToScroll: 2,
                     }
                 },
                 {
-                breakpoint: 480,
+                    breakpoint: 480,
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1
@@ -388,66 +408,67 @@
                 }
             ]
         });
-     </script>
+    </script>
 
 
     <script>
-            $('.lineCountry1').slick({
-                infinite:false,
-                slidesToShow: 2.5,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 2000,
-            });
-            $('.lineCountry2').slick({
-                slidesToShow: 2.5,
-                infinite:false,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 2000,
-            });
+        $('.lineCountry1').slick({
+            infinite: false,
+            slidesToShow: 2.5,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+        });
+        $('.lineCountry2').slick({
+            slidesToShow: 2.5,
+            infinite: false,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+        });
     </script>
 
-<script>
-    $(document).ready(function () {
-        $(document).on("scroll", onScroll);
+    <script>
+        $(document).ready(function() {
+            $(document).on("scroll", onScroll);
 
-        //smoothscroll
-        $('a[href^="#"]').on('click', function (e) {
-            e.preventDefault();
-            $(document).off("scroll");
+            //smoothscroll
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                $(document).off("scroll");
 
-            $('a').each(function () {
-                $(this).removeClass('active');
-            })
-            $(this).addClass('active');
+                $('a').each(function() {
+                    $(this).removeClass('active');
+                })
+                $(this).addClass('active');
 
-            var target = this.hash,
-                menu = target;
-            $target = $(target);
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top+6
-            }, 700, 'swing', function () {
-                window.location.hash = target;
-                $(document).on("scroll", onScroll);
+                var target = this.hash,
+                    menu = target;
+                $target = $(target);
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top + 6
+                }, 700, 'swing', function() {
+                    window.location.hash = target;
+                    $(document).on("scroll", onScroll);
+                });
             });
         });
-    });
 
-    function onScroll(event){
-        var scrollPos = $(document).scrollTop();
-        $('#navbar a').each(function () {
-            var currLink = $(this);
-            var refElement = $(currLink.attr("href"));
-            if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-                $('#navbar ul li a').removeClass("active");
-                currLink.addClass("active");
-            }
-            else{
-                currLink.removeClass("active");
-            }
-        });
-    }
-</script>
+        function onScroll(event) {
+            var scrollPos = $(document).scrollTop();
+            $('#navbar a').each(function() {
+                var currLink = $(this);
+                var refElement = $(currLink.attr("href"));
+                if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() >
+                    scrollPos) {
+                    $('#navbar ul li a').removeClass("active");
+                    currLink.addClass("active");
+                } else {
+                    currLink.removeClass("active");
+                }
+            });
+        }
+    </script>
 </body>
+
 </html>

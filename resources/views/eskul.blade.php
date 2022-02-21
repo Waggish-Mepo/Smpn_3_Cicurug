@@ -122,12 +122,12 @@
                         </div>
                         <div class="beritaContainer">
                             <div class="firstRow">
-                                @foreach (DB::table('beritas')->get() as $item )
+                                @foreach (DB::table('ekskuls')->get() as $item )
 
                                 <a href="" class="news">
                                     <center>
                                         <div class="imgNews">
-                                            <img src="{{ url('thumbBerita/'.$item->image) }}" alt="">
+                                            <img src="{{ url('thumbEskul/'.$item->image) }}" alt="">
                                         </div>
                                         <h5>
                                             {{ $item->title }}
