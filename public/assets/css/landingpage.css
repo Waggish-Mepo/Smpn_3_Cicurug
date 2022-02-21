@@ -518,69 +518,85 @@ Resset Css
 
 /* Superiority */
 
-/* .row>*{
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-.imgBg{
-  max-width: 760px;
-  max-height: 586px;
-}
-
-.cardContent{
-  max-width: 380px;
-  max-height: 292px;
-  padding: 0 1.5rem;
-  background-color: #3658A2;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.cardContent h4{
-  padding-bottom: .5rem;
-}
-
-.cardContent p{
-  font-size: 14px;
-  padding-bottom: 1rem;
-}
-
-.cardContent a{
-  color: white;
-}
-
-.imgContent img{
-  max-width: 380px;
-  max-height: 292px;
-}
-
-@media screen and (max-width: 1400px) {
-  .cardContent{
-    max-width: 380px;
-    max-height: 292px;
-    padding: 0 1rem;
+body {
+    overflow-x: hidden;
   }
 
-  .cardContent h4{
-    font-size: 22px ;
-    padding-bottom: .5rem;
+  .wrapperInfo {
+    padding: 2.5rem 0;
   }
 
-  .cardContent p{
+  .wrapperInfo .row  {
+    height: 50%;
+    flex-wrap: nowrap;
+  }
+
+  .wrapperInfo .row .col-12 .imagesWrapper img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+  }
+  .wrapperInfo .row .col-12 .row .col-6 img {
+    width: 100%;
+    height: 100%;
+  }
+  .wrapperInfo .row .col-12 .row .col-6 {
+    padding: 0 !important;
+    margin: 0 !important;
+
+  }
+  .wrapperInfo .row .col-12 {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .wrapperInfo .row .col-12 .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .wrapperInfo .row .col-12 .row .wrapperText {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: #3658A2;
+  }
+  .wrapperInfo .row .col-12 .row .text {
+    padding: 1.5rem 2rem;
+    color: #fff;
     font-size: 12px;
-    padding-bottom: 1rem;
+  }
+  .wrapperInfo .row .col-12 .row .text h4 {
+    margin-bottom: 1rem;
+  }
+  .wrapperInfo .row .col-12 .row .text p {
+    margin-bottom: 1rem;
+  }
+  .wrapperInfo .row .col-12 .row .text a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+  }
+  .wrapperInfo .row .col-12 .row .col-6 {
+    height: 100% !important;
+  }
+  .wrapperInfo .row .col-12 .row .col-6 img {
+    height: 100% !important;
   }
 
-  .cardContent a{
-    font-size: 14px;
-    color: white;
+  @media screen and (max-width : 992px) {
+    .wrapperInfo .row  {
+      flex-wrap: wrap !important;
+    }
   }
-} */
-
+  @media screen and (min-width : 1200px) {
+    .wrapperInfo .row .col-12 .row .text {
+      padding: 1.5rem 2rem;
+      color: #fff;
+      font-size: 16px !important;
+    }
+  }
 
 /* End Superiority */
 

@@ -72,7 +72,7 @@
                 rgba(0,0,0,0.6),
                 rgba(0,0,0,0.6)
                 ),
-                url('{{ $banner }}');">
+                url('{{'thumbBanner/'.DB::table('banners')->first()->image}}');">
                 <h1 class="page-heading">
                   <span class="page-heading-primary">
                       <img src="{{ url('assets/img/smpn3.png') }}" alt="">
@@ -86,15 +86,17 @@
         <div class="mainContent">
             <div class="container">
 
-                <h1 class="text-center intro">Sambutan Guru SMPN 3 Cicurug kepada Siswa Baru 2022</h1>
+                {{-- Sambutan Guru SMPN 3 Cicurug kepada Siswa Baru 2022 --}}
+
+                <h1 class="text-center intro">{{DB::table('sambutan')->first()->title}}</h1>
 
                 <!--About-->
                 <div class="aboutSmpn" id="aboutSmpn">
                     <div class="imagesWrapper">
-                        <img src="{{ url('assets/img/about.png') }}" alt="">
+                        <img src="{{ url('thumbSambutan/'.DB::table('sambutan')->first()->image) }}" alt="">
                     </div>
                     <div class="about">
-                        <p>Untuk meningkatkan kualitas sumber daya manusia, Kementerian Pendidikan, Kebudayaan dan Ristek (KemendikbudRistek) mencanangkan reformasi sistem pendidikan Indonesia melalui kebijakan Merdeka Belajar. Hal ini ditegaskan kembali Menteri Pendidikan dan Kebudayaan (Mendikbud).</p>
+                        <p>{{DB::table('sambutan')->first()->content}}</p>
                     </div>
                 </div>
                 <!--End-->
@@ -138,9 +140,44 @@
             </div>
         </div>
 
-                <!-- Superiority -->
+        <!-- Superiority -->
+        <div class="wrapperInfo">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="imagesWrapper">
+                        <img src="{{ url('assets/img/bymalfi (2).png') }}" alt="">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="row">
+                        <div class="col-6 wrapperText">
+                            <div class="text">
+                                <h4>Ekstrakurikuler</h4>
+                                <p>SMPN 3 Cicurug memiliki beragam Ekstrakurikuler untuk menyalurkan minat dan bakat para siwa.</p>
+                                <a href="#">Lebih Lanjut</a>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <img src="{{ url('assets/img/bymalfi (1).png') }}" alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="{{ url('assets/img/bymalfi (3).png') }}" alt="">
+                        </div>
+                        <div class="col-6 wrapperText">
+                            <div class="text">
+                                <h4>Ekstrakurikuler</h4>
+                                <p>SMPN 3 Cicurug memiliki beragam Ekstrakurikuler untuk menyalurkan minat dan bakat para siwa.</p>
+                                <a href="#">Lebih Lanjut</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-
+            </div>
+        </div>
+        {{-- End Superiority --}}
 
         <div class="mainContent">
             <div class="container">
@@ -190,6 +227,14 @@
 
                         <div class="wrapperImagesCountry">
                             <div class="lineCountry lineCountry1">
+                                @foreach (DB::table('kegiatans')->get() as $item )
+
+                                <div class="country">
+                                    <img src="{{ url('thumbKegiatan/'.$item->image) }}" style="max-width: 320px; max-height: 180px; ">
+                                </div>
+
+                                @endforeach
+
                                 <div class="country">
                                     <img src="{{ url('assets/img/1.svg') }}" alt="">
                                 </div>
