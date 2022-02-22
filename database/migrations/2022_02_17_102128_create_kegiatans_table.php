@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('kegiatans', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->string('image');
             $table->timestamps();
         });

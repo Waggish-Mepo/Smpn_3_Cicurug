@@ -38,6 +38,11 @@ Route::get('/ekstrakurikuler', function () {
 
     return view('eskul');
 });
+Route::get('/tentangKami', function () {
+
+    return view('tentangKami');
+});
+
 
 Auth::routes();
 
@@ -90,7 +95,17 @@ Route::prefix('management')->group(function () {
 
     Route::prefix('tentang-kami')->name('tentang-kami.')->group(function () {
         Route::get('/', [TentangKamiController::class, 'index'])->name('index');
-        Route::get('/edit/{id}', [TentangKamiController::class, 'edit'])->name('edit');
+        Route::prefix('visimisi')->name('visimisi.')->group(function () {
+            Route::post('/edit/{id}', [TentangKamiController::class, 'editVisimisi'])->name('edit');
+        });
+        Route::prefix('guru')->name('guru.')->group(function () {
+            Route::post('/create', [TentangKamiController::class, 'create'])->name('create');
+            Route::post('/edit/{id}', [TentangKamiController::class, 'editGuru'])->name('edit');
+            Route::get('/delete/{id}', [TentangKamiController::class, 'delete'])->name('delete');
+        });
+        Route::prefix('sejarah')->name('sejarah.')->group(function () {
+            Route::post('/edit/{id}', [TentangKamiController::class, 'editSejarah'])->name('edit');
+        });
     });
 
 

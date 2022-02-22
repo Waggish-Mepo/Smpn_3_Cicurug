@@ -43,13 +43,13 @@
 
               <div class="navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                  <div class="menu">
-                    <a class="nav-link"href="{{ url('landingpage.html') }}">Beranda</a>
-                    <a class="nav-link active" href="#service">Berita</a>
-                    <a class="nav-link" href="#">Ekstrakurikuler</a>
-                    <a class="nav-link" href="#aboutPlantsasri">Prestasi</a>
-                    <a class="nav-link" href="#contact">Tentang Kami </a>
-                  </div>
+                    <div class="menu">
+                        <a class="nav-link" href="{{ url('/') }}">Beranda</a>
+                        <a class="nav-link active" href="{{ url('berita') }}">Berita</a>
+                        <a class="nav-link" href="{{ url('ekstrakurikuler') }}">Ekstrakurikuler</a>
+                        <a class="nav-link" href="#aboutPlantsasri">Prestasi</a>
+                        <a class="nav-link" href="{{ url('tentangKami') }}">Tentang Kami </a>
+                    </div>
 
                   <div class="getStarted">
                       <div class="polygon">
