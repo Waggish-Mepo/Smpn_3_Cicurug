@@ -77,7 +77,7 @@
             </div>
             @if (session('status'))
                 <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
+                    {{ session('status') }} <a href="https://mailtrap.io/inboxes/1636674/messages">Silahkan klik!</a>
                 </div>
             @endif
             <form method="POST" action="{{ route('password.email') }}" class="formAuth">
@@ -91,8 +91,9 @@
                     <div class="wrapperToggle">
                         <i class="bi bi-eye-fill" id="togglePassword"></i>
                     </div>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                        value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror email"
+                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
+                        placeholder="Email">
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -101,7 +102,8 @@
                     @enderror
                 </div>
                 <div class="actionUser d-flex justify-content-center flex-column align-items-center">
-                    <button type="submit" class="btn btnPrimary">Submit</button>
+                    <button type="submit" class="btn btnPrimary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Submit</button>
                     <p class="text">Batal mengubah password ? <a href="{{ route('login') }}">masuk!</a>
                     </p>
                 </div>

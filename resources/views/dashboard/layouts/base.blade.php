@@ -56,7 +56,7 @@
                                     <ion-icon name="mail"></ion-icon>
                                 </div>
                                 <div class="wraperMessage">
-                                    <p class="label">Selamat Datang </p>
+                                    <p class="label">Selamat Datang</p>
                                     <p class="message">Selamat datang! Kami merasa terhormat untuk menerima Anda.
                                     </p>
                                     </p>
