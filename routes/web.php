@@ -88,10 +88,12 @@ Route::prefix('management')->group(function () {
 
     Route::prefix('prestasi')->name('prestasi.')->group(function () {
         Route::get('/', [PrestasiController::class, 'index'])->name('index');
+        Route::get('/', [PrestasiController::class, 'index'])->name('index');
         Route::post('/create', [PrestasiController::class, 'create'])->name('create');
         Route::get('/edit/{id}', [PrestasiController::class, 'edit'])->name('edit');
         Route::get('/delete/{id}', [PrestasiController::class, 'delete'])->name('delete');
     });
+
 
     Route::prefix('tentang-kami')->name('tentang-kami.')->group(function () {
         Route::get('/', [TentangKamiController::class, 'index'])->name('index');

@@ -312,7 +312,9 @@
 
                     <br>
                     <br>
-                    <center> <button class="btn btn-success" type="submit">Submit</button>
+                    <center>
+                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-success" type="submit">Submit</button>
                     </center>
 
                 </form>

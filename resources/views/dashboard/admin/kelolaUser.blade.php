@@ -95,7 +95,7 @@
                 <table id="userTable" class="tables" style="width:100%">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Aksi</th>
