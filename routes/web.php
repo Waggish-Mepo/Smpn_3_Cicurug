@@ -98,15 +98,15 @@ Route::prefix('management')->group(function () {
     Route::prefix('tentang-kami')->name('tentang-kami.')->group(function () {
         Route::get('/', [TentangKamiController::class, 'index'])->name('index');
         Route::prefix('visimisi')->name('visimisi.')->group(function () {
-            Route::post('/edit/{id}', [TentangKamiController::class, 'editVisimisi'])->name('edit');
+            Route::post('/edit', [TentangKamiController::class, 'editVisimisi'])->name('edit');
         });
         Route::prefix('guru')->name('guru.')->group(function () {
             Route::post('/create', [TentangKamiController::class, 'create'])->name('create');
-            Route::post('/edit/{id}', [TentangKamiController::class, 'editGuru'])->name('edit');
+            Route::post('/edit', [TentangKamiController::class, 'editGuru'])->name('edit');
             Route::get('/delete/{id}', [TentangKamiController::class, 'delete'])->name('delete');
         });
         Route::prefix('sejarah')->name('sejarah.')->group(function () {
-            Route::post('/edit/{id}', [TentangKamiController::class, 'editSejarah'])->name('edit');
+            Route::post('/edit', [TentangKamiController::class, 'editSejarah'])->name('edit');
         });
     });
 

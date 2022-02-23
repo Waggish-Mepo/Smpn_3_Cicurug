@@ -121,7 +121,6 @@ class DatabaseSeeder extends Seeder
             'visi' => 'Be Smart',
             'misi' => 'Smart be',
             'sejarah' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque asperiores qui cum pariatur quas minima ex perspiciatis veniam error nesciunt soluta, tempore consequuntur eaque reiciendis hic, totam doloremque quaerat fugiat?',
-            'image' => '1645232726-1.svg',
         ]);
 
         DB::table('teachers')->insert([

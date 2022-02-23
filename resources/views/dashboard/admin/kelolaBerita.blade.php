@@ -158,7 +158,7 @@
                                 href="{{ route('berita.delete', ['id' => $item->id]) }}">Hapus</a>
                         </td>
                     </tr>
-            @endforeach
+                @endforeach
         </tbody>
     </table>
     </div>

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('visi');
             $table->string('misi');
             $table->longText('sejarah');
-            $table->string('image');
             $table->timestamps();
         });
     }

@@ -12,10 +12,10 @@ class TentangKamiController extends Controller
         return view('dashboard.admin.kelolaTentangKami');
     }
 
-    public function editVisimisi(Request $request, $id)
+    public function editVisimisi(Request $request)
     {
 
-        DB::table('profils')->where('id', $id)->update([
+        DB::table('profils')->where('id', $request->id)->update([
             'visi' => $request->visi,
             'misi' => $request->misi,
         ]);
@@ -23,69 +23,46 @@ class TentangKamiController extends Controller
         return redirect()->back()->with(['message' => "Sukses edit Visi & Misi"]);
     }
 
+    public function editSejarah(Request $request)
+    {
 
-    // public function editAbout(Request $request, $id)
-    // {
+        DB::table('profils')->where('id', $request->id)->update([
+            'sejarah' => $request->sejarah,
+        ]);
 
+        return redirect()->back()->with(['message' => "Sukses edit Sejarah"]);
+    }
 
-    //     if ($request->hasFile('image')) {
-    //         $file = $request->file('image');
-    //         $thumbname = time() . '-' . $file->getClientOriginalName();
-    //         $file->move(public_path() . '/thumbSambutan' . '/', $thumbname);
-    //         DB::table('sambutan')->where('id', $id)->update([
-    //             'title' => $request->title,
-    //             'content' => $request->content,
-    //             'image' => $thumbname,
+    public function delete($id)
+    {
+        DB::table('teachers')->where('id', $id)->delete();
 
+        return redirect()->back()->with(['message' => "Sukses delete Nama Guru"]);
+    }
 
-    //         ]);
-    //     } else {
-    //         DB::table('sambutan')->where('id', $id)->update([
-    //             'title' => $request->title,
-    //             'content' => $request->content,
-    //         ]);
-    //     }
+    public function editGuru(Request $request)
+    {
 
+        DB::table('teachers')->where('id', $request->id)->update([
+            'jabatan' => $request->jabatan,
+            'nama' => $request->nama,
+            'gelar' => $request->gelar,
+        ]);
 
-
-
-    //     return redirect()->back()->with(['message' => "Sukses edit banner"]);
-    // }
-
-    // public function create(Request $request)
-    // {
-    //     $file = $request->file('image');
-    //     $thumbname = time() . '-' . $file->getClientOriginalName();
-    //     $file->move(public_path() . '/thumbKegiatan' . '/', $thumbname);
-
-    //     DB::table('kegiatans')->insert([
-    //         'image' => $thumbname
-    //     ]);
-
-    //     return redirect()->back()->with(['message' => "Sukses nambah kegiatan"]);
-    // }
+        return redirect()->back()->with(['message' => "Sukses edit Guru"]);
+    }
 
 
-    // public function editActivity(Request $request, $id)
-    // {
-    //     $file = $request->file('image');
-    //     $thumbname = time() . '-' . $file->getClientOriginalName();
-    //     $file->move(public_path() . '/thumbKegiatan' . '/', $thumbname);
+    public function create(Request $request)
+    {
 
-    //     DB::table('kegiatans')->where('id', $id)->update([
-    //         'image' => $thumbname,
+        DB::table('teachers')->insert([
+            'jabatan' => $request->jabatan,
+            'nama' => $request->nama,
+            'gelar' => $request->gelar,
+        ]);
 
-    //     ]);
+        return redirect()->back()->with(['message' => "Sukses nambah kegiatan"]);
+    }
 
-    //     return redirect()->back()->with([
-    //         'message' => "Sukses edit kegiatan"
-    //     ]);
-    // }
-
-    // public function delete($id)
-    // {
-    //     DB::table('kegiatans')->where('id', $id)->delete();
-
-    //     return redirect()->back()->with(['message' => "Sukses delete kegiatan"]);
-    // }
 }
