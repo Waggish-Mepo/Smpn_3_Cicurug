@@ -105,7 +105,6 @@
                         <td>{{ $key + 1 }}</td>
                         <td><img src="{{ url('thumbEskul/' . $item->image) }}" alt=""></td>
                         <td>{{ $item->title }}</td>
-                        <td>{{ $item->body }}</td>
                         <td>
                             <a class="btn btn-danger"
                                 href="{{ route('ekstrakurikuler.delete', ['id' => $item->id]) }}">Hapus</a>
@@ -113,7 +112,7 @@
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#editeskul" data-id="{{ $item->id }}"
-                                data-title="{{ $item->title }}" data-body="{{ $item->body }}"
+                                data-title="{{ $item->title }}"
                                 data-image="{{ $item->image }}">
                                 Edit
                             </button>
