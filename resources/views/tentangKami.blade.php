@@ -58,7 +58,21 @@
                                 <div class="clipath"></div>
                             </div>
                             <div class="buttonWrapper">
-                                <a href="#" class="nav-link">Masuk</a>
+                                @auth
+                                    <li class="nav-link">
+                                        <form action="/logout" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn dropdown-list">
+                                                Logout<i class="bi bi-arrow-bar-right"></i>
+                                            </button>
+                                        </form>
+                                    </li>
+                                @else
+                                    <li class="nav-item">
+                                        <a href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i>
+                                            Login</a>
+                                    </li>
+                                @endauth
                             </div>
                         </div>
 

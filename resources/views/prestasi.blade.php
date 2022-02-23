@@ -58,7 +58,21 @@
                                 <div class="clipath"></div>
                             </div>
                             <div class="buttonWrapper">
-                                <a href="#" class="nav-link">Masuk</a>
+                                @auth
+                                    <li class="nav-link">
+                                        <form action="/logout" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn dropdown-list">
+                                                Logout<i class="bi bi-arrow-bar-right"></i>
+                                            </button>
+                                        </form>
+                                    </li>
+                                @else
+                                    <li class="nav-item">
+                                        <a href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i>
+                                            Login</a>
+                                    </li>
+                                @endauth
                             </div>
                         </div>
 
@@ -72,8 +86,7 @@
         <div class="mainContent">
             <div class="container">
 
-                <!-- News -->
-                <div class="imgNewsHead h-100 w-50">
+                <div class="imgNewsHead">
                     <img src="{{ url('assets/img/ImgJumbotron.svg') }}" alt="">
                 </div>
                 <div class="artikel">
@@ -82,11 +95,44 @@
                         autem quod assumenda voluptas fugiat ratione vitae non quibusdam quia laudantium veniam
                         doloremque est veritatis natus, quisquam expedita!</p>
                 </div>
-                <!-- End News -->
+            </div>
+
+        </div>
 
 
+        <div class="container my-5">
+            <h2>Kejuaraan makan banyak 2019/2020</h2>
+            <div class="row">
+                <table id="beritaTable" class="table table-dark table-striped table-hover" style=" width:100%">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Jenis kegiatan</th>
+                            <th scope="col">Tempat kegiatan</th>
+                            <th scope="col">Juara</th>
+                            <th scope="col">Tahun</th>
+                            <th scope="col">Tingkat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DB::table('ket_prestasi')->get() as $item)
+                            <tr>
+                                <td style="width: 5%">{{ $loop->iteration }}</td>
+                                <td style="width: 20%">{{ $item->nama }}</td>
+                                <td style="width: 20%">{{ $item->jenis_kegiatan }}</td>
+                                <td style="width: 25%">{{ $item->tempat_kegiatan }}</td>
+                                <td style="width: 20%">{{ $item->juara }}</td>
+                                <td style="width: 20%">{{ $item->tahun }}</td>
+                                <td style="width: 25%">{!! $item->tingkat !!}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
+
+
 
         <footer>
             <div class="container">

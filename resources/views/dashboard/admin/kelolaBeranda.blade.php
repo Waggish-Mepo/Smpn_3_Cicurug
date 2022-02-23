@@ -56,11 +56,11 @@
                     </div>
                     <a href="{{ route('ekstrakurikuler.index') }}" class="sidebar-menu">Kelola Ekstrakurikuler</a>
                 </li>
-                <li class="list-menu ">
+                <li class="list-menu">
                     <div class="icon">
                         <ion-icon name="medal"></ion-icon>
                     </div>
-                    <a href="{{ route('prestasi.index') }}" class="sidebar-menu">Kelola Prestasi</a>
+                    <a href="{{ route('keterangan-prestasi.index') }}" class="sidebar-menu">keterangan-prestasi</a>
                 </li>
                 <li class="list-menu ">
                     <div class="icon">

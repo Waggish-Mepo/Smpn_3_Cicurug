@@ -56,13 +56,13 @@
                     </div>
                     <a href="{{ route('ekstrakurikuler.index') }}" class="sidebar-menu">Kelola ekstrakurikuler</a>
                 </li>
-                <li class="list-menu active">
+                <li class="list-menu">
                     <div class="icon">
                         <ion-icon name="medal"></ion-icon>
                     </div>
                     <a href="{{ route('prestasi.index') }}" class="sidebar-menu">Kelola Prestasi</a>
                 </li>
-                <li class="list-menu ">
+                <li class="list-menu active">
                     <div class="icon">
                         <ion-icon name="medal"></ion-icon>
                     </div>
@@ -111,28 +111,39 @@
                 <table id="sambutanTable" class="tables" style="width:100%">
                     <thead>
                         <tr>
-                            <th style="width: 5%">#</th>
-                            <th style="width: 30%">Gambar</th>
-                            <th style="width: 30%">Judul</th>
-                            <th style="width: 30%">Kata - Kata</th>
-                            <th style="width: 5%">Aksi</th>
+                            <th style="width: 5%">No</th>
+                            <th style="width: 12%">Nama</th>
+                            <th style="width: 12%">Jenis kegiatan</th>
+                            <th style="width: 12%">Tempat kegiatan</th>
+                            <th style="width: 12%">Juara</th>
+                            <th style="width: 12%">Tahun</th>
+                            <th style="width: 12%">Tingkat</th>
+                            <th style="width: 12%">aksi</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (DB::table('prestasis')->get() as $key => $item)
+                        @foreach (DB::table('ket_prestasi')->get() as $key => $item)
                             <tr>
-                                <td>{{ $key + 1 }}</td>
-                                <td><img src="{{ url('thumbEskul/' . $item->image) }}" alt=""></td>
-                                <td>{{ $item->title }}</td>
-                                <td>{{ $item->body }}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td style="width: 16%">{{ $item->nama }}</td>
+                                <td style="width: 16%">{{ $item->jenis_kegiatan }}</td>
+                                <td style="width: 16%">{{ $item->tempat_kegiatan }}</td>
+                                <td style="width: 16%">{{ $item->juara }}</td>
+                                <td style="width: 16%">{{ $item->tahun }}</td>
+                                <td style="width: 16%">{!! $item->tingkat !!}</td>
                                 <td>
+
                                     <div class="container d-flex">
                                         <a class="btn btn-danger"
-                                            href="{{ route('prestasi.delete', ['id' => $item->id]) }}">Hapus</a>
+                                            href="{{ route('keterangan-prestasi.delete', ['id' => $item->id]) }}">Hapus</a>
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                             data-bs-target="#editprestasi" data-id="{{ $item->id }}"
-                                            data-title="{{ $item->title }}" data-body="{{ $item->body }}"
-                                            data-image="{{ $item->image }}">
+                                            data-nama="{{ $item->nama }}"
+                                            data-jenis_kegiatan="{{ $item->jenis_kegiatan }}" data-body
+                                            tempat_kegiatan="{{ $item->tempat_kegiatan }}"
+                                            data-juara="{{ $item->juara }}" data-tahun="{{ $item->tahun }}"
+                                            data-tingkat="{{ $item->tingkat }}">
                                             Edit
                                         </button>
                                         <!-- Button trigger modal -->
@@ -157,29 +168,46 @@
                     </div>
                     <div class="modal-body">
 
-                        <form action="{{ route('prestasi.create') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('keterangan-prestasi.create') }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="title" class="form-label">title</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="isi title "
+                                <label for="nama" class="form-label">name</label>
+                                <input type="text" class="form-control" id="nama" name="nama" placeholder="isi name "
                                     required>
                             </div>
-
                             <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Body</label>
-                                <textarea class="form-control" name="body" placeholder="Masukan Konten"
-                                    id="editor"></textarea>
+                                <label for="jenis_kegiatan" class="form-label">jenis_kegiatan</label>
+                                <input type="text" class="form-control" id="jenis_kegiatan" name="jenis_kegiatan"
+                                    placeholder="isi jenis_kegiatan " required>
                             </div>
-
-                            <input type="file" name="image" class="dropify" data-max-width="320" data-max-width="180"
-                                required />
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-
+                            <div class="mb-3">
+                                <label for="tempat_kegiatan" class="form-label">tempat_kegiatan</label>
+                                <input type="text" class="form-control" id="tempat_kegiatan" name="tempat_kegiatan"
+                                    placeholder="isi tempat_kegiatan " required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="juara" class="form-label">juara</label>
+                                <input type="text" class="form-control" id="juara" name="juara" placeholder="isi juara "
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="tahun" class="form-label">tahun</label>
+                                <input type="text" class="form-control" id="tahun" name="tahun" placeholder="isi tahun "
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="tingkat" class="form-label">tingkat</label>
+                                <input type="text" class="form-control" id="tingkat" name="tingkat"
+                                    placeholder="isi tingkat " required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -254,23 +282,32 @@
             </div>
             <div class="modal-body">
 
-                <form action="/management/prestasi/edit/${$(e.relatedTarget).data('id')}" method="get" enctype="multipart/form-data">
+                <form action="/management/keterangan-prestasi/edit/${$(e.relatedTarget).data('id')}" method="get" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="title" class="form-label">title</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="isi title" value="${$(e.relatedTarget).data('title')}">
+                        <label for="nama" class="form-label">nama</label>
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="isi nama" value="${$(e.relatedTarget).data('nama')}">
                     </div>
-
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Body</label>
-                        <textarea class="form-control" name="body" placeholder="Masukan Konten" id="editor">${$(e.relatedTarget).data('body')}</textarea>
+                        <label for="jenis_kegiatan" class="form-label">jenis_kegiatan</label>
+                        <input type="text" class="form-control" id="jenis_kegiatan" name="jenis_kegiatan" placeholder="isi jenis_kegiatan" value="${$(e.relatedTarget).data('jenis_kegiatan')}">
                     </div>
-
-
-                    <input type="file" name="image" class="dropify" data-max-width="320" data-max-width="180"
-                    data-default-file="/thumbEskul/${$(e.relatedTarget).data('image')}" />
-
-
+                    <div class="mb-3">
+                        <label for="tempat_kegiatan" class="form-label">tempat_kegiatan</label>
+                        <input type="text" class="form-control" id="tempat_kegiatan" name="tempat_kegiatan" placeholder="isi tempat_kegiatan" value="${$(e.relatedTarget).data('tempat_kegiatan')}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="juara" class="form-label">juara</label>
+                        <input type="text" class="form-control" id="juara" name="juara" placeholder="isi juara" value="${$(e.relatedTarget).data('juara')}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tahun" class="form-label">tahun</label>
+                        <input type="text" class="form-control" id="tahun" name="tahun" placeholder="isi tahun" value="${$(e.relatedTarget).data('tahun')}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tingkat" class="form-label">tingkat</label>
+                        <input type="text" class="form-control" id="tingkat" name="tingkat" placeholder="isi tingkat" value="${$(e.relatedTarget).data('tingkat')}">
+                    </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary">Save changes</button>

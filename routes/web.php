@@ -9,6 +9,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\TentangKamiController;
+use App\Http\Controllers\PrestasiKeteranganController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -96,6 +97,14 @@ Route::prefix('management')->group(function () {
         Route::get('/edit/{id}', [PrestasiController::class, 'edit'])->name('edit');
         Route::get('/delete/{id}', [PrestasiController::class, 'delete'])->name('delete');
     });
+
+    Route::prefix('keterangan-prestasi')->name('keterangan-prestasi.')->group(function () {
+        Route::get('/', [PrestasiKeteranganController::class, 'index'])->name('index');
+        Route::post('/create', [PrestasiKeteranganController::class, 'create'])->name('create');
+        Route::get('/edit/{id}', [PrestasiKeteranganController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}', [PrestasiKeteranganController::class, 'delete'])->name('delete');
+    });
+
 
 
     Route::prefix('tentang-kami')->name('tentang-kami.')->group(function () {
