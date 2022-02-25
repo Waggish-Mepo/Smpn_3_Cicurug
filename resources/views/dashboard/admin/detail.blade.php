@@ -1,1 +1,3 @@
-<h1>hellop</h1>
+@foreach ($prestasis as $item)
+    {{ $item->jenis_kegiatan }}
+@endforeach

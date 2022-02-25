@@ -12,7 +12,7 @@ class KetPrestasi extends Model
 
     public function prestasi()
     {
-        return $this->belongsTo(Prestasi::class, 'prestasis_id');
+        return $this->belongsTo(Prestasi::class, 'prestasi_id');
     }
 
     // public function index()

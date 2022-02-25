@@ -63,18 +63,18 @@ class PrestasiController extends Controller
         return redirect()->back()->with('message', 'sukses edit Ekstrakurikuler');
     }
 
-    // public function detail(Request $request, $id)
-    // {
-    //     // if ($request === $id) {
+    public function detail(Request $request, $id)
+    {
 
-    //     // }
-    //     return view(
-    //         'dashboard.admin.detail',
-    //         [
-    //             'prestasis' => KetPrestasi::all()
-    //         ]
-    //     );
-    // }
+        return view(
+            'dashboard.admin.keteranganPrestasi',
+            [
+                'prestasis' => KetPrestasi::all(),
+                'prestasi' => Prestasi::all()
+
+            ]
+        );
+    }
 
     public function getRouteKeyName()
     {
