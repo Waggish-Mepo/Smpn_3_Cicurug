@@ -96,6 +96,12 @@
                     </div>
                     <a href="{{ route('prestasi.index') }}" class="sidebar-menu">Kelola Prestasi</a>
                 </li>
+                <li class="list-menu">
+                    <div class="icon">
+                        <ion-icon name="medal"></ion-icon>
+                    </div>
+                    <a href="{{ route('keterangan-prestasi.index') }}" class="sidebar-menu">keterangan-prestasi</a>
+                </li>
                 <li class="list-menu ">
                     <div class="icon">
                         <ion-icon name="school"></ion-icon>
@@ -154,13 +160,12 @@
                                 data-body="{{ $item->body }}" data-image="{{ $item->image }}">
                                 Edit
                             </button>
-                            <a class="btn btn-danger"
-                                href="{{ route('berita.delete', ['id' => $item->id]) }}">Hapus</a>
+                            <a class="btn btn-danger" href="{{ route('berita.delete', ['id' => $item->id]) }}">Hapus</a>
                         </td>
                     </tr>
                 @endforeach
-        </tbody>
-    </table>
+            </tbody>
+        </table>
     </div>
 
     </div>

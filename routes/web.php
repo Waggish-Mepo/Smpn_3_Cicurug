@@ -9,6 +9,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\TentangKamiController;
+use App\Http\Controllers\KetPrestasiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +25,7 @@ Route::get('/', function () {
 
     $banner = 'assets/img/ImgJumbotron.svg';
 
-    return view('home', ['banner'=>$banner]);
+    return view('home', ['banner' => $banner]);
 });
 Route::get('/berita', function () {
 
@@ -42,7 +43,10 @@ Route::get('/tentangKami', function () {
 
     return view('tentangKami');
 });
+Route::get('/prestasi', function () {
 
+    return view('prestasi');
+});
 
 Auth::routes();
 
@@ -92,7 +96,16 @@ Route::prefix('management')->group(function () {
         Route::post('/create', [PrestasiController::class, 'create'])->name('create');
         Route::get('/edit/{id}', [PrestasiController::class, 'edit'])->name('edit');
         Route::get('/delete/{id}', [PrestasiController::class, 'delete'])->name('delete');
+        Route::get('/detail/{id}', [PrestasiController::class, 'detail'])->name('detail');
     });
+    Route::prefix('keterangan-prestasi')->name('keterangan-prestasi.')->group(function () {
+        Route::get('/', [KetPrestasiController::class, 'index'])->name('index');
+        Route::post('/create', [KetPrestasiController::class, 'create'])->name('create');
+        Route::get('/edit/{id}', [KetPrestasiController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}', [KetPrestasiController::class, 'delete'])->name('delete');
+    });
+
+
 
 
     Route::prefix('tentang-kami')->name('tentang-kami.')->group(function () {
@@ -109,6 +122,4 @@ Route::prefix('management')->group(function () {
             Route::post('/edit', [TentangKamiController::class, 'editSejarah'])->name('edit');
         });
     });
-
-
 });

@@ -57,6 +57,7 @@
                     </div>
                     <a href="{{ route('prestasi.index') }}" class="sidebar-menu">Kelola Prestasi</a>
                 </li>
+
                 <li class="list-menu ">
                     <div class="icon">
                         <ion-icon name="school"></ion-icon>

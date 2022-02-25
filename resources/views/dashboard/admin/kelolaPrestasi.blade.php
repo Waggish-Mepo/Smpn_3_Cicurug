@@ -1,3 +1,6 @@
+{{-- @foreach ($prestasi as $item)
+    {{ $item->ketPrestasi }}
+@endforeach --}}
 @extends('dashboard.layouts.base')
 
 @section('css')
@@ -64,6 +67,12 @@
                 </li>
                 <li class="list-menu ">
                     <div class="icon">
+                        <ion-icon name="medal"></ion-icon>
+                    </div>
+                    <a href="{{ route('keterangan-prestasi.index') }}" class="sidebar-menu">keterangan-prestasi</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
                         <ion-icon name="school"></ion-icon>
                     </div>
                     <a href="{{ route('tentang-kami.index') }}" class="sidebar-menu">Kelola Tentang Kami</a>
@@ -83,7 +92,7 @@
     <ul class="nav nav-pills mb-3 tabsMenu" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="new-request-tab" data-bs-toggle="pill" data-bs-target="#newRequestTab"
-                type="button" role="tab" aria-controls="newRequestTab" aria-selected="true">Banner</button>
+                type="button" role="tab" aria-controls="newRequestTab" aria-selected="true">Tambah Prestasi</button>
         </li>
 
     </ul>
@@ -113,9 +122,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (DB::table('prestasis')->get() as $key => $item)
+                        @foreach ($prestasi as $item)
                             <tr>
-                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td><img src="{{ url('thumbEskul/' . $item->image) }}" alt=""></td>
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->body }}</td>
@@ -123,13 +132,16 @@
                                     <div class="container d-flex">
                                         <a class="btn btn-danger"
                                             href="{{ route('prestasi.delete', ['id' => $item->id]) }}">Hapus</a>
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal"
                                             data-bs-target="#editprestasi" data-id="{{ $item->id }}"
                                             data-title="{{ $item->title }}" data-body="{{ $item->body }}"
                                             data-image="{{ $item->image }}">
                                             Edit
                                         </button>
-                                        <!-- Button trigger modal -->
+                                        <a class="btn btn-primary"
+                                            href="{{ route('prestasi.detail', ['id' => $item->id]) }}">detail</a>
+
+
                                     </div>
                                 </td>
                             </tr>

@@ -1,78 +1,82 @@
 @extends('dashboard.layouts.base')
 
 @section('css')
-
 @endsection
 
 @section('sidebar')
-<div id="sidebarMain">
-    <!-- sidebar -->
-    <div class="wrapperSidebar">
-        <div class="brandLogo">
-            <img src="{{ url('assets/img/smpn 3 cicurug 2.svg') }}" alt="">
-        </div>
-        <a href="#" class="profile">
-            <div class="imagesProfile">
-                <img src="{{ url('assets/img/faces.jpeg') }}" alt="">
+    <div id="sidebarMain">
+        <!-- sidebar -->
+        <div class="wrapperSidebar">
+            <div class="brandLogo">
+                <img src="{{ url('assets/img/smpn 3 cicurug 2.svg') }}" alt="">
             </div>
-            <div class="profileUser">
-                <h5 class="labelDay">Morning</h5>
-                <h5 class="nameUser">Louis Milla</h5>
+            <a href="#" class="profile">
+                <div class="imagesProfile">
+                    <img src="{{ url('assets/img/faces.jpeg') }}" alt="">
+                </div>
+                <div class="profileUser">
+                    <h5 class="labelDay">Morning</h5>
+                    <h5 class="nameUser">Louis Milla</h5>
+                </div>
+            </a>
+            <div class="sidebar-menu-wrapper">
+                <li class="listMenuName">
+                    <p>Admin Menu</p>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="grid"></ion-icon>
+                    </div>
+                    <a href="{{ route('dashboard') }}" class="sidebar-menu">Dashboard</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="people"></ion-icon>
+                    </div>
+                    <a href="{{ route('users.index') }}" class="sidebar-menu">Kelola User</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="home"></ion-icon>
+                    </div>
+                    <a href="{{ route('beranda.index') }}" class="sidebar-menu">Kelola Beranda</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="newspaper"></ion-icon>
+                    </div>
+                    <a href="{{ route('berita.index') }}" class="sidebar-menu">Kelola Berita</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="accessibility"></ion-icon>
+                    </div>
+                    <a href="{{ route('ekstrakurikuler.index') }}" class="sidebar-menu">Kelola Ekstrakurikuler</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="medal"></ion-icon>
+                    </div>
+                    <a href="{{ route('prestasi.index') }}" class="sidebar-menu">Kelola Prestasi</a>
+                </li>
+                <li class="list-menu active">
+                    <div class="icon">
+                        <ion-icon name="medal"></ion-icon>
+                    </div>
+                    <a href="{{ route('keterangan-prestasi.index') }}" class="sidebar-menu">keterangan-prestasi</a>
+                </li>
+                <li class="list-menu">
+                    <div class="icon">
+                        <ion-icon name="school"></ion-icon>
+                    </div>
+                    <a href="{{ route('tentang-kami.index') }}" class="sidebar-menu">Kelola Tentang Kami</a>
+                </li>
             </div>
-        </a>
-        <div class="sidebar-menu-wrapper">
-            <li class="listMenuName">
-                <p>Admin Menu</p>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="grid"></ion-icon>
-                </div>
-                <a href="{{ route('dashboard') }}" class="sidebar-menu">Dashboard</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="people"></ion-icon>
-                </div>
-                <a href="{{ route('users.index') }}" class="sidebar-menu">Kelola User</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="home"></ion-icon>
-                </div>
-                <a href="{{ route('beranda.index') }}" class="sidebar-menu">Kelola Beranda</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="newspaper"></ion-icon>
-                </div>
-                <a href="{{ route('berita.index') }}" class="sidebar-menu">Kelola Berita</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="accessibility"></ion-icon>
-                </div>
-                <a href="{{ route('ekstrakurikuler.index') }}" class="sidebar-menu">Kelola Ekstrakurikuler</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="medal"></ion-icon>
-                </div>
-                <a href="{{ route('prestasi.index') }}" class="sidebar-menu">Kelola Prestasi</a>
-            </li>
-            <li class="list-menu active">
-                <div class="icon">
-                    <ion-icon name="school"></ion-icon>
-                </div>
-                <a href="{{ route('tentang-kami.index') }}" class="sidebar-menu">Kelola Tentang Kami</a>
-            </li>
         </div>
     </div>
-</div>
 @endsection
 
 @section('content')
-
     <h2 class="pageNameContent">Kelola Tentang Kami</h2>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">SMPN 3 CICURUG</a></li>
@@ -110,18 +114,18 @@
                     <tbody>
 
                         @foreach (DB::table('profils')->get() as $key => $item)
-                        <tr>
-                            <td>{{ $key + 1 }}</td>
-                            <td>{{ $item->visi }}</td>
-                            <td>{{ $item->misi }}</td>
-                            <td>
-                                <button type="button" class="btn btn-primary show-edit-modal" data-bs-toggle="modal"
-                                    data-bs-target="#editVisimisi" data-id="{{ $item->id }}"
-                                    data-visi="{{ $item->visi }}" data-misi="{{ $item->misi }}">
-                                    Edit
-                                </button>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $item->visi }}</td>
+                                <td>{{ $item->misi }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary show-edit-modal mx-3"
+                                        data-bs-toggle="modal" data-bs-target="#editVisimisi" data-id="{{ $item->id }}"
+                                        data-visi="{{ $item->visi }}" data-misi="{{ $item->misi }}">
+                                        Edit
+                                    </button>
+                                </td>
+                            </tr>
                         @endforeach
 
                     </tbody>
@@ -153,15 +157,18 @@
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="jabatan" class="form-label">Jabatan</label>
-                                        <input type="text" class="form-control" id="jabatan" aria-describedby="jabatan" name="jabatan">
+                                        <input type="text" class="form-control" id="jabatan" aria-describedby="jabatan"
+                                            name="jabatan">
                                     </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama Guru</label>
-                                        <input type="text" class="form-control" id="nama" aria-describedby="nama" name="nama">
+                                        <input type="text" class="form-control" id="nama" aria-describedby="nama"
+                                            name="nama">
                                     </div>
                                     <div class="mb-3">
                                         <label for="gelar" class="form-label">Gelar Guru</label>
-                                        <input type="text" class="form-control" id="gelar" aria-describedby="gelar" name="gelar">
+                                        <input type="text" class="form-control" id="gelar" aria-describedby="gelar"
+                                            name="gelar">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -189,22 +196,22 @@
                     </thead>
                     <tbody>
                         @foreach (DB::table('teachers')->get() as $key => $item)
-                        <tr>
-                            <td>{{ $key + 1 }}</td>
-                            <td>{{ $item->jabatan }}</td>
-                            <td>{{ $item->nama }}</td>
-                            <td>{{ $item->gelar }}</td>
-                            <td>
-                                <button type="button" class="btn btn-primary show-edit-modal-guru" data-bs-toggle="modal"
-                                data-bs-target="#editGuru" data-id="{{ $item->id }}"
-                                data-jabatan="{{ $item->jabatan }}" data-nama="{{ $item->nama }}"
-                                data-gelar="{{ $item->gelar }}">
-                                Edit
-                                </button>
-                                <a class="btn btn-danger"
-                                href="{{ route('tentang-kami.guru.delete', ['id' => $item->id]) }}">Hapus<a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $item->jabatan }}</td>
+                                <td>{{ $item->nama }}</td>
+                                <td>{{ $item->gelar }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary show-edit-modal-guru mx-1"
+                                        data-bs-toggle="modal" data-bs-target="#editGuru" data-id="{{ $item->id }}"
+                                        data-jabatan="{{ $item->jabatan }}" data-nama="{{ $item->nama }}"
+                                        data-gelar="{{ $item->gelar }}">
+                                        Edit
+                                    </button>
+                                    <a class="btn btn-danger mx-1"
+                                        href="{{ route('tentang-kami.guru.delete', ['id' => $item->id]) }}">Hapus<a>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -225,16 +232,17 @@
                     </thead>
                     <tbody>
                         @foreach (DB::table('profils')->get() as $key => $item)
-                        <tr>
-                            <td>{{ $key + 1 }}</td>
-                            <td>{{ $item->sejarah }}</td>
-                            <td>
-                                <button type="button" class="btn btn-primary show-edit-modal-sejarah" data-bs-toggle="modal"
-                                data-bs-target="#editSejarah" data-id="{{ $item->id }}" data-sejarah="{{ $item->sejarah }}">
-                                Edit
-                                </button>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $item->sejarah }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary show-edit-modal-sejarah"
+                                        data-bs-toggle="modal" data-bs-target="#editSejarah" data-id="{{ $item->id }}"
+                                        data-sejarah="{{ $item->sejarah }}">
+                                        Edit
+                                    </button>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -257,11 +265,13 @@
                         @csrf
                         <label for="visi">Visi</label>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" placeholder="Visi" id="visi" style="height: 100px" name="visi"></textarea>
+                            <textarea class="form-control" placeholder="Visi" id="visi" style="height: 100px"
+                                name="visi"></textarea>
                         </div>
                         <label for="misi">Misi</label>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" placeholder="Misi" id="misi" style="height: 100px" name="misi"></textarea>
+                            <textarea class="form-control" placeholder="Misi" id="misi" style="height: 100px"
+                                name="misi"></textarea>
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">Save changes</button>
@@ -287,7 +297,8 @@
                         @csrf
                         <label for="sejarah">Sejarah</label>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" placeholder="sejarah" id="sejarah" style="height: 100px" name="sejarah"></textarea>
+                            <textarea class="form-control" placeholder="sejarah" id="sejarah" style="height: 100px"
+                                name="sejarah"></textarea>
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">Save changes</button>
@@ -313,15 +324,18 @@
                         @csrf
                         <div class="mb-3">
                             <label for="jabatan" class="form-label">Jabatan</label>
-                            <input type="text" class="form-control" id="jabatan" aria-describedby="jabatan" name="jabatan" value="">
+                            <input type="text" class="form-control" id="jabatan" aria-describedby="jabatan"
+                                name="jabatan" value="">
                         </div>
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama Guru</label>
-                            <input type="text" class="form-control" id="nama" aria-describedby="nama" name="nama" value="">
+                            <input type="text" class="form-control" id="nama" aria-describedby="nama" name="nama"
+                                value="">
                         </div>
                         <div class="mb-3">
                             <label for="gelar" class="form-label">Gelar Guru</label>
-                            <input type="text" class="form-control" id="gelar" aria-describedby="gelar" name="gelar" value="">
+                            <input type="text" class="form-control" id="gelar" aria-describedby="gelar" name="gelar"
+                                value="">
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">Save changes</button>
@@ -364,23 +378,23 @@
     </script>
 
     <script>
-        $('.show-edit-modal').each(function(){
-            $(this).click(function(){
+        $('.show-edit-modal').each(function() {
+            $(this).click(function() {
                 $('#visi').val($(this).data('visi'));
                 $('#misi').val($(this).data('misi'));
                 $('#visi-misi-id').val($(this).data('id'));
             });
         });
 
-        $('.show-edit-modal-sejarah').each(function(){
-            $(this).click(function(){
+        $('.show-edit-modal-sejarah').each(function() {
+            $(this).click(function() {
                 $('#sejarah').val($(this).data('sejarah'));
                 $('#sejarah-id').val($(this).data('id'));
             });
         });
 
-        $('.show-edit-modal-guru').each(function(){
-            $(this).click(function(){
+        $('.show-edit-modal-guru').each(function() {
+            $(this).click(function() {
                 $('#jabatan').val($(this).data('jabatan'));
                 $('#nama').val($(this).data('nama'));
                 $('#gelar').val($(this).data('gelar'));
@@ -388,5 +402,4 @@
             });
         });
     </script>
-
 @endsection

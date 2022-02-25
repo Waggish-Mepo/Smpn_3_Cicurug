@@ -48,7 +48,7 @@
                             <a class="nav-link active" href="{{ url('/') }}">Beranda</a>
                             <a class="nav-link" href="{{ url('berita') }}">Berita</a>
                             <a class="nav-link" href="{{ url('ekstrakurikuler') }}">Ekstrakurikuler</a>
-                            <a class="nav-link" href="#aboutPlantsasri">Prestasi</a>
+                            <a class="nav-link" href="{{ url('prestasi') }}">Prestasi</a>
                             <a class="nav-link" href="{{ url('tentangKami') }}">Tentang Kami </a>
                         </div>
 
@@ -88,7 +88,7 @@
                 rgba(0,0,0,0.6),
                 rgba(0,0,0,0.6)
                 ),
-                url('{{'thumbBanner/'.DB::table('banners')->first()->image}}');">
+                url('{{ 'thumbBanner/' . DB::table('banners')->first()->image }}');">
                 <h1 class="page-heading">
                     <span class="page-heading-primary">
                         <img src="{{ url('assets/img/smpn3.png') }}" alt="">
@@ -104,15 +104,15 @@
 
                 {{-- Sambutan Guru SMPN 3 Cicurug kepada Siswa Baru 2022 --}}
 
-                <h1 class="text-center intro">{{DB::table('sambutan')->first()->title}}</h1>
+                <h1 class="text-center intro">{{ DB::table('sambutan')->first()->title }}</h1>
 
                 <!--About-->
                 <div class="aboutSmpn" id="aboutSmpn">
                     <div class="imagesWrapper">
-                        <img src="{{ url('thumbSambutan/'.DB::table('sambutan')->first()->image) }}" alt="">
+                        <img src="{{ url('thumbSambutan/' . DB::table('sambutan')->first()->image) }}" alt="">
                     </div>
                     <div class="about">
-                        <p>{{DB::table('sambutan')->first()->content}}</p>
+                        <p>{{ DB::table('sambutan')->first()->content }}</p>
                     </div>
                 </div>
                 <!--End-->
@@ -168,7 +168,8 @@
                         <div class="col-6 wrapperText">
                             <div class="text">
                                 <h4>Ekstrakurikuler</h4>
-                                <p>SMPN 3 Cicurug memiliki beragam Ekstrakurikuler untuk menyalurkan minat dan bakat para siwa.</p>
+                                <p>SMPN 3 Cicurug memiliki beragam Ekstrakurikuler untuk menyalurkan minat dan bakat
+                                    para siwa.</p>
                                 <a href="#">Lebih Lanjut</a>
                             </div>
                         </div>
@@ -183,7 +184,8 @@
                         <div class="col-6 wrapperText">
                             <div class="text">
                                 <h4>Ekstrakurikuler</h4>
-                                <p>SMPN 3 Cicurug memiliki beragam Ekstrakurikuler untuk menyalurkan minat dan bakat para siwa.</p>
+                                <p>SMPN 3 Cicurug memiliki beragam Ekstrakurikuler untuk menyalurkan minat dan bakat
+                                    para siwa.</p>
                                 <a href="#">Lebih Lanjut</a>
                             </div>
                         </div>
@@ -244,12 +246,11 @@
 
                         <div class="wrapperImagesCountry">
                             <div class="lineCountry lineCountry1">
-                                @foreach (DB::table('kegiatans')->get() as $item )
-
-                                <div class="country">
-                                    <img src="{{ url('thumbKegiatan/'.$item->image) }}" style="max-width: 320px; max-height: 180px; ">
-                                </div>
-
+                                @foreach (DB::table('kegiatans')->get() as $item)
+                                    <div class="country">
+                                        <img src="{{ url('thumbKegiatan/' . $item->image) }}"
+                                            style="max-width: 320px; max-height: 180px; ">
+                                    </div>
                                 @endforeach
 
                                 <div class="country">

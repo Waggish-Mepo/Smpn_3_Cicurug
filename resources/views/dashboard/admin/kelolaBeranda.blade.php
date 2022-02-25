@@ -56,11 +56,11 @@
                     </div>
                     <a href="{{ route('ekstrakurikuler.index') }}" class="sidebar-menu">Kelola Ekstrakurikuler</a>
                 </li>
-                <li class="list-menu ">
+                <li class="list-menu">
                     <div class="icon">
                         <ion-icon name="medal"></ion-icon>
                     </div>
-                    <a href="{{ route('prestasi.index') }}" class="sidebar-menu">Kelola Prestasi</a>
+                    <a href="{{ route('keterangan-prestasi.index') }}" class="sidebar-menu">keterangan-prestasi</a>
                 </li>
                 <li class="list-menu ">
                     <div class="icon">
@@ -122,7 +122,7 @@
                                         src="{{ url('thumbBanner/' . $item->image) }}" alt=""></td>
                                 <td>
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal"
                                         data-bs-target="#editBanner" data-id="{{ $item->id }}"
                                         data-image="{{ $item->image }}">
                                         Edit
@@ -142,11 +142,22 @@
                     <table id="sambutanTable" class="tables" style="width:100%">
                         <thead>
                             <tr>
-                                <th style="width: 5%">#</th>
-                                <th style="width: 30%">Gambar</th>
-                                <th style="width: 30%">Judul</th>
-                                <th style="width: 30%">Kata - Kata</th>
-                                <th style="width: 5%">Aksi</th>
+                                <td>{{ $key + 1 }}</td>
+                                <td><img style="max-height: 250px;max-width:250px;min-width:250px;min-height:250px;"
+                                        src="{{ url('thumbSambutan/' . $item->image) }}" alt=""></td>
+
+                                <td>{{ $item->title }}</td>
+                                <td>{{ $item->content }}</td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal"
+                                        data-bs-target="#editSambutan" data-id="{{ $item->id }}"
+                                        data-title="{{ $item->title }}" data-content="{{ $item->content }}"
+                                        data-image="{{ $item->image }}">
+                                        Edit
+                                    </button>
+
+                                </td>
                             </tr>
                         </thead>
                         <tbody>

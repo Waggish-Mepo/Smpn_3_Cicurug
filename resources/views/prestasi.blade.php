@@ -47,9 +47,9 @@
                     <div class="navbar-nav">
                         <div class="menu">
                             <a class="nav-link" href="{{ url('/') }}">Beranda</a>
-                            <a class="nav-link active" href="{{ url('berita') }}">Berita</a>
+                            <a class="nav-link" href="{{ url('berita') }}">Berita</a>
                             <a class="nav-link" href="{{ url('ekstrakurikuler') }}">Ekstrakurikuler</a>
-                            <a class="nav-link" href="{{ url('prestasi') }}">Prestasi</a>
+                            <a class="nav-link active" href="{{ url('prestasi') }}">Prestasi</a>
                             <a class="nav-link" href="{{ url('tentangKami') }}">Tentang Kami </a>
                         </div>
 
@@ -86,83 +86,53 @@
         <div class="mainContent">
             <div class="container">
 
-                <!-- Banner News -->
-                <div class="bannerNews">
-                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ url('assets/img/ImgJumbotron.svg') }}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>First slide label</h5>
-                                    <p>Some representative placeholder content for the first slide.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url('assets/img/ImgJumbotron.svg') }}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Second slide label</h5>
-                                    <p>Some representative placeholder content for the second slide.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url('assets/img/ImgJumbotron.svg') }}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Third slide label</h5>
-                                    <p>Some representative placeholder content for the third slide.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
+                <div class="imgNewsHead">
+                    <img src="{{ url('assets/img/ImgJumbotron.svg') }}" alt="">
                 </div>
-                <!-- End Banner News -->
-
-                <!-- News -->
-                <div class="beritaWrapper">
-                    <div class="container">
-                        <div class="headNews">
-                            <h1>Berita</h1>
-                            <p>Berita Seputar SMPN 3 CICURUG</p>
-                        </div>
-                        <div class="beritaContainer">
-                            <div class="firstRow">
-                                @foreach (DB::table('beritas')->get() as $item)
-                                    <a href="" class="news">
-                                        <center>
-                                            <div class="imgNews">
-                                                <img src="{{ url('thumbBerita/' . $item->image) }}" alt="">
-                                            </div>
-                                            <h5>
-                                                {{ $item->title }}
-                                            </h5>
-                                        </center>
-                                    </a>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
+                <div class="artikel">
+                    <h2>Hut RI</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto perspiciatis soluta quo
+                        autem quod assumenda voluptas fugiat ratione vitae non quibusdam quia laudantium veniam
+                        doloremque est veritatis natus, quisquam expedita!</p>
                 </div>
-                <!-- End News -->
+            </div>
 
+        </div>
+
+
+        <div class="container my-5">
+            <h2>Kejuaraan makan banyak 2019/2020</h2>
+            <div class="row">
+                <table id="beritaTable" class="table table-dark table-striped table-hover" style=" width:100%">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Jenis kegiatan</th>
+                            <th scope="col">Tempat kegiatan</th>
+                            <th scope="col">Juara</th>
+                            <th scope="col">Tahun</th>
+                            <th scope="col">Tingkat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DB::table('ket_prestasi')->get() as $item)
+                            <tr>
+                                <td style="width: 5%">{{ $loop->iteration }}</td>
+                                <td style="width: 20%">{{ $item->nama }}</td>
+                                <td style="width: 20%">{{ $item->jenis_kegiatan }}</td>
+                                <td style="width: 25%">{{ $item->tempat_kegiatan }}</td>
+                                <td style="width: 20%">{{ $item->juara }}</td>
+                                <td style="width: 20%">{{ $item->tahun }}</td>
+                                <td style="width: 25%">{!! $item->tingkat !!}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
+
+
 
         <footer>
             <div class="container">
@@ -223,17 +193,17 @@
 
     <!--Vendor-->
     <!--Jquery-->
-    <script src="{{ url('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="./assets/vendor/jquery/jquery.min.js"></script>
     <!--Bootstrap JS-->
-    <script src="{{ url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!--Ion Icon-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!--Slick Js-->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="{{ url('assets/vendor/slick/slick.min.js') }}"></script>
-    <script src="{{ url('assets/vendors/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="./assets/vendor/slick/slick.min.js"></script>
+    <script src="./assets/vendors/owlcarousel/owl.carousel.min.js"></script>
 
 
     <script>
@@ -291,94 +261,6 @@
                 }
             });
         }
-    </script>
-
-    <script>
-        $('.firstRow').slick({
-            infinite: false,
-            slidesToShow: 3.2,
-            slidesToScroll: 1,
-            arrows: false,
-            dots: false,
-            responsive: [{
-                    breakpoint: 1400,
-                    settings: {
-                        slidesToShow: 2.8,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 1200,
-                    settings: {
-                        slidesToShow: 2.3,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 991,
-                    settings: {
-                        slidesToShow: 1.5,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1,
-                    }
-                }
-            ]
-        });
-
-        $('.secRow').slick({
-            infinite: false,
-            slidesToShow: 3.2,
-            slidesToScroll: 1,
-            arrows: false,
-            dots: false,
-            responsive: [{
-                    breakpoint: 1400,
-                    settings: {
-                        slidesToShow: 2.8,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 1200,
-                    settings: {
-                        slidesToShow: 2.3,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 991,
-                    settings: {
-                        slidesToShow: 1.5,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1,
-                    }
-                }
-            ]
-        });
     </script>
 
 </body>
