@@ -136,45 +136,45 @@
             </div>
         </div>
 
-        <div class="tab-pane fade" id="listRequestTab" role="tabpanel" aria-labelledby="list-request-tab">
+            <div class="tab-pane fade" id="listRequestTab" role="tabpanel" aria-labelledby="list-request-tab">
 
-            <div class="wrapperTable table-responsive">
-                <table id="sambutanTable" class="tables" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th style="width: 5%">#</th>
-                            <th style="width: 30%">Gambar</th>
-                            <th style="width: 30%">Judul</th>
-                            <th style="width: 30%">Kata - Kata</th>
-                            <th style="width: 5%">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (DB::table('sambutan')->get() as $key => $item)
+                <div class="wrapperTable table-responsive">
+                    <table id="sambutanTable" class="tables" style="width:100%">
+                        <thead>
                             <tr>
-                                <td>{{ $key + 1 }}</td>
-                                <td><img style="max-height: 250px;max-width:250px;min-width:250px;min-height:250px;"
-                                        src="{{ url('thumbSambutan/' . $item->image) }}" alt=""></td>
-
-                                <td>{{ $item->title }}</td>
-                                <td>{{ $item->content }}</td>
-                                <td>
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#editSambutan" data-id="{{ $item->id }}"
-                                        data-title="{{ $item->title }}" data-content="{{ $item->content }}"
-                                        data-image="{{ $item->image }}">
-                                        Edit
-                                    </button>
-
-                                </td>
+                                <th style="width: 5%">#</th>
+                                <th style="width: 30%">Gambar</th>
+                                <th style="width: 30%">Judul</th>
+                                <th style="width: 30%">Kata - Kata</th>
+                                <th style="width: 5%">Aksi</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            @foreach (DB::table('sambutan')->get() as $key => $item)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td><img style="max-height: 250px;max-width:250px;min-width:250px;min-height:250px;"
+                                            src="{{ url('thumbSambutan/' . $item->image) }}" alt=""></td>
 
-        </div>
+                                    <td>{{ $item->title }}</td>
+                                    <td>{{ $item->content }}</td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#editSambutan" data-id="{{ $item->id }}"
+                                            data-title="{{ $item->title }}" data-content="{{ $item->content }}"
+                                            data-image="{{ $item->image }}">
+                                            Edit
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
 
         <div class="tab-pane fade show" id="kegiatanTab" role="tabpanel" aria-labelledby="kegiatan-tab">
 
