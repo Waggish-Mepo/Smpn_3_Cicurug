@@ -1,3 +1,6 @@
+{{-- @foreach ($prestasi as $item)
+    {{ $item->ketPrestasi }}
+@endforeach --}}
 @extends('dashboard.layouts.base')
 
 @section('css')
@@ -119,9 +122,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (DB::table('prestasis')->get() as $key => $item)
+                        @foreach ($prestasi as $item)
                             <tr>
-                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td><img src="{{ url('thumbEskul/' . $item->image) }}" alt=""></td>
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->body }}</td>
@@ -135,8 +138,10 @@
                                             data-image="{{ $item->image }}">
                                             Edit
                                         </button>
-                                        <!-- Button trigger modal -->
-                                        <a class="btn btn-primary" href="">detail</a>
+                                        <a class="btn btn-primary"
+                                            href="{{ route('prestasi.detail', ['id' => $item->id]) }}">detail</a>
+
+
                                     </div>
                                 </td>
                             </tr>

@@ -1,3 +1,8 @@
+{{-- @foreach ($prestasis as $item)
+    {{ $item->prestasi }}
+@endforeach --}}
+
+
 @extends('dashboard.layouts.base')
 
 @section('css')
@@ -123,7 +128,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (DB::table('ket_prestasi')->get() as $key => $item)
+                        @foreach ($prestasis as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td style="width: 16%">{{ $item->nama }}</td>

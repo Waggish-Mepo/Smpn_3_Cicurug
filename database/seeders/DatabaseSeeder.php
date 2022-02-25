@@ -168,7 +168,7 @@ class DatabaseSeeder extends Seeder
             'image' => '1645321761-about.png',
         ]);
 
-        DB::table('ket_prestasi')->insert([
+        DB::table('ket_prestasis')->insert([
             'nama' => 'yanto',
             'jenis_kegiatan' => 'lomba karate',
             'tempat_kegiatan' => 'gedung balai kerida',

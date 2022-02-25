@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Models\KetPrestasi;
 
 
 
@@ -21,7 +22,7 @@ class PrestasiController extends Controller
     }
     public function delete($id)
     {
-        DB::table('prestasis')->where('id', $id)->delete();
+        Prestasi::where('id', $id)->delete();
         return redirect()->back()->with(['message' => "Sukses delete user"]);
     }
     public function create(Request $request)
@@ -30,7 +31,7 @@ class PrestasiController extends Controller
         $thumbname = time() . '-' . $file->getClientOriginalName();
         $file->move(public_path() . '/thumbEskul' . '/', $thumbname);
 
-        DB::table('prestasis')->insert([
+        Prestasi::insert([
             'title' => $request->title,
             'body' => $request->body,
             'image' => $thumbname
@@ -47,18 +48,36 @@ class PrestasiController extends Controller
             $thumbname = time() . '-' . $file->getClientOriginalName();
             $file->move(public_path() . '/thumbEskul' . '/', $thumbname);
 
-            DB::table('prestasis')->where('id', $id)->update([
+            Prestasi::where('id', $id)->update([
                 'title' => $request->title,
                 'body' => $request->body,
                 'image' => $thumbname
             ]);
         } else {
-            DB::table('prestasis')->where('id', $id)->update([
+            Prestasi::where('id', $id)->update([
                 'title' => $request->title,
                 'body' => $request->body,
             ]);
         }
 
         return redirect()->back()->with('message', 'sukses edit Ekstrakurikuler');
+    }
+
+    // public function detail(Request $request, $id)
+    // {
+    //     // if ($request === $id) {
+
+    //     // }
+    //     return view(
+    //         'dashboard.admin.detail',
+    //         [
+    //             'prestasis' => KetPrestasi::all()
+    //         ]
+    //     );
+    // }
+
+    public function getRouteKeyName()
+    {
+        return 'id';
     }
 }

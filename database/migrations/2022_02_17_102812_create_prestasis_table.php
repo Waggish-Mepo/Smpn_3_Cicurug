@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('prestasis', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('prestasis_id')->default();
             $table->string('title');
-            $table->foreignId('ketPrestasi_id');
             $table->text('body');
             $table->string('image');
             $table->timestamps();

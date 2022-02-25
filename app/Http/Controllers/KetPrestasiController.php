@@ -3,26 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+use App\Models\KetPrestasi;
 
-class PrestasiKeteranganController extends Controller
+class KetPrestasiController extends Controller
 {
-
     public function index()
     {
-        return view('dashboard.admin.keteranganPrestasi');
+        return view('dashboard.admin.keteranganPrestasi', [
+            'prestasis' => KetPrestasi::all()
+        ]);
     }
 
     public function delete($id)
     {
-        DB::table('ket_prestasi')->where('id', $id)->delete();
+        KetPrestasi::where('id', $id)->delete();
         return redirect()->back()->with(['message' => "Sukses delete user"]);
     }
     public function create(Request $request)
     {
-        DB::table('ket_prestasi')->insert([
+        KetPrestasi::insert([
             'nama' => $request->nama,
             'jenis_kegiatan' => $request->jenis_kegiatan,
             'tempat_kegiatan' => $request->tempat_kegiatan,
@@ -38,7 +38,7 @@ class PrestasiKeteranganController extends Controller
 
     public function edit(Request $request, $id)
     {
-        DB::table('ket_prestasi')->where('id', $id)->update([
+        DB::table('ket_prestasis')->where('id', $id)->update([
             'nama' => $request->nama,
             'jenis_kegiatan' => $request->jenis_kegiatan,
             'tempat_kegiatan' => $request->tempat_kegiatan,
@@ -51,4 +51,11 @@ class PrestasiKeteranganController extends Controller
 
         return redirect()->back()->with('message', 'sukses edit Ekstrakurikuler');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
+
+    // DB::table('ket_prestasis')->
 }

@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ket_prestasi', function (Blueprint $table) {
+        Schema::create('ket_prestasis', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('ket_prestasis_id')->default();
             $table->string('nama');
             $table->string('jenis_kegiatan');
             $table->string('tempat_kegiatan');

@@ -9,7 +9,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\TentangKamiController;
-use App\Http\Controllers\PrestasiKeteranganController;
+use App\Http\Controllers\KetPrestasiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -96,14 +96,15 @@ Route::prefix('management')->group(function () {
         Route::post('/create', [PrestasiController::class, 'create'])->name('create');
         Route::get('/edit/{id}', [PrestasiController::class, 'edit'])->name('edit');
         Route::get('/delete/{id}', [PrestasiController::class, 'delete'])->name('delete');
+        Route::get('/detail/{id}', [PrestasiController::class, 'detail'])->name('detail');
+    });
+    Route::prefix('keterangan-prestasi')->name('keterangan-prestasi.')->group(function () {
+        Route::get('/', [KetPrestasiController::class, 'index'])->name('index');
+        Route::post('/create', [KetPrestasiController::class, 'create'])->name('create');
+        Route::get('/edit/{id}', [KetPrestasiController::class, 'edit'])->name('edit');
+        Route::get('/delete/{id}', [KetPrestasiController::class, 'delete'])->name('delete');
     });
 
-    Route::prefix('keterangan-prestasi')->name('keterangan-prestasi.')->group(function () {
-        Route::get('/', [PrestasiKeteranganController::class, 'index'])->name('index');
-        Route::post('/create', [PrestasiKeteranganController::class, 'create'])->name('create');
-        Route::get('/edit/{id}', [PrestasiKeteranganController::class, 'edit'])->name('edit');
-        Route::get('/delete/{id}', [PrestasiKeteranganController::class, 'delete'])->name('delete');
-    });
 
 
 

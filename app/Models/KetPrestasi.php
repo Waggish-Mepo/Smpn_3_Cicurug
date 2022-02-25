@@ -4,16 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Prestasi;
-
-
 
 class KetPrestasi extends Model
 {
     use HasFactory;
 
-    public function  prestasi()
+
+    public function prestasi()
     {
-        return $this->belongsTo(Prestasi::class);
+        return $this->belongsTo(Prestasi::class, 'prestasis_id');
     }
+
+    // public function index()
+    // {
+    //     return view('dashboard.admin.keteranganPrestasi', [
+    //         'prestasis' => KetPrestasi::all()
+    //     ]);
+    // }
 }

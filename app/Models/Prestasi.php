@@ -4,18 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\KetPrestasi;
 
 
 class Prestasi extends Model
 {
-    protected $guarded = ['id'];
-
-
     use HasFactory;
+
+    protected $guarded = ['id'];
 
     public function ketPrestasi()
     {
-        return $this->belongsTo(KetPrestasi::class, 'ketPrestasi_id');
+        return $this->hasMany(KetPrestasi::class, 'ket_prestasis_id');
     }
 }
