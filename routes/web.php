@@ -24,7 +24,7 @@ Route::get('/', function () {
 
     $banner = 'assets/img/ImgJumbotron.svg';
 
-    return view('home', ['banner'=>$banner]);
+    return view('home', ['banner' => $banner]);
 });
 Route::get('/berita', function () {
 
@@ -42,7 +42,10 @@ Route::get('/tentangKami', function () {
 
     return view('tentangKami');
 });
+Route::get('/prestasi', function () {
 
+    return view('prestasi');
+});
 
 Auth::routes();
 
@@ -109,6 +112,4 @@ Route::prefix('management')->group(function () {
             Route::post('/edit', [TentangKamiController::class, 'editSejarah'])->name('edit');
         });
     });
-
-
 });

@@ -95,8 +95,7 @@
                     <th style="width: 5%">#</th>
                     <th style="width: 30%">Gambar</th>
                     <th style="width: 30%">Judul</th>
-                    <th style="width: 30%">Kata - Kata</th>
-                    <th style="width: 5%">Aksi</th>
+                    <th style="width: 30%">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -110,9 +109,8 @@
                                 href="{{ route('ekstrakurikuler.delete', ['id' => $item->id]) }}">Hapus</a>
 
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#editeskul" data-id="{{ $item->id }}"
-                                data-title="{{ $item->title }}"
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editeskul"
+                                data-id="{{ $item->id }}" data-title="{{ $item->title }}"
                                 data-image="{{ $item->image }}">
                                 Edit
                             </button>
@@ -125,54 +123,54 @@
     </div>
 
 
-        <!-- Modal Create -->
-        <div class="modal fade" id="tambaheskul" tabindex="-1" aria-labelledby="tambaheskulLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="tambaheskulLabel">Tambah Ekskul</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
+    <!-- Modal Create -->
+    <div class="modal fade" id="tambaheskul" tabindex="-1" aria-labelledby="tambaheskulLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tambaheskulLabel">Tambah Ekskul</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
 
-                        <form action="{{ route('ekstrakurikuler.create') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="title" class="form-label">title</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="isi title "
-                                    required>
-                            </div>
+                    <form action="{{ route('ekstrakurikuler.create') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="title" class="form-label">title</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="isi title "
+                                required>
+                        </div>
 
-                            <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Body</label>
-                                <textarea class="form-control" name="body" placeholder="Masukan Konten"
-                                    id="editor"></textarea>
-                            </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+                            <textarea class="form-control" name="body" placeholder="Masukan Konten"
+                                id="editor"></textarea>
+                        </div>
 
-                            <input type="file" name="image" class="dropify" data-max-width="320" data-max-width="180"
-                                required />
+                        <input type="file" name="image" class="dropify" data-max-width="320" data-max-width="180"
+                            required />
 
 
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
 
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Modal Edit -->
-        <div class="modal fade" id="editeskul" tabindex="-1" aria-labelledby="editeskulLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content" id="editData">
+    <!-- Modal Edit -->
+    <div class="modal fade" id="editeskul" tabindex="-1" aria-labelledby="editeskulLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="editData">
 
-                </div>
             </div>
         </div>
+    </div>
 
     </div>
 @endsection
@@ -199,11 +197,6 @@
                     <div class="mb-3">
                         <label for="title" class="form-label">title</label>
                         <input type="text" class="form-control" id="title" name="title" placeholder="isi title " value="${$(e.relatedTarget).data('title')}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Body</label>
-                        <textarea class="form-control" name="body" placeholder="Masukan Konten" id="editor">${$(e.relatedTarget).data('body')}</textarea>
                     </div>
 
 
