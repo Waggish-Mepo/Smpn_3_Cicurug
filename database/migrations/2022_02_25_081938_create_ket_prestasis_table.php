@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('ket_prestasis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ket_prestasis_id')->default();
-            $table->string('nama');
-            $table->string('jenis_kegiatan');
-            $table->string('tempat_kegiatan');
-            $table->string('juara');
-            $table->string('tahun');
-            $table->string('tingkat');
+            $table->string('prestasi_id');
+            $table->string('nama')->nullable();
+            $table->string('jenis_kegiatan')->nullable();
+            $table->string('tempat_kegiatan')->nullable();
+            $table->string('juara')->nullable();
+            $table->string('tahun')->nullable();
+            $table->string('tingkat')->nullable();
         });
     }
 

@@ -106,9 +106,12 @@
 
             <div class="d-flex justify-content-end">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambaheskul">
-                    Tambah
-                </button>
+                @isset($prestasiId)
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambaheskul">
+                        Tambah
+                    </button>
+                @endisset
+
 
             </div>
 
@@ -128,34 +131,65 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($prestasis as $item)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td style="width: 16%">{{ $item->nama }}</td>
-                                <td style="width: 16%">{{ $item->jenis_kegiatan }}</td>
-                                <td style="width: 16%">{{ $item->tempat_kegiatan }}</td>
-                                <td style="width: 16%">{{ $item->juara }}</td>
-                                <td style="width: 16%">{{ $item->tahun }}</td>
-                                <td style="width: 16%">{!! $item->tingkat !!}</td>
-                                <td>
+                        @if (!empty($prestasiId))
+                            @foreach ($prestasi as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td style="width: 16%">{{ $item->nama }}</td>
+                                    <td style="width: 16%">{{ $item->jenis_kegiatan }}</td>
+                                    <td style="width: 16%">{{ $item->tempat_kegiatan }}</td>
+                                    <td style="width: 16%">{{ $item->juara }}</td>
+                                    <td style="width: 16%">{{ $item->tahun }}</td>
+                                    <td style="width: 16%">{!! $item->tingkat !!}</td>
+                                    <td>
 
-                                    <div class="container d-flex">
-                                        <a class="btn btn-danger"
-                                            href="{{ route('keterangan-prestasi.delete', ['id' => $item->id]) }}">Hapus</a>
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#editprestasi" data-id="{{ $item->id }}"
-                                            data-nama="{{ $item->nama }}"
-                                            data-jenis_kegiatan="{{ $item->jenis_kegiatan }}" data-body
-                                            tempat_kegiatan="{{ $item->tempat_kegiatan }}"
-                                            data-juara="{{ $item->juara }}" data-tahun="{{ $item->tahun }}"
-                                            data-tingkat="{{ $item->tingkat }}">
-                                            Edit
-                                        </button>
-                                        <!-- Button trigger modal -->
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
+                                        <div class="container d-flex">
+                                            <a class="btn btn-danger"
+                                                href="{{ route('keterangan-prestasi.delete', ['id' => $item->id]) }}">Hapus</a>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#editprestasi" data-id="{{ $item->id }}"
+                                                data-nama="{{ $item->nama }}"
+                                                data-jenis_kegiatan="{{ $item->jenis_kegiatan }}" data-body
+                                                tempat_kegiatan="{{ $item->tempat_kegiatan }}"
+                                                data-juara="{{ $item->juara }}" data-tahun="{{ $item->tahun }}"
+                                                data-tingkat="{{ $item->tingkat }}">
+                                                Edit
+                                            </button>
+                                            <!-- Button trigger modal -->
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            @foreach ($prestasis as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td style="width: 16%">{{ $item->nama }}</td>
+                                    <td style="width: 16%">{{ $item->jenis_kegiatan }}</td>
+                                    <td style="width: 16%">{{ $item->tempat_kegiatan }}</td>
+                                    <td style="width: 16%">{{ $item->juara }}</td>
+                                    <td style="width: 16%">{{ $item->tahun }}</td>
+                                    <td style="width: 16%">{!! $item->tingkat !!}</td>
+                                    <td>
+
+                                        <div class="container d-flex">
+                                            <a class="btn btn-danger"
+                                                href="{{ route('keterangan-prestasi.delete', ['id' => $item->id]) }}">Hapus</a>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#editprestasi" data-id="{{ $item->id }}"
+                                                data-nama="{{ $item->nama }}"
+                                                data-jenis_kegiatan="{{ $item->jenis_kegiatan }}" data-body
+                                                tempat_kegiatan="{{ $item->tempat_kegiatan }}"
+                                                data-juara="{{ $item->juara }}" data-tahun="{{ $item->tahun }}"
+                                                data-tingkat="{{ $item->tingkat }}">
+                                                Edit
+                                            </button>
+                                            <!-- Button trigger modal -->
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -168,7 +202,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="tambaheskulLabel">Tambah Ekskul</h5>
+                        <h5 class="modal-title" id="tambaheskulLabel">Tambah Keterangan Prestasi</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -176,6 +210,7 @@
                         <form action="{{ route('keterangan-prestasi.create') }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
+                            <input name="prestasi_id" type="hidden" value="{{ $prestasiId ?? null }}">
                             <div class="mb-3">
                                 <label for="nama" class="form-label">name</label>
                                 <input type="text" class="form-control" id="nama" name="nama" placeholder="isi name "

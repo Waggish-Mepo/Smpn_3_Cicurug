@@ -17,7 +17,7 @@ class PrestasiController extends Controller
     {
 
         return view('dashboard.admin.kelolaPrestasi', [
-            'prestasi' => Prestasi::all()
+            'prestasi' => Prestasi::all(),
         ]);
     }
     public function delete($id)
@@ -69,11 +69,9 @@ class PrestasiController extends Controller
         return view(
             'dashboard.admin.keteranganPrestasi',
             [
-                'prestasis' => KetPrestasi::all(),
-                'prestasi' => Prestasi::all()
-
+                'prestasi' => KetPrestasi::where('prestasi_id', $id)->get(),
             ]
-        );
+        )->with('prestasiId', $id);
     }
 
     public function getRouteKeyName()

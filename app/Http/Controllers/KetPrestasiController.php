@@ -24,6 +24,7 @@ class KetPrestasiController extends Controller
     {
         KetPrestasi::insert([
             'nama' => $request->nama,
+            'prestasi_id' => $request->prestasi_id,
             'jenis_kegiatan' => $request->jenis_kegiatan,
             'tempat_kegiatan' => $request->tempat_kegiatan,
             'tempat_kegiatan' => $request->tempat_kegiatan,

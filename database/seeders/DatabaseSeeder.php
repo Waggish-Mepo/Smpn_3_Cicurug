@@ -106,21 +106,6 @@ class DatabaseSeeder extends Seeder
                 'body' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque asperiores qui cum pariatur quas minima ex perspiciatis veniam error nesciunt soluta, tempore consequuntur eaque reiciendis hic, totam doloremque quaerat fugiat?',
                 'image' => '1645232726-1.svg',
             ],
-            [
-                'title' => 'Juara Futsal Tingkat Kota',
-                'body' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque asperiores qui cum pariatur quas minima ex perspiciatis veniam error nesciunt soluta, tempore consequuntur eaque reiciendis hic, totam doloremque quaerat fugiat?',
-                'image' => '1645232726-1.svg',
-            ],
-            [
-                'title' => 'Juara Futsal Tingkat Kota',
-                'body' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque asperiores qui cum pariatur quas minima ex perspiciatis veniam error nesciunt soluta, tempore consequuntur eaque reiciendis hic, totam doloremque quaerat fugiat?',
-                'image' => '1645232726-1.svg',
-            ],
-            [
-                'title' => 'Juara Futsal Tingkat Kota',
-                'body' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque asperiores qui cum pariatur quas minima ex perspiciatis veniam error nesciunt soluta, tempore consequuntur eaque reiciendis hic, totam doloremque quaerat fugiat?',
-                'image' => '1645232726-1.svg',
-            ],
         );
 
         DB::table('profils')->insert([
@@ -170,6 +155,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('ket_prestasis')->insert([
             'nama' => 'yanto',
+            'prestasi_id' => '1',
             'jenis_kegiatan' => 'lomba karate',
             'tempat_kegiatan' => 'gedung balai kerida',
             'juara' => '4',
