@@ -136,6 +136,7 @@
                                             Edit
                                         </button>
                                         <!-- Button trigger modal -->
+                                        <a class="btn btn-primary" href="">detail</a>
                                     </div>
                                 </td>
                             </tr>
