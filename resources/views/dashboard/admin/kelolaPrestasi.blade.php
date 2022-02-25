@@ -132,7 +132,7 @@
                                     <div class="container d-flex">
                                         <a class="btn btn-danger"
                                             href="{{ route('prestasi.delete', ['id' => $item->id]) }}">Hapus</a>
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal"
                                             data-bs-target="#editprestasi" data-id="{{ $item->id }}"
                                             data-title="{{ $item->title }}" data-body="{{ $item->body }}"
                                             data-image="{{ $item->image }}">

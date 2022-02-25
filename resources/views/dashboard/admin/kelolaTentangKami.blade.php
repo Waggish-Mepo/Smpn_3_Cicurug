@@ -119,8 +119,8 @@
                                 <td>{{ $item->visi }}</td>
                                 <td>{{ $item->misi }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary show-edit-modal" data-bs-toggle="modal"
-                                        data-bs-target="#editVisimisi" data-id="{{ $item->id }}"
+                                    <button type="button" class="btn btn-primary show-edit-modal mx-3"
+                                        data-bs-toggle="modal" data-bs-target="#editVisimisi" data-id="{{ $item->id }}"
                                         data-visi="{{ $item->visi }}" data-misi="{{ $item->misi }}">
                                         Edit
                                     </button>
@@ -202,13 +202,13 @@
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->gelar }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary show-edit-modal-guru"
+                                    <button type="button" class="btn btn-primary show-edit-modal-guru mx-1"
                                         data-bs-toggle="modal" data-bs-target="#editGuru" data-id="{{ $item->id }}"
                                         data-jabatan="{{ $item->jabatan }}" data-nama="{{ $item->nama }}"
                                         data-gelar="{{ $item->gelar }}">
                                         Edit
                                     </button>
-                                    <a class="btn btn-danger"
+                                    <a class="btn btn-danger mx-1"
                                         href="{{ route('tentang-kami.guru.delete', ['id' => $item->id]) }}">Hapus<a>
                                 </td>
                             </tr>

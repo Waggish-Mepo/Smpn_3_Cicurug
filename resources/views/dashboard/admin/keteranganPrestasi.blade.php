@@ -146,7 +146,7 @@
                                         <div class="container d-flex">
                                             <a class="btn btn-danger"
                                                 href="{{ route('keterangan-prestasi.delete', ['id' => $item->id]) }}">Hapus</a>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal"
                                                 data-bs-target="#editprestasi" data-id="{{ $item->id }}"
                                                 data-nama="{{ $item->nama }}"
                                                 data-jenis_kegiatan="{{ $item->jenis_kegiatan }}" data-body
@@ -173,7 +173,7 @@
                                     <td>
 
                                         <div class="container d-flex">
-                                            <a class="btn btn-danger"
+                                            <a class="btn btn-danger mx-1"
                                                 href="{{ route('keterangan-prestasi.delete', ['id' => $item->id]) }}">Hapus</a>
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#editprestasi" data-id="{{ $item->id }}"

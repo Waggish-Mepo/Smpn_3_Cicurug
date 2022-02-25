@@ -122,7 +122,7 @@
                                         src="{{ url('thumbBanner/' . $item->image) }}" alt=""></td>
                                 <td>
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal"
                                         data-bs-target="#editBanner" data-id="{{ $item->id }}"
                                         data-image="{{ $item->image }}">
                                         Edit
@@ -160,7 +160,7 @@
                                 <td>{{ $item->content }}</td>
                                 <td>
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal"
                                         data-bs-target="#editSambutan" data-id="{{ $item->id }}"
                                         data-title="{{ $item->title }}" data-content="{{ $item->content }}"
                                         data-image="{{ $item->image }}">
