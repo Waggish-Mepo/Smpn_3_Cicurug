@@ -88,13 +88,11 @@
 
                 <!-- News -->
                 <div class="imgNewsHead">
-                    <img src="{{ url('assets/img/ImgJumbotron.svg') }}" alt="">
+                    <img src="{{ url('thumbBerita/' . $data->image) }}" alt="">
                 </div>
                 <div class="artikel">
-                    <h2>Hut RI</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto perspiciatis soluta quo
-                        autem quod assumenda voluptas fugiat ratione vitae non quibusdam quia laudantium veniam
-                        doloremque est veritatis natus, quisquam expedita!</p>
+                    <h2>{{ $data->title }}</h2>
+                    <p>{!! $data->body !!}</p>
                 </div>
                 <!-- End News -->
 
@@ -115,11 +113,11 @@
                         <h3>Tautan Links</h3>
 
                         <div class="linkToPages">
-                            <a href="#">Beranda</a>
-                            <a href="#">Berita</a>
-                            <a href="#">Ekstrakurikuler</a>
-                            <a href="#">Prestasi</a>
-                            <a href="#">Tentang Kami</a>
+                            <a href="{{ url('/') }}">Beranda</a>
+                            <a href="{{ url('berita') }}">Berita</a>
+                            <a href="{{ url('ekstrakurikuler') }}">Ekstrakurikuler</a>
+                            <a href="{{ url('prestasi') }}">Prestasi</a>
+                            <a href="{{ url('tentangKami') }}">Tentang Kami</a>
                         </div>
                     </div>
 
@@ -127,26 +125,25 @@
                         <h3>Tentang Kami</h3>
 
                         <div class="linkToPages">
-                            <a href="#">Profil Sekolah</a>
-                            <a href="#">Visi & Misi</a>
-                            <a href="#">Sejarah</a>
+                            <a href="{{ url('tentangKami') }}">Profil Sekolah</a>
+                            <a href="{{ url('tentangKami') }}">Visi & Misi</a>
+                            <a href="{{ url('tentangKami') }}">Sejarah</a>
                         </div>
                     </div>
 
                     <div class="line">
                         <h3>Kontak</h3>
                         <a href="https://wa.me/085156293673">
-                            <h2 class="phone">+6285156293673</h2>
+                            <h2 class="phone">{{ DB::table('contact')->first()->no_telp }}</h2>
                         </a>
                         <div class="linkToPages">
-                            <p class="address" style="margin-bottom: .5rem;">Jl. Cibuntu Satu, Kutajaya, Kec.
-                                Cicurug, Kabupaten Sukabumi, Jawa Barat 43359.</p>
+                            <p class="address" style="margin-bottom: .5rem;">{{ DB::table('contact')->first()->alamat }}</p>
                         </div>
                         <div class="socialMedia">
-                            <a href="#" class="social">
+                            <a href="{{ DB::table('contact')->first()->fb }}" class="social">
                                 <ion-icon name="logo-facebook"></ion-icon>
                             </a>
-                            <a href="#" class="social">
+                            <a href="{{ DB::table('contact')->first()->ig }}" class="social">
                                 <ion-icon name="logo-instagram"></ion-icon>
                             </a>
                         </div>

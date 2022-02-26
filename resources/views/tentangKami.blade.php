@@ -124,13 +124,10 @@
                         <!--About-->
                         <div class="aboutSmpn d-flex" id="aboutSmpn">
                             <div class="imagesWrapper">
-                                <img src="{{ url('assets/img/about.png') }}" alt="">
+                                <img src="{{ url('thumbSambutan/' . DB::table('sambutan')->first()->image) }}" alt="">
                             </div>
                             <div class="about">
-                                <p>Untuk meningkatkan kualitas sumber daya manusia, Kementerian Pendidikan, Kebudayaan
-                                    dan Ristek (KemendikbudRistek) mencanangkan reformasi sistem pendidikan Indonesia
-                                    melalui kebijakan Merdeka Belajar. Hal ini ditegaskan kembali Menteri Pendidikan dan
-                                    Kebudayaan (Mendikbud).</p>
+                                <p>{{ DB::table('sambutan')->first()->content }}</p>
                             </div>
                         </div>
                         <!-- End About -->
@@ -141,26 +138,13 @@
                                 Visi
                             </h3>
                             <p class="pb-5">
-                                <i>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione molestias in id,
-                                    modi rem at tempora vero suscipit. Nostrum accusantium eum eius mollitia enim
-                                    doloremque maiores quia corporis consequuntur qui.</i>
+                                <i>{{ DB::table('profils')->first()->visi }}</i>
                             </p>
                             <div>
                                 <h3 class="pb-3">
                                     Misi
                                 </h3>
-                                <ol class="">
-                                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, laboriosam.
-                                    </li>
-                                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, laboriosam.
-                                    </li>
-                                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, laboriosam.
-                                    </li>
-                                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, laboriosam.
-                                    </li>
-                                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, laboriosam.
-                                    </li>
-                                </ol>
+                                <p>{{ DB::table('profils')->first()->visi }}</p>
                             </div>
                         </div>
                     </div>
@@ -176,26 +160,9 @@
                                     <h3>Pendidik dan Tenaga Kependidikan</h3>
                                     <hr style="height: 2px; background-color: black;">
                                     <ol type="1">
-                                        <li class="pb-2"><b>Koordinator Bimbingan dan Konseling</b> : Melly
-                                            Setyo Budi Astuti, S.Pd</li>
-                                        <li class="pb-2"><b>Koordinator Bimbingan dan Konseling</b> : Melly
-                                            Setyo Budi Astuti, S.Pd</li>
-                                        <li class="pb-2"><b>Koordinator Bimbingan dan Konseling</b> : Melly
-                                            Setyo Budi Astuti, S.Pd</li>
-                                        <li class="pb-2"><b>Koordinator Bimbingan dan Konseling</b> : Melly
-                                            Setyo Budi Astuti, S.Pd</li>
-                                        <li class="pb-2"><b>Koordinator Bimbingan dan Konseling</b> : Melly
-                                            Setyo Budi Astuti, S.Pd</li>
-                                        <li class="pb-2"><b>Koordinator Bimbingan dan Konseling</b> : Melly
-                                            Setyo Budi Astuti, S.Pd</li>
-                                        <li class="pb-2"><b>Koordinator Bimbingan dan Konseling</b> : Melly
-                                            Setyo Budi Astuti, S.Pd</li>
-                                        <li class="pb-2"><b>Koordinator Bimbingan dan Konseling</b> : Melly
-                                            Setyo Budi Astuti, S.Pd</li>
-                                        <li class="pb-2"><b>Koordinator Bimbingan dan Konseling</b> : Melly
-                                            Setyo Budi Astuti, S.Pd</li>
-                                        <li class="pb-2"><b>Koordinator Bimbingan dan Konseling</b> : Melly
-                                            Setyo Budi Astuti, S.Pd</li>
+                                        @foreach (DB::table('teachers')->get() as $item)
+                                        <li class="pb-2"><b> {{ $item->jabatan }}</b> : {{ $item->nama }}, {{ $item->gelar }}</li>
+                                        @endforeach
                                     </ol>
                                 </div>
                             </div>
@@ -210,12 +177,7 @@
                                 <span>SMPN 3 CICURUG</span>
                             </div>
                             <div class="pt-5">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium eius
-                                    fugiat rem saepe libero placeat sed aut facere, at nihil. Ab officiis placeat vel in
-                                    voluptatum earum blanditiis totam?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium eius
-                                    fugiat rem saepe libero placeat sed aut facere, at nihil. Ab officiis placeat vel in
-                                    voluptatum earum blanditiis totam?</p>
+                                {{ DB::table('profils')->first()->sejarah }}
                             </div>
                         </div>
                     </div>
@@ -236,11 +198,11 @@
                         <h3>Tautan Links</h3>
 
                         <div class="linkToPages">
-                            <a href="#">Beranda</a>
-                            <a href="#">Berita</a>
-                            <a href="#">Ekstrakurikuler</a>
-                            <a href="#">Prestasi</a>
-                            <a href="#">Tentang Kami</a>
+                            <a href="{{ url('/') }}">Beranda</a>
+                            <a href="{{ url('berita') }}">Berita</a>
+                            <a href="{{ url('ekstrakurikuler') }}">Ekstrakurikuler</a>
+                            <a href="{{ url('prestasi') }}">Prestasi</a>
+                            <a href="{{ url('tentangKami') }}">Tentang Kami</a>
                         </div>
                     </div>
 
@@ -248,26 +210,25 @@
                         <h3>Tentang Kami</h3>
 
                         <div class="linkToPages">
-                            <a href="#">Profil Sekolah</a>
-                            <a href="#">Visi & Misi</a>
-                            <a href="#">Sejarah</a>
+                            <a href="{{ url('tentangKami') }}">Profil Sekolah</a>
+                            <a href="{{ url('tentangKami') }}">Visi & Misi</a>
+                            <a href="{{ url('tentangKami') }}">Sejarah</a>
                         </div>
                     </div>
 
                     <div class="line">
                         <h3>Kontak</h3>
                         <a href="https://wa.me/085156293673">
-                            <h2 class="phone">+6285156293673</h2>
+                            <h2 class="phone">{{ DB::table('contact')->first()->no_telp }}</h2>
                         </a>
                         <div class="linkToPages">
-                            <p class="address" style="margin-bottom: .5rem;">Jl. Cibuntu Satu, Kutajaya, Kec.
-                                Cicurug, Kabupaten Sukabumi, Jawa Barat 43359.</p>
+                            <p class="address" style="margin-bottom: .5rem;">{{ DB::table('contact')->first()->alamat }}</p>
                         </div>
                         <div class="socialMedia">
-                            <a href="#" class="social">
+                            <a href="{{ DB::table('contact')->first()->fb }}" class="social">
                                 <ion-icon name="logo-facebook"></ion-icon>
                             </a>
-                            <a href="#" class="social">
+                            <a href="{{ DB::table('contact')->first()->ig }}" class="social">
                                 <ion-icon name="logo-instagram"></ion-icon>
                             </a>
                         </div>

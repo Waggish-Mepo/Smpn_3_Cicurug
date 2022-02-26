@@ -10,6 +10,8 @@ use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\KetPrestasiController;
+use App\Http\Controllers\ContactController;
+use App\Models\Berita;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,10 +33,10 @@ Route::get('/berita', function () {
 
     return view('berita');
 });
-Route::get('/berita/detail', function () {
-
-    return view('detailBerita');
-});
+Route::get('/berita/detail/{id}', function ($id) {
+    $data = Berita::where('id', $id)->first();
+    return view('detailBerita', ['data' => $data]);
+})->name('detail-berita');
 Route::get('/ekstrakurikuler', function () {
 
     return view('eskul');
@@ -106,8 +108,6 @@ Route::prefix('management')->group(function () {
     });
 
 
-
-
     Route::prefix('tentang-kami')->name('tentang-kami.')->group(function () {
         Route::get('/', [TentangKamiController::class, 'index'])->name('index');
         Route::prefix('visimisi')->name('visimisi.')->group(function () {
@@ -121,5 +121,10 @@ Route::prefix('management')->group(function () {
         Route::prefix('sejarah')->name('sejarah.')->group(function () {
             Route::post('/edit', [TentangKamiController::class, 'editSejarah'])->name('edit');
         });
+    });
+
+    Route::prefix('contact')->name('tentang-kami.')->group(function () {
+        Route::get('/', [ContactController::class, 'index'])->name('index');
+        Route::post('/edit', [ContactController::class, 'edit'])->name('edit');
     });
 });

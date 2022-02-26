@@ -162,5 +162,12 @@ class DatabaseSeeder extends Seeder
             'tahun' => '3450',
             'tingkat' => 'nasional'
         ]);
+
+        DB::table('contact')->insert([
+            'no_telp' => '085156405248',
+            'alamat' => 'Jl. Cibuntu Satu, Kutajaya, Kec. Cicurug, Kabupaten Sukabumi, Jawa Barat 43359.',
+            'fb' => 'https://www.facebook.com/pages/category/Education/Smpn-3-Cicurug-Oficial-112126036817239/',
+            'ig' => 'https://www.facebook.com/pages/category/Education/Smpn-3-Cicurug-Oficial-112126036817239/',
+        ]);
     }
 }

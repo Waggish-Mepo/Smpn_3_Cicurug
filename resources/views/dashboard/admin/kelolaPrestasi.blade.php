@@ -22,7 +22,7 @@
                 </div>
                 <div class="profileUser">
                     <h5 class="labelDay">Morning</h5>
-                    <h5 class="nameUser">Louis Milla</h5>
+                    <h5 class="nameUser">{{ auth()->user()->name }}</h5>
                 </div>
             </a>
             <div class="sidebar-menu-wrapper">
@@ -76,6 +76,12 @@
                         <ion-icon name="school"></ion-icon>
                     </div>
                     <a href="{{ route('tentang-kami.index') }}" class="sidebar-menu">Kelola Tentang Kami</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="call"></ion-icon>
+                    </div>
+                    <a href="{{ route('tentang-kami.index') }}" class="sidebar-menu">Kelola Kontak</a>
                 </li>
             </div>
         </div>

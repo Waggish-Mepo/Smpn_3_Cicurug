@@ -128,8 +128,7 @@
                         <div class="container">
                             <div class="row">
 
-                                @foreach (DB::table('beritas')->limit(3)->get()
-    as $item)
+                                @foreach (DB::table('beritas')->limit(3)->get() as $item)
                                     <a href="" class="col-12 col-md-4 news">
                                         <center>
                                             <div class="imgNews">
@@ -167,10 +166,9 @@
                     <div class="row">
                         <div class="col-6 wrapperText">
                             <div class="text">
-                                <h4>Ekstrakurikuler</h4>
-                                <p>SMPN 3 Cicurug memiliki beragam Ekstrakurikuler untuk menyalurkan minat dan bakat
-                                    para siwa.</p>
-                                <a href="#">Lebih Lanjut</a>
+                                <h4>Prestasi</h4>
+                                <p>SMPN 3 Cicurug menorehkan banyak prestasi di berbagai bidang dengan mendapatkan peringkat terbaik di Kabupaten Sukabumi serta aktif dalam mengikuti berbagai kegiatan perlombaan.</p>
+                                <a href="{{ url('prestasi') }}">Lebih Lanjut</a>
                             </div>
                         </div>
                         <div class="col-6">
@@ -186,7 +184,7 @@
                                 <h4>Ekstrakurikuler</h4>
                                 <p>SMPN 3 Cicurug memiliki beragam Ekstrakurikuler untuk menyalurkan minat dan bakat
                                     para siwa.</p>
-                                <a href="#">Lebih Lanjut</a>
+                                <a href="{{ url('ekstrakurikuler') }}">Lebih Lanjut</a>
                             </div>
                         </div>
                     </div>
@@ -206,7 +204,7 @@
                         <p> SMPN 3 CICURUG</p>
                     </div>
                     <div class="contentVm">
-                        <a class="cardVm visi" href="#">
+                        <a class="cardVm visi" href="{{ url('tentangKami') }}">
                             <img src="{{ url('assets/img/school.svg') }}" alt="">
 
                             <h3>Visi</h3>
@@ -214,20 +212,20 @@
                                 berdaya saing, melalui upaya ...
                             </p>
                             <div class="dimmer"></div>
-                            <div class="go-corner" href="#">
+                            <div class="go-corner" href="{{ url('tentangKami') }}">
                                 <div class="go-arrow">
                                     →
                                 </div>
                             </div>
                         </a>
-                        <a class="cardVm Misi" href="#">
+                        <a class="cardVm Misi" href="{{ url('tentangKami') }}">
                             <img src="{{ url('assets/img/book 1.svg') }}" alt="">
                             <h3>Misi</h3>
                             <p class="small">Menyediakan akses yang luas dan adil, serta pendidikan yang
                                 berkualitas.
                             </p>
                             <div class="dimmer"></div>
-                            <div class="go-corner" href="#">
+                            <div class="go-corner" href="{{ url('tentangKami') }}">
                                 <div class="go-arrow">
                                     →
                                 </div>
@@ -248,50 +246,19 @@
                             <div class="lineCountry lineCountry1">
                                 @foreach (DB::table('kegiatans')->get() as $item)
                                     <div class="country">
+                                        <img src="{{ url('thumbKegiatan/' . $item->image) }}">
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <div class="lineCountry lineCountry2">
+
+                                @foreach (DB::table('kegiatans')->orderBy('id', 'desc')->get() as $item)
+                                    <div class="country">
                                         <img src="{{ url('thumbKegiatan/' . $item->image) }}"
                                             style="max-width: 320px; max-height: 180px; ">
                                     </div>
                                 @endforeach
-
-                                <div class="country">
-                                    <img src="{{ url('assets/img/1.svg') }}" alt="">
-                                </div>
-                                <div class="country">
-                                    <img src="{{ url('assets/img/2.svg') }}" alt="">
-                                </div>
-                                <div class="country">
-                                    <img src="{{ url('assets/img/3.svg') }}" alt="">
-                                </div>
-                                <div class="country">
-                                    <img src="{{ url('assets/img/4.svg') }}" alt="">
-                                </div>
-                                <div class="country">
-                                    <img src="{{ url('assets/img/5.svg') }}" alt="">
-                                </div>
-                                <div class="country">
-                                    <img src="{{ url('assets/img/6.svg') }}" alt="">
-                                </div>
-                            </div>
-
-                            <div class="lineCountry lineCountry2">
-                                <div class="country">
-                                    <img src="{{ url('assets/img/6.svg') }}" alt="">
-                                </div>
-                                <div class="country">
-                                    <img src="{{ url('assets/img/5.svg') }}" alt="">
-                                </div>
-                                <div class="country">
-                                    <img src="{{ url('assets/img/4.svg') }}" alt="">
-                                </div>
-                                <div class="country">
-                                    <img src="{{ url('assets/img/3.svg') }}" alt="">
-                                </div>
-                                <div class="country">
-                                    <img src="{{ url('assets/img/2.svg') }}" alt="">
-                                </div>
-                                <div class="country">
-                                    <img src="{{ url('assets/img/1.svg') }}" alt="">
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -314,11 +281,11 @@
                         <h3>Tautan Links</h3>
 
                         <div class="linkToPages">
-                            <a href="#">Beranda</a>
-                            <a href="#">Berita</a>
-                            <a href="#">Ekstrakurikuler</a>
-                            <a href="#">Prestasi</a>
-                            <a href="#">Tentang Kami</a>
+                            <a href="{{ url('/') }}">Beranda</a>
+                            <a href="{{ url('berita') }}">Berita</a>
+                            <a href="{{ url('ekstrakurikuler') }}">Ekstrakurikuler</a>
+                            <a href="{{ url('prestasi') }}">Prestasi</a>
+                            <a href="{{ url('tentangKami') }}">Tentang Kami</a>
                         </div>
                     </div>
 
@@ -326,26 +293,25 @@
                         <h3>Tentang Kami</h3>
 
                         <div class="linkToPages">
-                            <a href="#">Profil Sekolah</a>
-                            <a href="#">Visi & Misi</a>
-                            <a href="#">Sejarah</a>
+                            <a href="{{ url('tentangKami') }}">Profil Sekolah</a>
+                            <a href="{{ url('tentangKami') }}">Visi & Misi</a>
+                            <a href="{{ url('tentangKami') }}">Sejarah</a>
                         </div>
                     </div>
 
                     <div class="line">
                         <h3>Kontak</h3>
-                        <a href="https://wa.me/085156293673">
-                            <h2 class="phone">+6285156293673</h2>
+                        <a href="https://wa.me/{{ DB::table('contact')->first()->no_telp }}">
+                            <h2 class="phone">{{ DB::table('contact')->first()->no_telp }}</h2>
                         </a>
                         <div class="linkToPages">
-                            <p class="address" style="margin-bottom: .5rem;">Jl. Cibuntu Satu, Kutajaya, Kec.
-                                Cicurug, Kabupaten Sukabumi, Jawa Barat 43359.</p>
+                            <p class="address" style="margin-bottom: .5rem;">{{ DB::table('contact')->first()->alamat }}</p>
                         </div>
                         <div class="socialMedia">
-                            <a href="#" class="social">
+                            <a href="{{ DB::table('contact')->first()->fb }}" class="social">
                                 <ion-icon name="logo-facebook"></ion-icon>
                             </a>
-                            <a href="#" class="social">
+                            <a href="{{ DB::table('contact')->first()->ig }}" class="social">
                                 <ion-icon name="logo-instagram"></ion-icon>
                             </a>
                         </div>

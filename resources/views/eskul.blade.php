@@ -89,50 +89,38 @@
                 <!-- Banner News -->
                 <div class="bannerNews">
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
+                            @foreach (DB::table('ekskuls')->limit(3)->get() as $key => $item)
+                               @if ($key == 0)
+                               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$key}}"
+                               class="active" aria-current="true"></button>
+                               @else
+                               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$key}}"
+                               class="" aria-current="false"></button>
+                               @endif
+                            @endforeach
                         </div>
+
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ url('assets/img/70876373_132557981440711_2978303521897578496_n 1.svg') }}"
-                                    class="d-block w-100" alt="...">
+                            @foreach (DB::table('ekskuls')->limit(3)->get() as $key => $item)
+                               @if ($key == 0)
+                               <div class="carousel-item active">
+                                <img src="{{ url('thumbEskul/' . $item->image) }}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>First slide label</h5>
-                                    <p>Some representative placeholder content for the first slide.</p>
+                                    <h5>{{ $item->title }}</h5>
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <img src="{{ url('assets/img/70876373_132557981440711_2978303521897578496_n 1.svg') }}"
-                                    class="d-block w-100" alt="...">
+                            @else
+                            <div class="carousel-item ">
+                                <img src="{{ url('thumbEskul/' . $item->image) }}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>Second slide label</h5>
-                                    <p>Some representative placeholder content for the second slide.</p>
+                                    <h5>{{ $item->title }}</h5>
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <img src="{{ url('assets/img/70876373_132557981440711_2978303521897578496_n 1.svg') }}"
-                                    class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Third slide label</h5>
-                                    <p>Some representative placeholder content for the third slide.</p>
-                                </div>
-                            </div>
+                               @endif
+                            @endforeach
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
                 </div>
                 <!-- End Banner News -->
@@ -180,11 +168,11 @@
                         <h3>Tautan Links</h3>
 
                         <div class="linkToPages">
-                            <a href="#">Beranda</a>
-                            <a href="#">Berita</a>
-                            <a href="#">Ekstrakurikuler</a>
-                            <a href="#">Prestasi</a>
-                            <a href="#">Tentang Kami</a>
+                            <a href="{{ url('/') }}">Beranda</a>
+                            <a href="{{ url('berita') }}">Berita</a>
+                            <a href="{{ url('ekstrakurikuler') }}">Ekstrakurikuler</a>
+                            <a href="{{ url('prestasi') }}">Prestasi</a>
+                            <a href="{{ url('tentangKami') }}">Tentang Kami</a>
                         </div>
                     </div>
 
@@ -192,26 +180,25 @@
                         <h3>Tentang Kami</h3>
 
                         <div class="linkToPages">
-                            <a href="#">Profil Sekolah</a>
-                            <a href="#">Visi & Misi</a>
-                            <a href="#">Sejarah</a>
+                            <a href="{{ url('tentangKami') }}">Profil Sekolah</a>
+                            <a href="{{ url('tentangKami') }}">Visi & Misi</a>
+                            <a href="{{ url('tentangKami') }}">Sejarah</a>
                         </div>
                     </div>
 
                     <div class="line">
                         <h3>Kontak</h3>
                         <a href="https://wa.me/085156293673">
-                            <h2 class="phone">+6285156293673</h2>
+                            <h2 class="phone">{{ DB::table('contact')->first()->no_telp }}</h2>
                         </a>
                         <div class="linkToPages">
-                            <p class="address" style="margin-bottom: .5rem;">Jl. Cibuntu Satu, Kutajaya, Kec.
-                                Cicurug, Kabupaten Sukabumi, Jawa Barat 43359.</p>
+                            <p class="address" style="margin-bottom: .5rem;">{{ DB::table('contact')->first()->alamat }}</p>
                         </div>
                         <div class="socialMedia">
-                            <a href="#" class="social">
+                            <a href="{{ DB::table('contact')->first()->fb }}" class="social">
                                 <ion-icon name="logo-facebook"></ion-icon>
                             </a>
-                            <a href="#" class="social">
+                            <a href="{{ DB::table('contact')->first()->ig }}" class="social">
                                 <ion-icon name="logo-instagram"></ion-icon>
                             </a>
                         </div>

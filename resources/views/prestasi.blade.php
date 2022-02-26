@@ -21,6 +21,14 @@
     <!--Styling LandingPage-->
     <link rel="stylesheet" href="{{ url('assets/css/berita.css') }}">
 
+    <style>
+        @media screen and (max-width: 767px){
+            .aboutSmpn{
+                flex-direction: column;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
@@ -86,52 +94,106 @@
         <div class="mainContent">
             <div class="container">
 
-                <div class="imgNewsHead">
-                    <img src="{{ url('assets/img/ImgJumbotron.svg') }}" alt="">
-                </div>
-                <div class="artikel">
-                    <h2>Hut RI</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto perspiciatis soluta quo
-                        autem quod assumenda voluptas fugiat ratione vitae non quibusdam quia laudantium veniam
-                        doloremque est veritatis natus, quisquam expedita!</p>
-                </div>
+                @foreach (DB::table('prestasis')->get() as $key => $item)
+                    @if ($key % 2 == 0)
+
+                    <div class="aboutSmpn d-flex mt-5" id="aboutSmpn">
+                        <div class="imagesWrapper">
+                            <img src="{{ url('thumbEskul/' . $item->image) }}" alt="">
+                        </div>
+                        <div class="about ms-0 ms-md-3 mt-2 mt-md-0">
+                            <h4>{{ $item->title }}</h4>
+                            <p>{{ $item->body }}</p>
+                        </div>
+
+                    </div>
+
+                    @if (!is_null(DB::table('ket_prestasis')->where('prestasi_id',$item->id)->first()))
+                        {{-- Table --}}
+                    <div class="container mt-3 mb-5">
+                        <div class="table-responsive">
+                            <table id="beritaTable" class="table table-hover" style=" width:100%">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Jenis kegiatan</th>
+                                        <th scope="col">Tempat kegiatan</th>
+                                        <th scope="col">Juara</th>
+                                        <th scope="col">Tahun</th>
+                                        <th scope="col">Tingkat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (DB::table('ket_prestasis')->where('prestasi_id', $item->id)->get() as $loop => $ket)
+                                        <tr>
+                                            <td style="width: 5%">{{ $loop->iteration }}</td>
+                                            <td style="width: 20%">{{ $ket->nama }}</td>
+                                            <td style="width: 20%">{{ $ket->jenis_kegiatan }}</td>
+                                            <td style="width: 25%">{{ $ket->tempat_kegiatan }}</td>
+                                            <td style="width: 20%">{{ $ket->juara }}</td>
+                                            <td style="width: 20%">{{ $ket->tahun }}</td>
+                                            <td style="width: 25%">{!! $ket->tingkat !!}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @endif
+
+                    @else
+
+                    <div class="aboutSmpn d-flex mt-5" id="aboutSmpn">
+                        <div class="about me-0 me-md-3 mt-2 mt-md-0">
+                            <h4>{{ $item->title }}</h4>
+                            <p>{{ $item->body }}</p>
+                        </div>
+                        <div class="imagesWrapper">
+                            <img src="{{ url('thumbEskul/' . $item->image) }}" alt="">
+                        </div>
+                    </div>
+
+                    @if (!is_null(DB::table('ket_prestasis')->where('prestasi_id')->first()))
+                    {{-- Table --}}
+                    <div class="container mt-3 mb-5">
+                        <div class="row">
+                            <table id="beritaTable" class="table table-hover" style=" width:100%">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Jenis kegiatan</th>
+                                        <th scope="col">Tempat kegiatan</th>
+                                        <th scope="col">Juara</th>
+                                        <th scope="col">Tahun</th>
+                                        <th scope="col">Tingkat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (DB::table('ket_prestasis')->where('prestasi_id', $item->id)->get() as $loop => $ket)
+                                        <tr>
+                                            <td style="width: 5%">{{ $loop->iteration }}</td>
+                                            <td style="width: 20%">{{ $ket->nama }}</td>
+                                            <td style="width: 20%">{{ $ket->jenis_kegiatan }}</td>
+                                            <td style="width: 25%">{{ $ket->tempat_kegiatan }}</td>
+                                            <td style="width: 20%">{{ $ket->juara }}</td>
+                                            <td style="width: 20%">{{ $ket->tahun }}</td>
+                                            <td style="width: 25%">{!! $ket->tingkat !!}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @endif
+
+                    @endif
+
+                @endforeach
             </div>
 
         </div>
-
-
-        <div class="container my-5">
-            <h2>Kejuaraan makan banyak 2019/2020</h2>
-            <div class="row">
-                <table id="beritaTable" class="table table-dark table-striped table-hover" style=" width:100%">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Jenis kegiatan</th>
-                            <th scope="col">Tempat kegiatan</th>
-                            <th scope="col">Juara</th>
-                            <th scope="col">Tahun</th>
-                            <th scope="col">Tingkat</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (DB::table('ket_prestasi')->get() as $item)
-                            <tr>
-                                <td style="width: 5%">{{ $loop->iteration }}</td>
-                                <td style="width: 20%">{{ $item->nama }}</td>
-                                <td style="width: 20%">{{ $item->jenis_kegiatan }}</td>
-                                <td style="width: 25%">{{ $item->tempat_kegiatan }}</td>
-                                <td style="width: 20%">{{ $item->juara }}</td>
-                                <td style="width: 20%">{{ $item->tahun }}</td>
-                                <td style="width: 25%">{!! $item->tingkat !!}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
 
 
         <footer>
@@ -147,11 +209,11 @@
                         <h3>Tautan Links</h3>
 
                         <div class="linkToPages">
-                            <a href="#">Beranda</a>
-                            <a href="#">Berita</a>
-                            <a href="#">Ekstrakurikuler</a>
-                            <a href="#">Prestasi</a>
-                            <a href="#">Tentang Kami</a>
+                            <a href="{{ url('/') }}">Beranda</a>
+                            <a href="{{ url('berita') }}">Berita</a>
+                            <a href="{{ url('ekstrakurikuler') }}">Ekstrakurikuler</a>
+                            <a href="{{ url('prestasi') }}">Prestasi</a>
+                            <a href="{{ url('tentangKami') }}">Tentang Kami</a>
                         </div>
                     </div>
 
@@ -159,26 +221,25 @@
                         <h3>Tentang Kami</h3>
 
                         <div class="linkToPages">
-                            <a href="#">Profil Sekolah</a>
-                            <a href="#">Visi & Misi</a>
-                            <a href="#">Sejarah</a>
+                            <a href="{{ url('tentangKami') }}">Profil Sekolah</a>
+                            <a href="{{ url('tentangKami') }}">Visi & Misi</a>
+                            <a href="{{ url('tentangKami') }}">Sejarah</a>
                         </div>
                     </div>
 
                     <div class="line">
                         <h3>Kontak</h3>
                         <a href="https://wa.me/085156293673">
-                            <h2 class="phone">+6285156293673</h2>
+                            <h2 class="phone">{{ DB::table('contact')->first()->no_telp }}</h2>
                         </a>
                         <div class="linkToPages">
-                            <p class="address" style="margin-bottom: .5rem;">Jl. Cibuntu Satu, Kutajaya, Kec.
-                                Cicurug, Kabupaten Sukabumi, Jawa Barat 43359.</p>
+                            <p class="address" style="margin-bottom: .5rem;">{{ DB::table('contact')->first()->alamat }}</p>
                         </div>
                         <div class="socialMedia">
-                            <a href="#" class="social">
+                            <a href="{{ DB::table('contact')->first()->fb }}" class="social">
                                 <ion-icon name="logo-facebook"></ion-icon>
                             </a>
-                            <a href="#" class="social">
+                            <a href="{{ DB::table('contact')->first()->ig }}" class="social">
                                 <ion-icon name="logo-instagram"></ion-icon>
                             </a>
                         </div>
