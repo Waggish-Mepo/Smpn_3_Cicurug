@@ -63,7 +63,7 @@ class PrestasiController extends Controller
         return redirect()->back()->with('message', 'sukses edit Ekstrakurikuler');
     }
 
-    public function detail(Request $request, $id)
+    public function detail($id)
     {
 
         return view(

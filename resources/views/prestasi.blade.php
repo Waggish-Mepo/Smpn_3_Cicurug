@@ -66,7 +66,7 @@
                             <div class="polygon">
                                 <div class="clipath"></div>
                             </div>
-                            <div class="buttonWrapper">
+                            {{-- <div class="buttonWrapper">
                                 @auth
                                     <li class="nav-link">
                                         <form action="/logout" method="post">
@@ -82,6 +82,17 @@
                                             Login</a>
                                     </li>
                                 @endauth
+                            </div> --}}
+                            <div class="buttonWrapper dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Dropdown button
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
                             </div>
                         </div>
 
@@ -93,17 +104,20 @@
         <!--End Navbar-->
 
         <div class="mainContent">
-            <h2 style="text-align: center;padding:20px;margin-bottom:40px;margin-top:20px;font-size:52px">Prestasi Smpn
+            <h2 style="color:#3658A2;text-align: center;padding:20px;margin-bottom:10px;margin-top:20px;font-size:52px">
+                Prestasi Smpn
                 3 Cicurug</h2>
             <div class="container">
                 @foreach (DB::table('prestasis')->get() as $key => $item)
                     <div class="aboutSmpn d-flex justify-content-center mb-5 flex-column" id="aboutSmpn">
                         <div class="about me-0 me-md-3 mt-md-0 text-center">
-                            <h4 class="p-3" style="font-size: 32px">{{ $item->title }}</h4>
-                            <p>{{ $item->body }}</p>
+                            <h4 class="p-3" style="font-weight:600;font-size: 37px;color:#3658A2;">
+                                {{ $item->title }}</h4>
+                            <p style="color:#3658A2;font-weight:500;font-size:18px">{{ $item->body }}</p>
                         </div>
                         <div class="imagesWrapper d-flex flex-wrap justify-content-center p-5">
-                            <img src="{{ url('thumbEskul/' . $item->image) }}" alt="">
+                            <img src="{{ url('thumbEskul/' . $item->image) }}" alt=""
+                                style="width: 1280px;border-radius: 25px;max-height:500px;">
                         </div>
                     </div>
 

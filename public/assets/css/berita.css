@@ -21,13 +21,6 @@ p {
     font-family: 'Poppins', sans-serif;
 }
 
-
-/* Navbar */
-
-.dropdown {
-    z-index: 99999 !important;
-}
-
 .navbar {
     position: sticky;
     overflow: hidden;
@@ -161,7 +154,7 @@ p {
         top: -29px;
         overflow: hidden;
         left: -65px;
-        z-index: 1000;
+        z-index: 2222000;
         height: 238%;
         clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     }

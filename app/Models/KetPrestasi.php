@@ -10,10 +10,10 @@ class KetPrestasi extends Model
     use HasFactory;
 
 
-    public function prestasi()
-    {
-        return $this->belongsTo(Prestasi::class, 'prestasi_id');
-    }
+    // public function prestasi()
+    // {
+    //     return $this->belongsTo(Prestasi::class);
+    // }
 
     // public function index()
     // {

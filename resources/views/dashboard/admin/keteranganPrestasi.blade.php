@@ -110,18 +110,6 @@
 
         <div class="tab-pane fade show active" id="newRequestTab" role="tabpanel" aria-labelledby="new-request-tab">
 
-
-            <div class="d-flex justify-content-end">
-                <!-- Button trigger modal -->
-                @isset($prestasiId)
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambaheskul">
-                        Tambah
-                    </button>
-                @endisset
-
-
-            </div>
-
             <div class="wrapperTable table-responsive">
                 <table id="sambutanTable" class="tables" style="width:100%">
                     <thead>
@@ -154,35 +142,6 @@
                                             <a class="btn btn-danger"
                                                 href="{{ route('keterangan-prestasi.delete', ['id' => $item->id]) }}">Hapus</a>
                                             <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal"
-                                                data-bs-target="#editprestasi" data-id="{{ $item->id }}"
-                                                data-nama="{{ $item->nama }}"
-                                                data-jenis_kegiatan="{{ $item->jenis_kegiatan }}" data-body
-                                                tempat_kegiatan="{{ $item->tempat_kegiatan }}"
-                                                data-juara="{{ $item->juara }}" data-tahun="{{ $item->tahun }}"
-                                                data-tingkat="{{ $item->tingkat }}">
-                                                Edit
-                                            </button>
-                                            <!-- Button trigger modal -->
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @else
-                            @foreach ($prestasis as $item)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td style="width: 16%">{{ $item->nama }}</td>
-                                    <td style="width: 16%">{{ $item->jenis_kegiatan }}</td>
-                                    <td style="width: 16%">{{ $item->tempat_kegiatan }}</td>
-                                    <td style="width: 16%">{{ $item->juara }}</td>
-                                    <td style="width: 16%">{{ $item->tahun }}</td>
-                                    <td style="width: 16%">{!! $item->tingkat !!}</td>
-                                    <td>
-
-                                        <div class="container d-flex">
-                                            <a class="btn btn-danger mx-1"
-                                                href="{{ route('keterangan-prestasi.delete', ['id' => $item->id]) }}">Hapus</a>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#editprestasi" data-id="{{ $item->id }}"
                                                 data-nama="{{ $item->nama }}"
                                                 data-jenis_kegiatan="{{ $item->jenis_kegiatan }}" data-body
