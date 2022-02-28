@@ -11,81 +11,75 @@
 
 @section('sidebar')
     <div id="sidebarMain">
-    <!-- sidebar -->
-    <div class="wrapperSidebar">
-        <div class="brandLogo">
-            <img src="{{ url('assets/img/smpn 3 cicurug 2.svg') }}" alt="">
-        </div>
-        <a href="#" class="profile">
-            <div class="imagesProfile">
-                <img src="{{ url('assets/img/faces.jpeg') }}" alt="">
+        <!-- sidebar -->
+        <div class="wrapperSidebar">
+            <div class="brandLogo">
+                <img src="{{ url('assets/img/smpn 3 cicurug 2.svg') }}" alt="">
             </div>
-            <div class="profileUser">
-                <h5 class="labelDay">Morning</h5>
-                <h5 class="nameUser">{{ auth()->user()->name }}</h5>
+            <a href="#" class="profile">
+                <div class="imagesProfile">
+                    <img src="{{ url('assets/img/faces.jpeg') }}" alt="">
+                </div>
+                <div class="profileUser">
+                    <h5 class="labelDay">Morning</h5>
+                    <h5 class="nameUser">{{ auth()->user()->name }}</h5>
+                </div>
+            </a>
+            <div class="sidebar-menu-wrapper">
+                <li class="listMenuName">
+                    <p>Admin Menu</p>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="grid"></ion-icon>
+                    </div>
+                    <a href="{{ route('dashboard') }}" class="sidebar-menu">Dashboard</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="people"></ion-icon>
+                    </div>
+                    <a href="{{ route('users.index') }}" class="sidebar-menu">Kelola User</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="home"></ion-icon>
+                    </div>
+                    <a href="{{ route('beranda.index') }}" class="sidebar-menu">Kelola Beranda</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="newspaper"></ion-icon>
+                    </div>
+                    <a href="{{ route('berita.index') }}" class="sidebar-menu">Kelola Berita</a>
+                </li>
+                <li class="list-menu">
+                    <div class="icon">
+                        <ion-icon name="accessibility"></ion-icon>
+                    </div>
+                    <a href="{{ route('ekstrakurikuler.index') }}" class="sidebar-menu">Kelola ekstrakurikuler</a>
+                </li>
+                <li class="list-menu">
+                    <div class="icon">
+                        <ion-icon name="medal"></ion-icon>
+                    </div>
+                    <a href="{{ route('prestasi.index') }}" class="sidebar-menu">Kelola Prestasi</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="school"></ion-icon>
+                    </div>
+                    <a href="{{ route('tentang-kami.index') }}" class="sidebar-menu">Kelola Tentang Kami</a>
+                </li>
+                <li class="list-menu active">
+                    <div class="icon">
+                        <ion-icon name="call"></ion-icon>
+                    </div>
+                    <a href="{{ route('contact.index') }}" class="sidebar-menu">Kelola Kontak</a>
+                </li>
             </div>
-        </a>
-        <div class="sidebar-menu-wrapper">
-            <li class="listMenuName">
-                <p>Admin Menu</p>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="grid"></ion-icon>
-                </div>
-                <a href="{{ route('dashboard') }}" class="sidebar-menu">Dashboard</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="people"></ion-icon>
-                </div>
-                <a href="{{ route('users.index') }}" class="sidebar-menu">Kelola User</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="home"></ion-icon>
-                </div>
-                <a href="{{ route('beranda.index') }}" class="sidebar-menu">Kelola Beranda</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="newspaper"></ion-icon>
-                </div>
-                <a href="{{ route('berita.index') }}" class="sidebar-menu">Kelola Berita</a>
-            </li>
-            <li class="list-menu">
-                <div class="icon">
-                    <ion-icon name="accessibility"></ion-icon>
-                </div>
-                <a href="{{ route('ekstrakurikuler.index') }}" class="sidebar-menu">Kelola ekstrakurikuler</a>
-            </li>
-            <li class="list-menu">
-                <div class="icon">
-                    <ion-icon name="medal"></ion-icon>
-                </div>
-                <a href="{{ route('prestasi.index') }}" class="sidebar-menu">Kelola Prestasi</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="medal"></ion-icon>
-                </div>
-                <a href="{{ route('keterangan-prestasi.index') }}" class="sidebar-menu">keterangan-prestasi</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="school"></ion-icon>
-                </div>
-                <a href="{{ route('tentang-kami.index') }}" class="sidebar-menu">Kelola Tentang Kami</a>
-            </li>
-            <li class="list-menu active">
-                <div class="icon">
-                    <ion-icon name="call"></ion-icon>
-                </div>
-                <a href="{{ route('tentang-kami.index') }}" class="sidebar-menu">Kelola Kontak</a>
-            </li>
         </div>
     </div>
-</div>
 @endsection
 
 @section('content')
@@ -116,7 +110,10 @@
                         <td>{{ $item->fb }}</td>
                         <td>{{ $item->ig }}</td>
                         <td>
-                            <button type="button" class="btn btn-primary show-edit-modal mx-1" data-bs-toggle="modal" data-bs-target="#edit" data-id="{{ $item->id }}" data-no_telp="{{ $item->no_telp }}" data-alamat="{{ $item->alamat }}" data-fb="{{ $item->fb }}" data-ig="{{ $item->ig }}"> Edit
+                            <button type="button" class="btn btn-primary show-edit-modal mx-1" data-bs-toggle="modal"
+                                data-bs-target="#edit" data-id="{{ $item->id }}" data-no_telp="{{ $item->no_telp }}"
+                                data-alamat="{{ $item->alamat }}" data-fb="{{ $item->fb }}"
+                                data-ig="{{ $item->ig }}"> Edit
                             </button>
                         </td>
                     </tr>
@@ -140,20 +137,21 @@
                         @csrf
                         <div class="mb-3">
                             <label for="no_telp" class="form-label">Nomor Telepon</label>
-                            <input type="text" class="form-control" id="no_telp" aria-describedby="no_telp" name="no_telp" value="">
+                            <input type="text" class="form-control" id="no_telp" aria-describedby="no_telp" name="no_telp"
+                                value="">
                         </div>
                         <label for="alamat">Alamat</label>
                         <div class="form-floating mb-3">
                             <textarea class="form-control" placeholder="alamat" id="alamat" style="height: 100px"
-                                name="alamat"  value=""></textarea>
+                                name="alamat" value=""></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="fb" class="form-label">Link Facebook</label>
-                            <input type="text" class="form-control" id="fb" aria-describedby="fb" name="fb"  value="">
+                            <input type="text" class="form-control" id="fb" aria-describedby="fb" name="fb" value="">
                         </div>
                         <div class="mb-3">
                             <label for="ig" class="form-label">Link Instagram</label>
-                            <input type="text" class="form-control" id="ig" aria-describedby="ig" name="ig"  value="">
+                            <input type="text" class="form-control" id="ig" aria-describedby="ig" name="ig" value="">
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">Save changes</button>
@@ -163,7 +161,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @section('js')

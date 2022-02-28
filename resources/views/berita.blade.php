@@ -74,6 +74,7 @@
                                     </li>
                                 @endauth
                             </div>
+
                         </div>
 
                     </div>
@@ -91,34 +92,40 @@
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
                         <div class="carousel-indicators">
-                            @foreach (DB::table('beritas')->limit(3)->get() as $key => $item)
-                               @if ($key == 0)
-                               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$key}}"
-                               class="active" aria-current="true"></button>
-                               @else
-                               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$key}}"
-                               class="" aria-current="false"></button>
-                               @endif
+                            @foreach (DB::table('beritas')->limit(3)->get()
+    as $key => $item)
+                                @if ($key == 0)
+                                    <button type="button" data-bs-target="#carouselExampleCaptions"
+                                        data-bs-slide-to="{{ $key }}" class="active"
+                                        aria-current="true"></button>
+                                @else
+                                    <button type="button" data-bs-target="#carouselExampleCaptions"
+                                        data-bs-slide-to="{{ $key }}" class=""
+                                        aria-current="false"></button>
+                                @endif
                             @endforeach
                         </div>
 
                         <div class="carousel-inner">
-                            @foreach (DB::table('beritas')->limit(3)->get() as $key => $item)
-                               @if ($key == 0)
-                               <div class="carousel-item active">
-                                <img src="{{ url('thumbBerita/' . $item->image) }}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>{{ $item->title }}</h5>
-                                </div>
-                            </div>
-                            @else
-                            <div class="carousel-item ">
-                                <img src="{{ url('thumbBerita/' . $item->image) }}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>{{ $item->title }}</h5>
-                                </div>
-                            </div>
-                               @endif
+                            @foreach (DB::table('beritas')->limit(3)->get()
+    as $key => $item)
+                                @if ($key == 0)
+                                    <div class="carousel-item active">
+                                        <img src="{{ url('thumbBerita/' . $item->image) }}" class="d-block w-100"
+                                            alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>{{ $item->title }}</h5>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="carousel-item ">
+                                        <img src="{{ url('thumbBerita/' . $item->image) }}" class="d-block w-100"
+                                            alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>{{ $item->title }}</h5>
+                                        </div>
+                                    </div>
+                                @endif
                             @endforeach
                         </div>
                     </div>
@@ -135,10 +142,12 @@
                         <div class="beritaContainer">
                             <div class="firstRow">
                                 @foreach (DB::table('beritas')->get() as $item)
-                                    <a href="{{ route('detail-berita', ['id'=> $item->id]) }}" class="news">
+                                    <a href="{{ route('detail-berita', ['id' => $item->id]) }}"
+                                        class="news">
                                         <center>
                                             <div class="imgNews">
-                                                <img src="{{ url('thumbBerita/' . $item->image) }}" style="border-radius: 10px; max-width : 360px; max-height: 220px">
+                                                <img src="{{ url('thumbBerita/' . $item->image) }}"
+                                                    style="border-radius: 10px; max-width : 360px; max-height: 220px">
                                             </div>
                                             <h5>
                                                 {{ $item->title }}
@@ -192,7 +201,8 @@
                             <h2 class="phone">{{ DB::table('contact')->first()->no_telp }}</h2>
                         </a>
                         <div class="linkToPages">
-                            <p class="address" style="margin-bottom: .5rem;">{{ DB::table('contact')->first()->alamat }}</p>
+                            <p class="address" style="margin-bottom: .5rem;">
+                                {{ DB::table('contact')->first()->alamat }}</p>
                         </div>
                         <div class="socialMedia">
                             <a href="{{ DB::table('contact')->first()->fb }}" class="social">

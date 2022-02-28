@@ -22,11 +22,12 @@
     <link rel="stylesheet" href="{{ url('assets/css/berita.css') }}">
 
     <style>
-        @media screen and (max-width: 767px){
-            .aboutSmpn{
+        @media screen and (max-width: 767px) {
+            .aboutSmpn {
                 flex-direction: column;
             }
         }
+
     </style>
 
 </head>
@@ -92,72 +93,24 @@
         <!--End Navbar-->
 
         <div class="mainContent">
+            <h2 style="text-align: center;padding:20px;margin-bottom:40px;margin-top:20px;font-size:52px">Prestasi Smpn
+                3 Cicurug</h2>
             <div class="container">
-
                 @foreach (DB::table('prestasis')->get() as $key => $item)
-                    @if ($key % 2 == 0)
-
-                    <div class="aboutSmpn d-flex mt-5" id="aboutSmpn">
-                        <div class="imagesWrapper">
-                            <img src="{{ url('thumbEskul/' . $item->image) }}" alt="">
-                        </div>
-                        <div class="about ms-0 ms-md-3 mt-2 mt-md-0">
-                            <h4>{{ $item->title }}</h4>
+                    <div class="aboutSmpn d-flex justify-content-center mb-5 flex-column" id="aboutSmpn">
+                        <div class="about me-0 me-md-3 mt-md-0 text-center">
+                            <h4 class="p-3" style="font-size: 32px">{{ $item->title }}</h4>
                             <p>{{ $item->body }}</p>
                         </div>
-
-                    </div>
-
-                    @if (!is_null(DB::table('ket_prestasis')->where('prestasi_id',$item->id)->first()))
-                        {{-- Table --}}
-                    <div class="container mt-3 mb-5">
-                        <div class="table-responsive">
-                            <table id="beritaTable" class="table table-hover" style=" width:100%">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Jenis kegiatan</th>
-                                        <th scope="col">Tempat kegiatan</th>
-                                        <th scope="col">Juara</th>
-                                        <th scope="col">Tahun</th>
-                                        <th scope="col">Tingkat</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (DB::table('ket_prestasis')->where('prestasi_id', $item->id)->get() as $loop => $ket)
-                                        <tr>
-                                            <td style="width: 5%">{{ $loop->iteration }}</td>
-                                            <td style="width: 20%">{{ $ket->nama }}</td>
-                                            <td style="width: 20%">{{ $ket->jenis_kegiatan }}</td>
-                                            <td style="width: 25%">{{ $ket->tempat_kegiatan }}</td>
-                                            <td style="width: 20%">{{ $ket->juara }}</td>
-                                            <td style="width: 20%">{{ $ket->tahun }}</td>
-                                            <td style="width: 25%">{!! $ket->tingkat !!}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    @endif
-
-                    @else
-
-                    <div class="aboutSmpn d-flex mt-5" id="aboutSmpn">
-                        <div class="about me-0 me-md-3 mt-2 mt-md-0">
-                            <h4>{{ $item->title }}</h4>
-                            <p>{{ $item->body }}</p>
-                        </div>
-                        <div class="imagesWrapper">
+                        <div class="imagesWrapper d-flex flex-wrap justify-content-center p-5">
                             <img src="{{ url('thumbEskul/' . $item->image) }}" alt="">
                         </div>
                     </div>
 
-                    @if (!is_null(DB::table('ket_prestasis')->where('prestasi_id')->first()))
+
                     {{-- Table --}}
                     <div class="container mt-3 mb-5">
-                        <div class="row">
+                        <div class="row table-responsive">
                             <table id="beritaTable" class="table table-hover" style=" width:100%">
                                 <thead>
                                     <tr>
@@ -171,7 +124,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (DB::table('ket_prestasis')->where('prestasi_id', $item->id)->get() as $loop => $ket)
+                                    @foreach (DB::table('ket_prestasis')->where('prestasi_id', $item->id)->get()
+    as $loop => $ket)
                                         <tr>
                                             <td style="width: 5%">{{ $loop->iteration }}</td>
                                             <td style="width: 20%">{{ $ket->nama }}</td>
@@ -186,10 +140,6 @@
                             </table>
                         </div>
                     </div>
-                    @endif
-
-                    @endif
-
                 @endforeach
             </div>
 
@@ -233,7 +183,8 @@
                             <h2 class="phone">{{ DB::table('contact')->first()->no_telp }}</h2>
                         </a>
                         <div class="linkToPages">
-                            <p class="address" style="margin-bottom: .5rem;">{{ DB::table('contact')->first()->alamat }}</p>
+                            <p class="address" style="margin-bottom: .5rem;">
+                                {{ DB::table('contact')->first()->alamat }}</p>
                         </div>
                         <div class="socialMedia">
                             <a href="{{ DB::table('contact')->first()->fb }}" class="social">

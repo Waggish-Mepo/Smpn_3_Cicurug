@@ -22,7 +22,6 @@ class EkstrakurikulerController extends Controller
 
         DB::table('ekskuls')->insert([
             'title' => $request->title,
-            'body' => $request->body,
             'image' => $thumbname
         ]);
 
@@ -39,13 +38,11 @@ class EkstrakurikulerController extends Controller
 
             DB::table('ekskuls')->where('id', $id)->update([
                 'title' => $request->title,
-                'body' => $request->body,
                 'image' => $thumbname
             ]);
         } else {
             DB::table('ekskuls')->where('id', $id)->update([
                 'title' => $request->title,
-                'body' => $request->body,
             ]);
         }
 
