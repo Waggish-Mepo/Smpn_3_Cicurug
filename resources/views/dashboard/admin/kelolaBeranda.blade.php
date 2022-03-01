@@ -154,22 +154,11 @@
                     <table id="sambutanTable" class="tables" style="width:100%">
                         <thead>
                             <tr>
-                                <td>{{ $key + 1 }}</td>
-                                <td><img style="max-height: 250px;max-width:250px;min-width:250px;min-height:250px;"
-                                        src="{{ url('thumbSambutan/' . $item->image) }}" alt=""></td>
-
-                                <td>{{ $item->title }}</td>
-                                <td>{{ $item->content }}</td>
-                                <td>
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal"
-                                        data-bs-target="#editSambutan" data-id="{{ $item->id }}"
-                                        data-title="{{ $item->title }}" data-content="{{ $item->content }}"
-                                        data-image="{{ $item->image }}">
-                                        Edit
-                                    </button>
-
-                                </td>
+                                <th>#</th>
+                                <th>gambar</th>
+                                <th>Judul</th>
+                                <th>Keterangan</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
