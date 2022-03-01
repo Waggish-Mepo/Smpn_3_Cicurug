@@ -130,7 +130,7 @@
     <div class="d-flex justify-content-end">
 
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createData">
-            Create
+            Tambah
         </button>
 
     </div>
@@ -187,30 +187,32 @@
         aria-labelledby="createDataLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div id="modal-content" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tambaheskulLabel">Tambah Berita</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
                 <form action="{{ route('berita.create') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="mb-3">
+                    <div class="p-3">
                         <label for="title" class="form-label">title</label>
                         <input type="text" class="form-control" id="title" name="title" placeholder="isi title " required>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="p-3">
                         <label for="excerpt" class="form-label">excerpt</label>
                         <input type="text" class="form-control" id="excerpt" name="excerpt" placeholder="isi excerpt "
                             required>
                     </div>
 
 
-                    <div class="mb-3">
+                    <div class="p-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Body</label>
                         <textarea class="form-control" name="body" placeholder="Masukan Konten" id="editor"></textarea>
                     </div>
 
 
-                    <input type="file" name="image" class="dropify" data-max-width="375" data-max-width="220"
+                    <input type="file" name="image" class="dropify p-2" data-max-width="375" data-max-width="220"
                         required />
-
-
                     <br>
                     <br>
                     <center> <button class="btn btn-success" type="submit">Submit</button>
@@ -292,20 +294,24 @@
         $('#updateData').on('shown.bs.modal', function(e) {
             var html = `
     <div id="modal-content" class="modal-content">
+    <div class="modal-header">
+                    <h5 class="modal-title" id="tambaheskulLabel">Tambah Berita</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
                 <form action="/management/berita/edit/${$(e.relatedTarget).data('id')}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="mb-3">
+                    <div class="p-3">
                         <label for="title" class="form-label">title</label>
                         <input type="text" class="form-control" id="title" name="title" placeholder="isi title " value="${$(e.relatedTarget).data('title')}">
                     </div>
 
-                    <div class="mb-3">
+                    <div class="p-3">
                         <label for="excerpt" class="form-label">excerpt</label>
                         <input type="text" class="form-control" id="excerpt" name="excerpt" placeholder="isi excerpt " value="${$(e.relatedTarget).data('excerpt')}"
                         >
                     </div>
 
-                    <div class="mb-3">
+                    <div class="p-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Body</label>
                         <textarea class="form-control" name="body" placeholder="Masukan Konten" id="editor">${$(e.relatedTarget).data('body')}</textarea>
                     </div>
@@ -313,9 +319,6 @@
 
                     <input type="file" name="image" class="dropify" data-max-width="290" data-max-width="190"
                     data-default-file="/thumbBerita/${$(e.relatedTarget).data('image')}" />
-
-
-                    <br>
                     <br>
                     <center>
                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
