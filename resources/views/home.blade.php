@@ -128,7 +128,8 @@
                         <div class="container">
                             <div class="row">
 
-                                @foreach (DB::table('beritas')->limit(3)->get() as $item)
+                                @foreach (DB::table('beritas')->limit(3)->get()
+    as $item)
                                     <a href="" class="col-12 col-md-4 news">
                                         <center>
                                             <div class="imgNews">
@@ -167,7 +168,9 @@
                         <div class="col-6 wrapperText">
                             <div class="text">
                                 <h4>Prestasi</h4>
-                                <p>SMPN 3 Cicurug menorehkan banyak prestasi di berbagai bidang dengan mendapatkan peringkat terbaik di Kabupaten Sukabumi serta aktif dalam mengikuti berbagai kegiatan perlombaan.</p>
+                                <p>SMPN 3 Cicurug menorehkan banyak prestasi di berbagai bidang dengan mendapatkan
+                                    peringkat terbaik di Kabupaten Sukabumi serta aktif dalam mengikuti berbagai
+                                    kegiatan perlombaan.</p>
                                 <a href="{{ url('prestasi') }}">Lebih Lanjut</a>
                             </div>
                         </div>
@@ -253,7 +256,8 @@
 
                             <div class="lineCountry lineCountry2">
 
-                                @foreach (DB::table('kegiatans')->orderBy('id', 'desc')->get() as $item)
+                                @foreach (DB::table('kegiatans')->orderBy('id', 'desc')->get()
+    as $item)
                                     <div class="country">
                                         <img src="{{ url('thumbKegiatan/' . $item->image) }}"
                                             style="max-width: 320px; max-height: 180px; ">
@@ -305,7 +309,8 @@
                             <h2 class="phone">{{ DB::table('contact')->first()->no_telp }}</h2>
                         </a>
                         <div class="linkToPages">
-                            <p class="address" style="margin-bottom: .5rem;">{{ DB::table('contact')->first()->alamat }}</p>
+                            <p class="address" style="margin-bottom: .5rem;">
+                                {{ DB::table('contact')->first()->alamat }}</p>
                         </div>
                         <div class="socialMedia">
                             <a href="{{ DB::table('contact')->first()->fb }}" class="social">
