@@ -12,8 +12,8 @@ class Prestasi extends Model
 
     protected $guarded = ['id'];
 
-    public function ketPrestasi()
-    {
-        return $this->hasMany(KetPrestasi::class, 'ket_prestasis_id');
-    }
+    // public function ketPrestasi()
+    // {
+    //     return $this->hasMany(KetPrestasi::class);
+    // }
 }

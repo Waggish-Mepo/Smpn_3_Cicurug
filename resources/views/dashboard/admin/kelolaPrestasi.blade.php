@@ -65,12 +65,12 @@
                     </div>
                     <a href="{{ route('prestasi.index') }}" class="sidebar-menu">Kelola Prestasi</a>
                 </li>
-                <li class="list-menu ">
+                {{-- <li class="list-menu ">
                     <div class="icon">
                         <ion-icon name="medal"></ion-icon>
                     </div>
                     <a href="{{ route('keterangan-prestasi.index') }}" class="sidebar-menu">keterangan-prestasi</a>
-                </li>
+                </li> --}}
                 <li class="list-menu ">
                     <div class="icon">
                         <ion-icon name="school"></ion-icon>
@@ -81,7 +81,7 @@
                     <div class="icon">
                         <ion-icon name="call"></ion-icon>
                     </div>
-                    <a href="{{ route('tentang-kami.index') }}" class="sidebar-menu">Kelola Kontak</a>
+                    <a href="{{ route('contact.index') }}" class="sidebar-menu">Kelola Kontak</a>
                 </li>
             </div>
         </div>

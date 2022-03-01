@@ -7,82 +7,76 @@
 @endsection
 
 @section('sidebar')
-<div id="sidebarMain">
-    <!-- sidebar -->
-    <div class="wrapperSidebar">
-        <div class="brandLogo">
-            <img src="{{ url('assets/img/smpn 3 cicurug 2.svg') }}" alt="">
-        </div>
-        <a href="#" class="profile">
-            <div class="imagesProfile">
-                <img src="{{ url('assets/img/faces.jpeg') }}" alt="">
+    <div id="sidebarMain">
+        <!-- sidebar -->
+        <div class="wrapperSidebar">
+            <div class="brandLogo">
+                <img src="{{ url('assets/img/smpn 3 cicurug 2.svg') }}" alt="">
             </div>
-            <div class="profileUser">
-                <h5 class="labelDay">Morning</h5>
-                <h5 class="nameUser">{{ auth()->user()->name }}</h5>
+            <a href="#" class="profile">
+                <div class="imagesProfile">
+                    <img src="{{ url('assets/img/faces.jpeg') }}" alt="">
+                </div>
+                <div class="profileUser">
+                    <h5 class="labelDay">Morning</h5>
+                    <h5 class="nameUser">{{ auth()->user()->name }}</h5>
+                </div>
+            </a>
+            <div class="sidebar-menu-wrapper">
+                <li class="listMenuName">
+                    <p>Admin Menu</p>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="grid"></ion-icon>
+                    </div>
+                    <a href="{{ route('dashboard') }}" class="sidebar-menu">Dashboard</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="people"></ion-icon>
+                    </div>
+                    <a href="{{ route('users.index') }}" class="sidebar-menu">Kelola User</a>
+                </li>
+                <li class="list-menu active">
+                    <div class="icon">
+                        <ion-icon name="home"></ion-icon>
+                    </div>
+                    <a href="{{ route('beranda.index') }}" class="sidebar-menu">Kelola Beranda</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="newspaper"></ion-icon>
+                    </div>
+                    <a href="{{ route('berita.index') }}" class="sidebar-menu">Kelola Berita</a>
+                </li>
+                <li class="list-menu">
+                    <div class="icon">
+                        <ion-icon name="accessibility"></ion-icon>
+                    </div>
+                    <a href="{{ route('ekstrakurikuler.index') }}" class="sidebar-menu">Kelola ekstrakurikuler</a>
+                </li>
+                <li class="list-menu">
+                    <div class="icon">
+                        <ion-icon name="medal"></ion-icon>
+                    </div>
+                    <a href="{{ route('prestasi.index') }}" class="sidebar-menu">Kelola Prestasi</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="school"></ion-icon>
+                    </div>
+                    <a href="{{ route('tentang-kami.index') }}" class="sidebar-menu">Kelola Tentang Kami</a>
+                </li>
+                <li class="list-menu ">
+                    <div class="icon">
+                        <ion-icon name="call"></ion-icon>
+                    </div>
+                    <a href="{{ route('contact.index') }}" class="sidebar-menu">Kelola Kontak</a>
+                </li>
             </div>
-        </a>
-        <div class="sidebar-menu-wrapper">
-            <li class="listMenuName">
-                <p>Admin Menu</p>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="grid"></ion-icon>
-                </div>
-                <a href="{{ route('dashboard') }}" class="sidebar-menu">Dashboard</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="people"></ion-icon>
-                </div>
-                <a href="{{ route('users.index') }}" class="sidebar-menu">Kelola User</a>
-            </li>
-            <li class="list-menu active">
-                <div class="icon">
-                    <ion-icon name="home"></ion-icon>
-                </div>
-                <a href="{{ route('beranda.index') }}" class="sidebar-menu">Kelola Beranda</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="newspaper"></ion-icon>
-                </div>
-                <a href="{{ route('berita.index') }}" class="sidebar-menu">Kelola Berita</a>
-            </li>
-            <li class="list-menu">
-                <div class="icon">
-                    <ion-icon name="accessibility"></ion-icon>
-                </div>
-                <a href="{{ route('ekstrakurikuler.index') }}" class="sidebar-menu">Kelola ekstrakurikuler</a>
-            </li>
-            <li class="list-menu">
-                <div class="icon">
-                    <ion-icon name="medal"></ion-icon>
-                </div>
-                <a href="{{ route('prestasi.index') }}" class="sidebar-menu">Kelola Prestasi</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="medal"></ion-icon>
-                </div>
-                <a href="{{ route('keterangan-prestasi.index') }}" class="sidebar-menu">keterangan-prestasi</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="school"></ion-icon>
-                </div>
-                <a href="{{ route('tentang-kami.index') }}" class="sidebar-menu">Kelola Tentang Kami</a>
-            </li>
-            <li class="list-menu ">
-                <div class="icon">
-                    <ion-icon name="call"></ion-icon>
-                </div>
-                <a href="{{ route('tentang-kami.index') }}" class="sidebar-menu">Kelola Kontak</a>
-            </li>
         </div>
     </div>
-</div>
 @endsection
 
 @section('content')
@@ -148,45 +142,53 @@
             </div>
         </div>
 
-            <div class="tab-pane fade" id="listRequestTab" role="tabpanel" aria-labelledby="list-request-tab">
+        <div class="tab-pane fade" id="listRequestTab" role="tabpanel" aria-labelledby="list-request-tab">
 
-                <div class="wrapperTable table-responsive">
-                    <table id="sambutanTable" class="tables" style="width:100%">
-                        <thead>
+            <div class="wrapperTable table-responsive">
+                <table id="sambutanTable" class="tables" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Image</th>
+                            <th>Content</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DB::table('sambutan')->get() as $key => $item)
                             <tr>
+<<<<<<< HEAD
                                 <th>#</th>
                                 <th>gambar</th>
                                 <th>Judul</th>
                                 <th>Keterangan</th>
                                 <th>Aksi</th>
+=======
+                                <td>{{ $key + 1 }}</td>
+                                <td><img style="max-height: 250px;max-width:250px;min-width:250px;min-height:250px;"
+                                        src="{{ url('thumbSambutan/' . $item->image) }}" alt=""></td>
+
+                                <td>{{ $item->title }}</td>
+                                <td>{{ $item->content }}</td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#editSambutan" data-id="{{ $item->id }}"
+                                        data-title="{{ $item->title }}" data-content="{{ $item->content }}"
+                                        data-image="{{ $item->image }}">
+                                        Edit
+                                    </button>
+
+                                </td>
+>>>>>>> f4dc32676e4401b60fa77ee5cde01b1031458f03
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (DB::table('sambutan')->get() as $key => $item)
-                                <tr>
-                                    <td>{{ $key + 1 }}</td>
-                                    <td><img style="max-height: 250px;max-width:250px;min-width:250px;min-height:250px;"
-                                            src="{{ url('thumbSambutan/' . $item->image) }}" alt=""></td>
-
-                                    <td>{{ $item->title }}</td>
-                                    <td>{{ $item->content }}</td>
-                                    <td>
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#editSambutan" data-id="{{ $item->id }}"
-                                            data-title="{{ $item->title }}" data-content="{{ $item->content }}"
-                                            data-image="{{ $item->image }}">
-                                            Edit
-                                        </button>
-
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
+
+        </div>
 
         <div class="tab-pane fade show" id="kegiatanTab" role="tabpanel" aria-labelledby="kegiatan-tab">
 

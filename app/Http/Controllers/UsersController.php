@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
+
     public function index()
     {
 
@@ -21,7 +22,12 @@ class UsersController extends Controller
     public function delete($id)
     {
         DB::table('users')->where('id', $id)->delete();
-        return redirect()->back()->with(['message' => "Sukses delete user"]);
+
+        if (empty(auth()->user()->id)) {
+            return redirect('/');
+        } else {
+            return redirect()->back()->with(['message' => "Sukses delete user"]);
+        }
     }
 
     public function create(Request $request)
@@ -35,7 +41,6 @@ class UsersController extends Controller
         $validateData['password'] = Hash::make($validateData['password']);
 
         User::create($validateData);
-
         return redirect()->back()->with(['message' => "Sukses delete user"]);
     }
 }
