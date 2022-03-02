@@ -109,51 +109,103 @@
                 3 Cicurug</h2>
             <div class="container">
                 @foreach (DB::table('prestasis')->get() as $key => $item)
-                    <div class="aboutSmpn d-flex justify-content-center mb-5 flex-column" id="aboutSmpn">
-                        <div class="about me-0 me-md-3 mt-md-0 text-center">
-                            <h4 class="p-3" style="font-weight:600;font-size: 37px;color:#3658A2;">
-                                {{ $item->title }}</h4>
-                            <p style="color:#3658A2;font-weight:500;font-size:18px">{{ $item->body }}</p>
-                        </div>
-                        <div class="imagesWrapper d-flex flex-wrap justify-content-center p-5">
-                            <img src="{{ url('thumbEskul/' . $item->image) }}" alt=""
-                                style="width: 1280px;border-radius: 25px;max-height:500px;">
-                        </div>
-                    </div>
+                    @if ($key % 2 == 0)
+                        <div class="aboutSmpn d-flex mt-5" id="aboutSmpn">
+                            <div class="imagesWrapper">
+                                <img src="{{ url('thumbEskul/' . $item->image) }}" alt="">
+                            </div>
+                            <div class="about ms-0 ms-md-3 mt-2 mt-md-0">
+                                <h4>{{ $item->title }}</h4>
+                                <p>{{ $item->body }}</p>
+                            </div>
 
+                        </div>
 
-                    {{-- Table --}}
-                    <div class="container mt-3 mb-5">
-                        <div class="row table-responsive">
-                            <table id="beritaTable" class="table table-hover" style=" width:100%">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Jenis kegiatan</th>
-                                        <th scope="col">Tempat kegiatan</th>
-                                        <th scope="col">Juara</th>
-                                        <th scope="col">Tahun</th>
-                                        <th scope="col">Tingkat</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (DB::table('ket_prestasis')->where('prestasi_id', $item->id)->get()
+                        @if (!is_null(
+    DB::table('ket_prestasis')->where('prestasi_id', $item->id)->first(),
+))
+                            {{-- Table --}}
+                            <div class="container mt-3 mb-5">
+                                <div class="table-responsive">
+                                    <table id="beritaTable" class="table table-hover" style=" width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Nama</th>
+                                                <th scope="col">Jenis kegiatan</th>
+                                                <th scope="col">Tempat kegiatan</th>
+                                                <th scope="col">Juara</th>
+                                                <th scope="col">Tahun</th>
+                                                <th scope="col">Tingkat</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (DB::table('ket_prestasis')->where('prestasi_id', $item->id)->get()
     as $loop => $ket)
-                                        <tr>
-                                            <td style="width: 5%">{{ $loop->iteration }}</td>
-                                            <td style="width: 20%">{{ $ket->nama }}</td>
-                                            <td style="width: 20%">{{ $ket->jenis_kegiatan }}</td>
-                                            <td style="width: 25%">{{ $ket->tempat_kegiatan }}</td>
-                                            <td style="width: 20%">{{ $ket->juara }}</td>
-                                            <td style="width: 20%">{{ $ket->tahun }}</td>
-                                            <td style="width: 25%">{!! $ket->tingkat !!}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                                <tr>
+                                                    <td style="width: 5%">{{ $loop->iteration }}</td>
+                                                    <td style="width: 20%">{{ $ket->nama }}</td>
+                                                    <td style="width: 20%">{{ $ket->jenis_kegiatan }}</td>
+                                                    <td style="width: 25%">{{ $ket->tempat_kegiatan }}</td>
+                                                    <td style="width: 20%">{{ $ket->juara }}</td>
+                                                    <td style="width: 20%">{{ $ket->tahun }}</td>
+                                                    <td style="width: 25%">{!! $ket->tingkat !!}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endif
+                    @else
+                        <div class="aboutSmpn d-flex mt-5" id="aboutSmpn">
+                            <div class="about me-0 me-md-3 mt-2 mt-md-0">
+                                <h4>{{ $item->title }}</h4>
+                                <p>{{ $item->body }}</p>
+                            </div>
+                            <div class="imagesWrapper">
+                                <img src="{{ url('thumbEskul/' . $item->image) }}" alt="">
+                            </div>
                         </div>
-                    </div>
+
+                        @if (!is_null(
+    DB::table('ket_prestasis')->where('prestasi_id')->first(),
+))
+                            {{-- Table --}}
+                            <div class="container mt-3 mb-5">
+                                <div class="row">
+                                    <table id="beritaTable" class="table table-hover" style=" width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Nama</th>
+                                                <th scope="col">Jenis kegiatan</th>
+                                                <th scope="col">Tempat kegiatan</th>
+                                                <th scope="col">Juara</th>
+                                                <th scope="col">Tahun</th>
+                                                <th scope="col">Tingkat</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (DB::table('ket_prestasis')->where('prestasi_id', $item->id)->get()
+    as $loop => $ket)
+                                                <tr>
+                                                    <td style="width: 5%">{{ $loop->iteration }}</td>
+                                                    <td style="width: 20%">{{ $ket->nama }}</td>
+                                                    <td style="width: 20%">{{ $ket->jenis_kegiatan }}</td>
+                                                    <td style="width: 25%">{{ $ket->tempat_kegiatan }}</td>
+                                                    <td style="width: 20%">{{ $ket->juara }}</td>
+                                                    <td style="width: 20%">{{ $ket->tahun }}</td>
+                                                    <td style="width: 25%">{!! $ket->tingkat !!}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
+
                 @endforeach
             </div>
 

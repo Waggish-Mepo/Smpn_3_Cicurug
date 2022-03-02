@@ -106,11 +106,21 @@
 
     </ul>
 
+
     <div class="tab-content" id="pills-tabContent">
 
         <div class="tab-pane fade show active" id="newRequestTab" role="tabpanel" aria-labelledby="new-request-tab">
 
+            <div class="d-flex justify-content-end">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambaheskul">
+                    Tambah
+                </button>
+
+            </div>
+
             <div class="wrapperTable table-responsive">
+
                 <table id="sambutanTable" class="tables" style="width:100%">
                     <thead>
                         <tr>
