@@ -169,7 +169,7 @@
                         </div>
 
                         @if (!is_null(
-    DB::table('ket_prestasis')->where('prestasi_id')->first(),
+    DB::table('ket_prestasis')->where('prestasi_id', $item->id)->first(),
 ))
                             {{-- Table --}}
                             <div class="container mt-3 mb-5">
