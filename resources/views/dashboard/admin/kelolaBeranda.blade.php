@@ -158,13 +158,6 @@
                     <tbody>
                         @foreach (DB::table('sambutan')->get() as $key => $item)
                             <tr>
-<<<<<<< HEAD
-                                <th>#</th>
-                                <th>gambar</th>
-                                <th>Judul</th>
-                                <th>Keterangan</th>
-                                <th>Aksi</th>
-=======
                                 <td>{{ $key + 1 }}</td>
                                 <td><img style="max-height: 250px;max-width:250px;min-width:250px;min-height:250px;"
                                         src="{{ url('thumbSambutan/' . $item->image) }}" alt=""></td>
@@ -181,7 +174,6 @@
                                     </button>
 
                                 </td>
->>>>>>> f4dc32676e4401b60fa77ee5cde01b1031458f03
                             </tr>
                         @endforeach
                     </tbody>
