@@ -147,7 +147,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="tambahGuruLabel">Modal title</h5>
+                                <h5 class="modal-title" id="tambahGuruLabel">Tambah Tenaga Pengajar</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -208,7 +208,7 @@
                                         data-gelar="{{ $item->gelar }}">
                                         Edit
                                     </button>
-                                    <a class="btn btn-danger mx-1"
+                                    <a class="btn btn-danger deleteee mx-1"
                                         href="{{ route('tentang-kami.guru.delete', ['id' => $item->id]) }}">Hapus<a>
                                 </td>
                             </tr>

@@ -149,8 +149,7 @@
                                     <td>
 
                                         <div class="container d-flex">
-                                            <a class="btn btn-danger"
-                                                href="{{ route('keterangan-prestasi.delete', ['id' => $item->id]) }}">Hapus</a>
+                                            <a class="btn btn-danger deleteee">Hapus</a>
                                             <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal"
                                                 data-bs-target="#editprestasi" data-id="{{ $item->id }}"
                                                 data-nama="{{ $item->nama }}"
@@ -293,7 +292,7 @@
     <script>
         $('#editprestasi').on('shown.bs.modal', function(e) {
             var html = `<div class="modal-header">
-              <h5 class="modal-title" id="editprestasiLabel">Modal title</h5>
+              <h5 class="modal-title" id="editprestasiLabel">Edit Keterangan Prestasi</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -351,5 +350,27 @@
                 "bSort": false,
             });
         });
+    </script>
+
+    <script>
+        $('.deleteee').click(function() {
+            swal({
+                    title: "Yakin?",
+                    text: "Tekan ok untuk hapus, cancel untuk batal!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location = "{{ route('keterangan-prestasi.delete', ['id' => $item->id]) }}"
+                        swal("Data Berhasil Dihapus", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Data Batal Dihapus");
+                    }
+                });
+        })
     </script>
 @endsection

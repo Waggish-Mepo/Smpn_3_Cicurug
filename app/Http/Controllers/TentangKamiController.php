@@ -64,5 +64,4 @@ class TentangKamiController extends Controller
 
         return redirect()->back()->with(['message' => "Sukses nambah kegiatan"]);
     }
-
 }

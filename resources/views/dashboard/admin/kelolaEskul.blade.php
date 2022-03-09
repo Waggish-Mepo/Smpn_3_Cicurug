@@ -111,8 +111,7 @@
                         <td><img src="{{ url('thumbEskul/' . $item->image) }}" alt=""></td>
                         <td>{{ $item->title }}</td>
                         <td>
-                            <a class="btn btn-danger"
-                                href="{{ route('ekstrakurikuler.delete', ['id' => $item->id]) }}">Hapus</a>
+                            <a class="btn btn-danger deleteee">Hapus</a>
 
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editeskul"
@@ -149,9 +148,10 @@
 
 
 
-                        <input type="file" name="image" class="dropify" data-max-width="320" data-max-width="180"
+                        <input type="file" name="image" class="dropify" data-max-width="320" data-min-width="180"
                             required />
-
+                        <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span
+                                style="color:red;font-weight:bold">width:300px</span></p>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -189,7 +189,7 @@
     <script>
         $('#editeskul').on('shown.bs.modal', function(e) {
             var html = `<div class="modal-header">
-              <h5 class="modal-title" id="editeskulLabel">Modal title</h5>
+              <h5 class="modal-title" id="editeskulLabel">Edit Ekskul</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -200,7 +200,7 @@
                         <label for="title" class="form-label">title</label>
                         <input type="text" class="form-control" id="title" name="title" placeholder="isi title " value="${$(e.relatedTarget).data('title')}">
                     </div>
-
+                    <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span style="color:red;font-weight:bold">width:300px</span></p>
 
                     <input type="file" name="image" class="dropify" data-max-width="320" data-max-width="190"
                     data-default-file="/thumbEskul/${$(e.relatedTarget).data('image')}" />
@@ -232,5 +232,26 @@
                 "bSort": false,
             });
         });
+    </script>
+    <script>
+        $('.deleteee').click(function() {
+            swal({
+                    title: "Yakin?",
+                    text: "Tekan ok untuk hapus, cancel untuk batal!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location = "{{ route('ekstrakurikuler.delete', ['id' => $item->id]) }}"
+                        swal("Data Berhasil Dihapus", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Data Batal Dihapus");
+                    }
+                });
+        })
     </script>
 @endsection

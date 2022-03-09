@@ -204,7 +204,8 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-body">
-                                    <input type="file" name="image" class="dropify" data-max-width="2000"
+
+                                    <input type="file" name="image" class="dropify" data-min-width="1200"
                                         data-max-width="2000" />
 
                                 </div>
@@ -235,8 +236,8 @@
                                 <td><img src="{{ url('thumbKegiatan/' . $item->image) }}" alt=""></td>
                                 <td>
 
-                                    <a href="{{ route('beranda.activity.delete', ['id' => $item->id]) }}"
-                                        class="btn btn-danger">Hapus</a>
+                                    <a class="btn btn-danger deleteee">Hapus</a>
+
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#editKegiatan" data-id="{{ $item->id }}"
@@ -347,21 +348,19 @@
     <script>
         $('#editBanner').on('shown.bs.modal', function(e) {
             var html = `
-<div id="modal-content" class="modal-content">
+        <div id="modal-content" class="modal-content container">
+         <div class="modal-header">
+                    <h5 class="modal-title" id="tambaheskulLabel">Edit Banner</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
             <form action="/management/beranda/banner/edit/${$(e.relatedTarget).data('id')}" method="post" enctype="multipart/form-data">
                 @csrf
-
-
-                <p style="color:red; font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal width:1440px & height:670px</p>
-
-                <input type="file" name="image" class="dropify"
-                data-max-width="1220" data-max-width="650"
+                <input type="file" name="image" class="dropify" data-max-width="2000" data-max-width="2000"
                 data-default-file="/thumbBanner/${$(e.relatedTarget).data('image')}" />
-
-
+               <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span style="color:red;font-weight:bold">width:1200px</span></p>
                 <br>
                 <br>
-                <center> <button class="btn btn-success" type="submit">Submit</button>
+                <center> <button class="btn btn-success m-3" type="submit">Submit</button>
                 </center>
 
             </form>
@@ -375,10 +374,13 @@
 
         $('#editSambutan').on('shown.bs.modal', function(e) {
             var html = `
-<div id="modal-content" class="modal-content">
+    <div id="modal-content" class="modal-content container">
+        <div class="modal-header">
+            <h5 class="modal-title" id="tambaheskulLabel">Edit Sambutan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
             <form action="/management/beranda/about/edit/${$(e.relatedTarget).data('id')}" method="post" enctype="multipart/form-data">
                 @csrf
-
                 <div class="mb-3">
                         <label for="title" class="form-label">title</label>
                         <input type="text" class="form-control" id="title" name="title" placeholder="isi title " value="${$(e.relatedTarget).data('title')}">
@@ -389,15 +391,12 @@
                         <input type="text" class="form-control" id="content" name="content" placeholder="isi content " value="${$(e.relatedTarget).data('content')}">
                     </div>
 
-                    <p style="color:red; font-size:12px; margin-bottom:10px ">Ukuran Gambar Minimal width:375px & height:215px</p>
-
-                    <input type="file" name="image" class="dropify" data-max-width="375" data-max-width="215"
-                    data-default-file="/thumbSambutan/${$(e.relatedTarget).data('image')}" />
-
-
+                <input type="file" name="image" class="dropify" data-max-width="2000" data-max-width="2000"
+                data-default-file="/thumbSambutan/${$(e.relatedTarget).data('image')}" />
+                     <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span style="color:red;font-weight:bold">width:350px</span></p>
                 <br>
                 <br>
-                <center> <button class="btn btn-success" type="submit">Submit</button>
+                <center> <button class="btn btn-success m-3" type="submit">Submit</button>
                 </center>
 
             </form>
@@ -411,16 +410,16 @@
 
         $('#editKegiatan').on('shown.bs.modal', function(e) {
             var html = `
-<div id="modal-content" class="modal-content">
+    <div id="modal-content" class="modal-content">
+        <div class="modal-header">
+                    <h5 class="modal-title" id="tambaheskulLabel">Edit Kegiatan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
             <form action="/management/beranda/activity/edit/${$(e.relatedTarget).data('id')}" method="post" enctype="multipart/form-data">
                 @csrf
-
-
-
                 <input type="file" name="image" class="dropify" data-max-width="2000" data-max-width="2000"
                 data-default-file="/thumbKegiatan/${$(e.relatedTarget).data('image')}" />
-
-
+                <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span style="color:red;font-weight:bold">width:320px</span></p>
                 <br>
                 <br>
                 <center> <button class="btn btn-success" type="submit">Submit</button>
@@ -434,5 +433,27 @@
             $('.dropify').dropify();
 
         });
+    </script>
+
+    <script>
+        $('.deleteee').click(function() {
+            swal({
+                    title: "Yakin?",
+                    text: "Tekan ok untuk hapus, cancel untuk batal!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location = "{{ route('beranda.activity.delete', ['id' => $item->id]) }}"
+                        swal("Data Berhasil Dihapus", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Data Batal Dihapus");
+                    }
+                });
+        })
     </script>
 @endsection
