@@ -160,7 +160,7 @@
                                 data-body="{{ $item->body }}" data-image="{{ $item->image }}">
                                 Edit
                             </button>
-                            <a class="btn btn-danger" href="{{ route('berita.delete', ['id' => $item->id]) }}">Hapus</a>
+                            <a class="btn btn-danger deleteee">Hapus</a>
                         </td>
                     </tr>
                 @endforeach
@@ -213,6 +213,8 @@
 
                     <input type="file" name="image" class="dropify p-2" data-max-width="375" data-max-width="220"
                         required />
+                    <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span
+                            style="color:red;font-weight:bold">width:300px</span></p>
                     <br>
                     <br>
                     <center> <button class="btn btn-success" type="submit">Submit</button>
@@ -295,7 +297,7 @@
             var html = `
     <div id="modal-content" class="modal-content">
     <div class="modal-header">
-                    <h5 class="modal-title" id="tambaheskulLabel">Tambah Berita</h5>
+                    <h5 class="modal-title" id="tambaheskulLabel">Edit Berita</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/management/berita/edit/${$(e.relatedTarget).data('id')}" method="post" enctype="multipart/form-data">
@@ -319,6 +321,7 @@
 
                     <input type="file" name="image" class="dropify" data-max-width="290" data-max-width="190"
                     data-default-file="/thumbBerita/${$(e.relatedTarget).data('image')}" />
+                    <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span style="color:red;font-weight:bold">width:300px</span></p>
                     <br>
                     <center>
                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -349,5 +352,27 @@
                 "bSort": false,
             });
         });
+    </script>
+
+    <script>
+        $('.deleteee').click(function() {
+            swal({
+                    title: "Yakin?",
+                    text: "Tekan ok untuk hapus, cancel untuk batal!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location = "{{ route('berita.delete', ['id' => $item->id]) }}"
+                        swal("Data Berhasil Dihapus", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Data Batal Dihapus");
+                    }
+                });
+        })
     </script>
 @endsection

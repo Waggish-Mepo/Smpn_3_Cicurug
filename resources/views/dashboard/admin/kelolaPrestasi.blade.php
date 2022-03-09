@@ -136,8 +136,7 @@
                                 <td>{{ $item->body }}</td>
                                 <td>
                                     <div class="container d-flex">
-                                        <a class="btn btn-danger"
-                                            href="{{ route('prestasi.delete', ['id' => $item->id]) }}">Hapus</a>
+                                        <a class="btn btn-danger deleteee">Hapus</a>
                                         <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal"
                                             data-bs-target="#editprestasi" data-id="{{ $item->id }}"
                                             data-title="{{ $item->title }}" data-body="{{ $item->body }}"
@@ -164,7 +163,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="tambaheskulLabel">Tambah Ekskul</h5>
+                        <h5 class="modal-title" id="tambaheskulLabel">Tambah Prestasi</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -172,7 +171,7 @@
                         <form action="{{ route('prestasi.create') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="title" class="form-label">title</label>
+                                <label for="title" class="form-label">Tambah Prestasi</label>
                                 <input type="text" class="form-control" id="title" name="title" placeholder="isi title "
                                     required>
                             </div>
@@ -185,6 +184,8 @@
 
                             <input type="file" name="image" class="dropify" data-max-width="320" data-max-width="180"
                                 required />
+                            <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span
+                                    style="color:red;font-weight:bold">width:350px</span></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -261,7 +262,7 @@
     <script>
         $('#editprestasi').on('shown.bs.modal', function(e) {
             var html = `<div class="modal-header">
-              <h5 class="modal-title" id="editprestasiLabel">Modal title</h5>
+              <h5 class="modal-title" id="editprestasiLabel">Edit Prestasi</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -282,6 +283,7 @@
                     <input type="file" name="image" class="dropify" data-max-width="320" data-max-width="180"
                     data-default-file="/thumbEskul/${$(e.relatedTarget).data('image')}" />
 
+<p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span style="color:red;font-weight:bold">width:350px</span></p>
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -310,5 +312,27 @@
                 "bSort": false,
             });
         });
+    </script>
+
+    <script>
+        $('.deleteee').click(function() {
+            swal({
+                    title: "Yakin?",
+                    text: "Tekan ok untuk hapus, cancel untuk batal!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location = "{{ route('prestasi.delete', ['id' => $item->id]) }}"
+                        swal("Data Berhasil Dihapus", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Data Batal Dihapus");
+                    }
+                });
+        })
     </script>
 @endsection

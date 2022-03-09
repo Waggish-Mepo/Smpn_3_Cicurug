@@ -133,7 +133,8 @@
                                     <a href="" class="col-12 col-md-4 news">
                                         <center>
                                             <div class="imgNews">
-                                                <img src="{{ url('thumbBerita/' . $item->image) }}" alt="">
+                                                <img style="max-width: 320px"
+                                                    src="{{ url('thumbBerita/' . $item->image) }}" alt="">
                                             </div>
                                             <h5>
                                                 {{ $item->title }}
