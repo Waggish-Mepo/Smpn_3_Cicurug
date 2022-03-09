@@ -352,8 +352,10 @@
                 @csrf
 
 
+                <p style="color:red; font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal width:1440px & height:670px</p>
 
-                <input type="file" name="image" class="dropify" data-max-width="2000" data-max-width="2000"
+                <input type="file" name="image" class="dropify"
+                data-max-width="1220" data-max-width="650"
                 data-default-file="/thumbBanner/${$(e.relatedTarget).data('image')}" />
 
 
@@ -387,8 +389,10 @@
                         <input type="text" class="form-control" id="content" name="content" placeholder="isi content " value="${$(e.relatedTarget).data('content')}">
                     </div>
 
-                <input type="file" name="image" class="dropify" data-max-width="2000" data-max-width="2000"
-                data-default-file="/thumbSambutan/${$(e.relatedTarget).data('image')}" />
+                    <p style="color:red; font-size:12px; margin-bottom:10px ">Ukuran Gambar Minimal width:375px & height:215px</p>
+
+                    <input type="file" name="image" class="dropify" data-max-width="375" data-max-width="215"
+                    data-default-file="/thumbSambutan/${$(e.relatedTarget).data('image')}" />
 
 
                 <br>
