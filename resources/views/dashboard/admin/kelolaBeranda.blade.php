@@ -194,9 +194,9 @@
                 <div class="modal fade" id="tambahKegiatan" tabindex="-1" aria-labelledby="tambahKegiatanLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-content container">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="tambahKegiatanLabel">Modal title</h5>
+                                <h5 class="modal-title" id="tambahKegiatanLabel">Tambah Kegiatan</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -205,10 +205,13 @@
                                 @csrf
                                 <div class="modal-body">
 
-                                    <input type="file" name="image" class="dropify" data-min-width="1200"
-                                        data-max-width="2000" />
+                                    <input type="file" name="image" class="dropify" data-max-width="2000" />
 
                                 </div>
+                                <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal :
+                                    <span style="color:red;font-weight:bold">width:320px</span>
+                                    dan Maksimal ukuran file <span style="color:red;font-weight:bold">2mb</span>
+                                </p>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Save changes</button>
@@ -233,7 +236,8 @@
                         @foreach (DB::table('kegiatans')->get() as $key => $item)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td><img src="{{ url('thumbKegiatan/' . $item->image) }}" alt=""></td>
+                                <td><img src="{{ url('thumbKegiatan/' . $item->image) }}" alt=""
+                                        style="width: 350px;height:250px"></td>
                                 <td>
 
                                     <a class="btn btn-danger deleteee">Hapus</a>
@@ -355,9 +359,9 @@
                 </div>
             <form action="/management/beranda/banner/edit/${$(e.relatedTarget).data('id')}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="image" class="dropify" data-max-width="2000" data-max-width="2000"
+                <input type="file" name="image" class="dropify" data-max-width="2000"
                 data-default-file="/thumbBanner/${$(e.relatedTarget).data('image')}" />
-               <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span style="color:red;font-weight:bold">width:1200px</span></p>
+               <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span style="color:red;font-weight:bold">width:1200px</span> dan ukuran file maksimal <span style="color:red;font-weight:bold">2Mb</span></p>
                 <br>
                 <br>
                 <center> <button class="btn btn-success m-3" type="submit">Submit</button>
@@ -391,9 +395,9 @@
                         <input type="text" class="form-control" id="content" name="content" placeholder="isi content " value="${$(e.relatedTarget).data('content')}">
                     </div>
 
-                <input type="file" name="image" class="dropify" data-max-width="2000" data-max-width="2000"
+                <input type="file" name="image" class="dropify" data-max-width="2000"
                 data-default-file="/thumbSambutan/${$(e.relatedTarget).data('image')}" />
-                     <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span style="color:red;font-weight:bold">width:350px</span></p>
+                     <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span style="color:red;font-weight:bold">width:350px</span> dan ukuran file maksimal <span style="color:red;font-weight:bold">2Mb</span></p>
                 <br>
                 <br>
                 <center> <button class="btn btn-success m-3" type="submit">Submit</button>
@@ -417,7 +421,7 @@
                 </div>
             <form action="/management/beranda/activity/edit/${$(e.relatedTarget).data('id')}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="image" class="dropify" data-max-width="2000" data-max-width="2000"
+                <input type="file" name="image" class="dropify" data-max-width="2000"
                 data-default-file="/thumbKegiatan/${$(e.relatedTarget).data('image')}" />
                 <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span style="color:red;font-weight:bold">width:320px</span></p>
                 <br>
