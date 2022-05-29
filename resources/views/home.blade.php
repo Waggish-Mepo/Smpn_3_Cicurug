@@ -149,7 +149,7 @@
                 </div>
                 <center>
                     <div class="moreNews">
-                        <a href="" class="btnMore">Selengkapnya</a>
+                        <a href="{{ url('berita') }}" class="btnMore">Selengkapnya</a>
                     </div>
                 </center>
                 <!-- End News -->
@@ -212,8 +212,7 @@
                             <img src="{{ url('assets/img/school.svg') }}" alt="">
 
                             <h3>Visi</h3>
-                            <p class="small">“Menjadi pusat ilmu pengetahuan dan teknologi yang unggul dan
-                                berdaya saing, melalui upaya ...
+                            <p class="small">{{ DB::table('profils')->first()->visi }}
                             </p>
                             <div class="dimmer"></div>
                             <div class="go-corner" href="{{ url('tentangKami') }}">
@@ -225,8 +224,7 @@
                         <a class="cardVm Misi" href="{{ url('tentangKami') }}">
                             <img src="{{ url('assets/img/book 1.svg') }}" alt="">
                             <h3>Misi</h3>
-                            <p class="small">Menyediakan akses yang luas dan adil, serta pendidikan yang
-                                berkualitas.
+                            <p class="small">{{ DB::table('profils')->first()->misi }}
                             </p>
                             <div class="dimmer"></div>
                             <div class="go-corner" href="{{ url('tentangKami') }}">
