@@ -46,8 +46,8 @@
                 <div class="navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <div class="menu">
-                            <a class="nav-link active" href="{{ url('/') }}">Beranda</a>
-                            <a class="nav-link" href="{{ url('berita') }}">Berita</a>
+                            <a class="nav-link" href="{{ url('/') }}">Beranda</a>
+                            <a class="nav-link active" href="{{ url('berita') }}">Berita</a>
                             <a class="nav-link" href="{{ url('ekstrakurikuler') }}">Ekstrakurikuler</a>
                             <a class="nav-link" href="{{ url('prestasi') }}">Prestasi</a>
                             <a class="nav-link" href="{{ url('tentangKami') }}">Tentang Kami </a>
@@ -95,7 +95,10 @@
                     <p>{!! $data->body !!}</p>
                 </div>
                 <!-- End News -->
-
+                <div class="back mt-4">
+                    <i class="bi bi-arrow-left fs-5"><a class="text-decoration-none text-dark"
+                            href="{{ '/berita' }}">Kembali</a></i>
+                </div>
 
             </div>
         </div>
@@ -137,7 +140,8 @@
                             <h2 class="phone">{{ DB::table('contact')->first()->no_telp }}</h2>
                         </a>
                         <div class="linkToPages">
-                            <p class="address" style="margin-bottom: .5rem;">{{ DB::table('contact')->first()->alamat }}</p>
+                            <p class="address" style="margin-bottom: .5rem;">
+                                {{ DB::table('contact')->first()->alamat }}</p>
                         </div>
                         <div class="socialMedia">
                             <a href="{{ DB::table('contact')->first()->fb }}" class="social">

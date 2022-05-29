@@ -248,7 +248,9 @@
                             <div class="lineCountry lineCountry1">
                                 @foreach (DB::table('kegiatans')->get() as $item)
                                     <div class="country">
-                                        <img src="{{ url('thumbKegiatan/' . $item->image) }}">
+                                        <img src="{{ url('thumbKegiatan/' . $item->image) }}"
+                                            style="max-width: 320px;height:150px;border-radius: 15px"
+                                            class="img-fluid">
                                     </div>
                                 @endforeach
                             </div>
@@ -258,8 +260,8 @@
                                 @foreach (DB::table('kegiatans')->orderBy('id', 'desc')->get()
     as $item)
                                     <div class="country">
-                                        <img src="{{ url('thumbKegiatan/' . $item->image) }}"
-                                            style="max-width: 320px; max-height: 180px; ">
+                                        <img src="{{ url('thumbKegiatan/' . $item->image) }}" class="img-fluid"
+                                            style="max-width: 320px;height:150px;border-radius: 15px">
                                     </div>
                                 @endforeach
                             </div>
