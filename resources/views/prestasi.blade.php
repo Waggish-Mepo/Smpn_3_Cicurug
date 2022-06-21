@@ -21,10 +21,281 @@
     <!--Styling LandingPage-->
     <link rel="stylesheet" href="{{ url('assets/css/berita.css') }}">
 
+
     <style>
         @media screen and (max-width: 767px) {
             .aboutSmpn {
                 flex-direction: column;
+            }
+        }
+
+
+        /*Component Table*/
+        .wrapperTable {
+            padding: 2rem 0;
+        }
+
+        .wrapperTable .pagination {
+            margin-top: 20rem;
+        }
+
+        .wrapperTable .pagination .paginate_button.active .page-link {
+            background: #2DB878 !important;
+            color: #fff;
+            border-radius: 6px;
+        }
+
+        .wrapperTable .pagination .paginate_button .page-link {
+            border: none;
+            background: transparent !important;
+            color: #535353;
+            padding: .2rem .8rem;
+            font-weight: 300;
+        }
+
+        .wrapperTable .tables {
+            border-spacing: 0 10px !important;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .wrapperTable .tables thead tr {
+            box-shadow: 0px 36px 80px rgba(0, 0, 0, 0.02), 0px 4.50776px 10.0172px rgba(0, 0, 0, 0.04);
+        }
+
+        .wrapperTable .tables thead tr th {
+            color: #535353;
+            font-weight: 300;
+            vertical-align: middle;
+            padding: .8rem;
+            background-color: #fff;
+        }
+
+        .wrapperTable .tables thead tr th:first-child {
+            -moz-border-radius: 10px 0px 0px 10px !important;
+            -webkit-border-radius: 10px 0px 0px 10px !important;
+        }
+
+        .wrapperTable .tables thead tr th:last-child {
+            -webkit-border-radius: 0px 10px 10px 0px !important;
+            -moz-border-radius: 0px 10px 10px 0px !important;
+        }
+
+        .wrapperTable .tables tbody tr:last-child {
+            box-shadow: 0px 36px 80px rgba(0, 0, 0, 0.02), 0px 4.50776px 10.0172px rgba(0, 0, 0, 0.04);
+        }
+
+        .wrapperTable .tables tbody tr td {
+            color: #535353;
+            font-weight: 400;
+            vertical-align: middle;
+            height: 100%;
+            padding: .8rem;
+            background-color: #fff;
+            font-size: 16px;
+        }
+
+        .wrapperTable .tables tbody tr td:first-child {
+            -moz-border-radius: 10px 0px 0px 10px !important;
+            -webkit-border-radius: 10px 0px 0px 10px !important;
+        }
+
+        .wrapperTable .tables tbody tr td:last-child {
+            -webkit-border-radius: 0px 10px 10px 0px !important;
+            -moz-border-radius: 0px 10px 10px 0px !important;
+        }
+
+        .wrapperTable .tables tbody tr td .code .numberCode {
+            color: #2DB878;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .wrapperTable .tables tbody tr td .code .numberCode:hover {
+            color: #259963;
+            transition: .3s;
+        }
+
+        .wrapperTable .tables tbody tr td .detailName {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrapperTable .tables tbody tr td .detailName .name {
+            font-weight: 600;
+        }
+
+        .wrapperTable .tables tbody tr td .buttonAction {
+            display: flex;
+        }
+
+        .wrapperTable .tables tbody tr td .buttonAction .buttons {
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: .5rem;
+            border: none;
+            border-radius: 6px;
+            transition: .2s;
+        }
+
+        .wrapperTable .tables tbody tr td .buttonAction .success {
+            margin-right: .5rem;
+            background: #2DB878;
+        }
+
+        .wrapperTable .tables tbody tr td .buttonAction .success:hover {
+            background: #259963;
+            transition: .2s ease-in-out;
+        }
+
+        .wrapperTable .tables tbody tr td .buttonAction .danger {
+            background: #DC3545;
+        }
+
+        .wrapperTable .tables tbody tr td .buttonAction .danger:hover {
+            background: #b52b39;
+            transition: .2s ease-in-out;
+        }
+
+        .wrapperTable .tables tbody tr td .address {
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 250px;
+        }
+
+        .wrapperTable .tables tbody tr td .status {
+            border-radius: 5px;
+            padding: .5rem .8rem;
+            width: fit-content;
+            color: #fff;
+            font-weight: 500;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .wrapperTable .tables tbody tr td .status.status-warning {
+            background-color: #FFC107;
+        }
+
+        .wrapperTable .tables tbody tr td .status.status-primary {
+            background-color: #2DB878;
+        }
+
+        .wrapperTable .tables tbody tr td .status.status-danger {
+            background-color: #DC3545;
+        }
+
+        @media screen and (max-width: 768px) {
+            .dataTables_length {
+                margin-bottom: .5rem;
+                font-size: 12px;
+            }
+
+            .dataTables_wrapper .dataTables_filter {
+                font-size: 12px;
+            }
+
+            .form-select,
+            .form-control {
+                font-size: 12px;
+            }
+
+            .wrapperTable .tables thead tr th {
+                font-size: 14px;
+            }
+
+            .wrapperTable .tables tbody tr td {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+    <style>
+        @media screen and (min-width: 992px) {
+            .navbar .container .navbar-toggler {
+                display: none;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link {
+                padding: 0;
+                margin: .5rem 1rem;
+                position: relative;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link.active {
+                color: #3658A2;
+                font-weight: 600;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link::after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 2px;
+                position: absolute;
+                bottom: -5px;
+                transform: translateX(50%);
+                background-color: #3658A2;
+                transition: .3s ease;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link:hover::after {
+                width: 50%;
+                transition: .3s ease;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted {
+                display: flex;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .polygon {
+                position: relative;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .polygon .clipath {
+                display: block;
+                background-color: #fff;
+                height: 100%;
+                position: absolute;
+                width: 130px;
+                top: -29px;
+                overflow: hidden;
+                left: -65px;
+                z-index: 1000;
+                height: 238%;
+                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted::after {
+                content: '';
+                display: block;
+                background-color: #3658A2;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .buttonWrapper {
+                position: relative;
+                z-index: 20000;
+                padding-left: 7rem;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .buttonWrapper .nav-link {
+                background-color: #fff;
+                border-radius: 6px;
+                color: #3658A2;
+                font-weight: 500;
+                padding: .5rem 1.4rem;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .buttonWrapper .nav-link:hover {
+                background-color: #f2f2f2;
             }
         }
 
@@ -66,7 +337,7 @@
                             <div class="polygon">
                                 <div class="clipath"></div>
                             </div>
-                            {{-- <div class="buttonWrapper">
+                            <div class="buttonWrapper">
                                 @auth
                                     <li class="nav-link">
                                         <form action="/logout" method="post">
@@ -82,17 +353,6 @@
                                             Login</a>
                                     </li>
                                 @endauth
-                            </div> --}}
-                            <div class="buttonWrapper dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown button
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
                             </div>
                         </div>
 
@@ -122,40 +382,38 @@
                         </div>
 
                         @if (!is_null(
-    DB::table('ket_prestasis')->where('prestasi_id', $item->id)->first(),
-))
-                            {{-- Table --}}
-                            <div class="container mt-3 mb-5">
-                                <div class="table-responsive">
-                                    <table id="beritaTable" class="table table-hover" style=" width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">No</th>
-                                                <th scope="col">Nama</th>
-                                                <th scope="col">Jenis kegiatan</th>
-                                                <th scope="col">Tempat kegiatan</th>
-                                                <th scope="col">Juara</th>
-                                                <th scope="col">Tahun</th>
-                                                <th scope="col">Tingkat</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (DB::table('ket_prestasis')->where('prestasi_id', $item->id)->get()
+                            DB::table('ket_prestasis')->where('prestasi_id', $item->id)->first(),
+                        ))
+                            <div class="wrapperTable table-responsive">
+                                <table id="kegiatanTable" class="tables" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama</th>
+                                            <th scope="col">Jenis kegiatan</th>
+                                            <th scope="col">Tempat kegiatan</th>
+                                            <th scope="col">Juara</th>
+                                            <th scope="col">Tahun</th>
+                                            <th scope="col">Tingkat</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (DB::table('ket_prestasis')->where('prestasi_id', $item->id)->get()
     as $loop => $ket)
-                                                <tr>
-                                                    <td style="width: 5%">{{ $loop->iteration }}</td>
-                                                    <td style="width: 20%">{{ $ket->nama }}</td>
-                                                    <td style="width: 20%">{{ $ket->jenis_kegiatan }}</td>
-                                                    <td style="width: 25%">{{ $ket->tempat_kegiatan }}</td>
-                                                    <td style="width: 20%">{{ $ket->juara }}</td>
-                                                    <td style="width: 20%">{{ $ket->tahun }}</td>
-                                                    <td style="width: 25%">{!! $ket->tingkat !!}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            <tr style="margin: 20px;padding:20px;">
+                                                <td style="width: 5%">{{ $loop->iteration }}</td>
+                                                <td style="width: 20%">{{ $ket->nama }}</td>
+                                                <td style="width: 20%">{{ $ket->jenis_kegiatan }}</td>
+                                                <td style="width: 25%">{{ $ket->tempat_kegiatan }}</td>
+                                                <td style="width: 20%">{{ $ket->juara }}</td>
+                                                <td style="width: 20%">{{ $ket->tahun }}</td>
+                                                <td style="width: 25%">{!! $ket->tingkat !!}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
+                            {{-- Table --}}
                         @endif
                     @else
                         <div class="aboutSmpn d-flex mt-5" id="aboutSmpn">
@@ -169,8 +427,8 @@
                         </div>
 
                         @if (!is_null(
-    DB::table('ket_prestasis')->where('prestasi_id', $item->id)->first(),
-))
+                            DB::table('ket_prestasis')->where('prestasi_id', $item->id)->first(),
+                        ))
                             {{-- Table --}}
                             <div class="container mt-3 mb-5">
                                 <div class="row">

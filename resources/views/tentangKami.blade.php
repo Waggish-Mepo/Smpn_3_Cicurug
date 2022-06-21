@@ -20,7 +20,92 @@
 
     <!--Styling LandingPage-->
     <link rel="stylesheet" href="{{ url('assets/css/tentangKami.css') }}">
+    <style>
+        @media screen and (min-width: 992px) {
+            .navbar .container .navbar-toggler {
+                display: none;
+            }
 
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link {
+                padding: 0;
+                margin: .5rem 1rem;
+                position: relative;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link.active {
+                color: #3658A2;
+                font-weight: 600;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link::after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 2px;
+                position: absolute;
+                bottom: -5px;
+                transform: translateX(50%);
+                background-color: #3658A2;
+                transition: .3s ease;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link:hover::after {
+                width: 50%;
+                transition: .3s ease;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted {
+                display: flex;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .polygon {
+                position: relative;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .polygon .clipath {
+                display: block;
+                background-color: #fff;
+                height: 100%;
+                position: absolute;
+                width: 130px;
+                top: -29px;
+                overflow: hidden;
+                left: -65px;
+                z-index: 1000;
+                height: 238%;
+                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted::after {
+                content: '';
+                display: block;
+                background-color: #3658A2;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .buttonWrapper {
+                position: relative;
+                z-index: 20000;
+                padding-left: 7rem;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .buttonWrapper .nav-link {
+                background-color: #fff;
+                border-radius: 6px;
+                color: #3658A2;
+                font-weight: 500;
+                padding: .5rem 1.4rem;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .buttonWrapper .nav-link:hover {
+                background-color: #f2f2f2;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
@@ -124,7 +209,8 @@
                         <!--About-->
                         <div class="aboutSmpn d-flex" id="aboutSmpn">
                             <div class="imagesWrapper">
-                                <img src="{{ url('thumbSambutan/' . DB::table('sambutan')->first()->image) }}" alt="">
+                                <img src="{{ url('thumbSambutan/' . DB::table('sambutan')->first()->image) }}"
+                                    alt="">
                             </div>
                             <div class="about">
                                 <p>{{ DB::table('sambutan')->first()->content }}</p>
@@ -144,7 +230,7 @@
                                 <h3 class="pb-3">
                                     Misi
                                 </h3>
-                                <p>{{ DB::table('profils')->first()->visi }}</p>
+                                <p>{{ DB::table('profils')->first()->misi }}</p>
                             </div>
                         </div>
                     </div>
@@ -161,7 +247,8 @@
                                     <hr style="height: 2px; background-color: black;">
                                     <ol type="1">
                                         @foreach (DB::table('teachers')->get() as $item)
-                                        <li class="pb-2"><b> {{ $item->jabatan }}</b> : {{ $item->nama }}, {{ $item->gelar }}</li>
+                                            <li class="pb-2"><b> {{ $item->jabatan }}</b> :
+                                                {{ $item->nama }}, {{ $item->gelar }}</li>
                                         @endforeach
                                     </ol>
                                 </div>
@@ -222,7 +309,8 @@
                             <h2 class="phone">{{ DB::table('contact')->first()->no_telp }}</h2>
                         </a>
                         <div class="linkToPages">
-                            <p class="address" style="margin-bottom: .5rem;">{{ DB::table('contact')->first()->alamat }}</p>
+                            <p class="address" style="margin-bottom: .5rem;">
+                                {{ DB::table('contact')->first()->alamat }}</p>
                         </div>
                         <div class="socialMedia">
                             <a href="{{ DB::table('contact')->first()->fb }}" class="social">

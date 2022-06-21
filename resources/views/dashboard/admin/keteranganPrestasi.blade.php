@@ -187,34 +187,42 @@
                             @csrf
                             <input name="prestasi_id" type="hidden" value="{{ $prestasiId ?? null }}">
                             <div class="mb-3">
-                                <label for="nama" class="form-label">name</label>
-                                <input type="text" class="form-control" id="nama" name="nama" placeholder="isi name "
-                                    required>
+                                <label for="nama" class="form-label @error('nama') is-invalid @enderror">name</label>
+                                <input type="text" class="form-control" id="nama" name="nama" placeholder="isi name ">
+                                @error('nama')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="jenis_kegiatan" class="form-label">jenis_kegiatan</label>
+                                <label for="jenis_kegiatan"
+                                    class="form-label @error('jenis_kegiatan') is-invalid @enderror">jenis_kegiatan</label>
                                 <input type="text" class="form-control" id="jenis_kegiatan" name="jenis_kegiatan"
-                                    placeholder="isi jenis_kegiatan " required>
+                                    placeholder="isi jenis_kegiatan ">
+                                @error('jenis_kegiatan')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="tempat_kegiatan" class="form-label">tempat_kegiatan</label>
                                 <input type="text" class="form-control" id="tempat_kegiatan" name="tempat_kegiatan"
-                                    placeholder="isi tempat_kegiatan " required>
+                                    placeholder="isi tempat_kegiatan ">
                             </div>
                             <div class="mb-3">
                                 <label for="juara" class="form-label">juara</label>
-                                <input type="text" class="form-control" id="juara" name="juara" placeholder="isi juara "
-                                    required>
+                                <input type="text" class="form-control" id="juara" name="juara" placeholder="isi juara ">
                             </div>
                             <div class="mb-3">
                                 <label for="tahun" class="form-label">tahun</label>
-                                <input type="text" class="form-control" id="tahun" name="tahun" placeholder="isi tahun "
-                                    required>
+                                <input type="text" class="form-control" id="tahun" name="tahun" placeholder="isi tahun ">
                             </div>
                             <div class="mb-3">
                                 <label for="tingkat" class="form-label">tingkat</label>
                                 <input type="text" class="form-control" id="tingkat" name="tingkat"
-                                    placeholder="isi tingkat " required>
+                                    placeholder="isi tingkat ">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -332,7 +340,7 @@
 
 
             $('#editData').html(html);
-            $('.dropify').dropify();
+            // $('.dropify').dropify();
         });
     </script>
 

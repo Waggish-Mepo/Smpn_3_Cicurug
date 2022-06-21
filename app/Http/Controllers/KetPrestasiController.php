@@ -22,17 +22,18 @@ class KetPrestasiController extends Controller
     }
     public function create(Request $request)
     {
-        KetPrestasi::insert([
-            'nama' => $request->nama,
-            'prestasi_id' => $request->prestasi_id,
-            'jenis_kegiatan' => $request->jenis_kegiatan,
-            'tempat_kegiatan' => $request->tempat_kegiatan,
-            'tempat_kegiatan' => $request->tempat_kegiatan,
-            'juara' => $request->juara,
-            'tahun' => $request->tahun,
-            'tingkat' => $request->tingkat
-
+        $valida = $request->validate([
+            'nama' => 'required|max:255',
+            'prestasi_id' => 'required|max:255',
+            'jenis_kegiatan' => 'required|max:255',
+            'tempat_kegiatan' => 'required|max:255',
+            'tempat_kegiatan' => 'required|max:255',
+            'juara' => 'required|max:255',
+            'tahun' => 'required|max:255',
+            'tingkat' => 'required|max:255'
         ]);
+
+        KetPrestasi::insert($valida);
 
         return redirect()->back()->with('message', 'Sukses Menambah Ekstrakurikuler');
     }

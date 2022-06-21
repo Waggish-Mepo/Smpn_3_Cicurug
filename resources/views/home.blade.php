@@ -130,7 +130,8 @@
 
                                 @foreach (DB::table('beritas')->limit(3)->get()
     as $item)
-                                    <a href="" class="col-12 col-md-4 news">
+                                    <a href="{{ route('detail-berita', ['id' => $item->id]) }}"
+                                        class="col-12 col-md-4 news">
                                         <center>
                                             <div class="imgNews">
                                                 <img style="max-width: 320px"

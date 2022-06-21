@@ -21,6 +21,92 @@
     <!--Styling LandingPage-->
     <link rel="stylesheet" href="{{ url('assets/css/berita.css') }}">
 
+    <style>
+        @media screen and (min-width: 992px) {
+            .navbar .container .navbar-toggler {
+                display: none;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link {
+                padding: 0;
+                margin: .5rem 1rem;
+                position: relative;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link.active {
+                color: #3658A2;
+                font-weight: 600;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link::after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 2px;
+                position: absolute;
+                bottom: -5px;
+                transform: translateX(50%);
+                background-color: #3658A2;
+                transition: .3s ease;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link:hover::after {
+                width: 50%;
+                transition: .3s ease;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted {
+                display: flex;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .polygon {
+                position: relative;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .polygon .clipath {
+                display: block;
+                background-color: #fff;
+                height: 100%;
+                position: absolute;
+                width: 130px;
+                top: -29px;
+                overflow: hidden;
+                left: -65px;
+                z-index: 1000;
+                height: 238%;
+                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted::after {
+                content: '';
+                display: block;
+                background-color: #3658A2;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .buttonWrapper {
+                position: relative;
+                z-index: 20000;
+                padding-left: 7rem;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .buttonWrapper .nav-link {
+                background-color: #fff;
+                border-radius: 6px;
+                color: #3658A2;
+                font-weight: 500;
+                padding: .5rem 1.4rem;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .buttonWrapper .nav-link:hover {
+                background-color: #f2f2f2;
+            }
+        }
+
+    </style>
 </head>
 
 <body>

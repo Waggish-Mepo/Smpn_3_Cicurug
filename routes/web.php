@@ -30,15 +30,15 @@ Route::get('/', function () {
     return view('home', ['banner' => $banner]);
 });
 Route::get('/berita', function () {
-
     return view('berita');
 });
 Route::get('/berita/detail/{id}', function ($id) {
     $data = Berita::where('id', $id)->first();
     return view('detailBerita', ['data' => $data]);
 })->name('detail-berita');
-Route::get('/ekstrakurikuler', function () {
 
+
+Route::get('/ekstrakurikuler', function () {
     return view('eskul');
 });
 Route::get('/tentangKami', function () {

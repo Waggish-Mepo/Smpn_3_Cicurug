@@ -30,7 +30,7 @@
             filemanager_descending: '',
             filemanager_subfolder: '',
             filemanager_crossdomain: '',
-            external_filemanager_path: '@filemanager_get_resource(dialog.php)',
+            external_filemanager_path: '@filemanager_get_resource(dialog . php)',
             filemanager_title: "File Manager",
             external_plugins: {
                 "filemanager": "http://127.0.0.1:8000/js/filemanager.min.js"
@@ -118,7 +118,6 @@
         .dropify-wrapper .dropify-message p {
             font-size: 14px;
         }
-
     </style>
 
     <h2 class="pageNameContent">Kelola Berita</h2>
@@ -152,7 +151,9 @@
                         <td style="width: 5%">{{ $key + 1 }}</td>
                         <td style="width: 20%">{{ $item->title }}</td>
                         <td style="width: 20%">{{ $item->excerpt }}</td>
-                        <td style="width: 25%">{!! $item->body !!}</td>
+                        <td style="width: 20%">
+                            {!! Str::limit($item->body, 240) !!}
+                        </td>
                         <td style="width: 20%">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#updateData" data-id="{{ $item->id }}"
@@ -211,7 +212,7 @@
                     </div>
 
 
-                    <input type="file" name="image" class="dropify p-2" data-max-width="375" data-max-width="220"
+                    <input type="file" name="image" class="dropify p-2" data-min-width="400" data-max-width="12000"
                         required />
                     <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span
                             style="color:red;font-weight:bold">width:300px</span></p>
@@ -319,7 +320,7 @@
                     </div>
 
 
-                    <input type="file" name="image" class="dropify" data-max-width="290" data-max-width="190"
+                    <input type="file" name="image" class="dropify" data-min-width="400" data-max-width="12000"
                     data-default-file="/thumbBerita/${$(e.relatedTarget).data('image')}" />
                     <p style="font-size:12px; margin-bottom:10px; margin-top:10px">Ukuran Gambar Minimal : <span style="color:red;font-weight:bold">width:300px</span></p>
                     <br>

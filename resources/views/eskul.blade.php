@@ -21,6 +21,92 @@
     <!--Styling LandingPage-->
     <link rel="stylesheet" href="{{ url('assets/css/berita.css') }}">
 
+    <style>
+        @media screen and (min-width: 992px) {
+            .navbar .container .navbar-toggler {
+                display: none;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link {
+                padding: 0;
+                margin: .5rem 1rem;
+                position: relative;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link.active {
+                color: #3658A2;
+                font-weight: 600;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link::after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 2px;
+                position: absolute;
+                bottom: -5px;
+                transform: translateX(50%);
+                background-color: #3658A2;
+                transition: .3s ease;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .menu .nav-link:hover::after {
+                width: 50%;
+                transition: .3s ease;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted {
+                display: flex;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .polygon {
+                position: relative;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .polygon .clipath {
+                display: block;
+                background-color: #fff;
+                height: 100%;
+                position: absolute;
+                width: 130px;
+                top: -29px;
+                overflow: hidden;
+                left: -65px;
+                z-index: 1000;
+                height: 238%;
+                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted::after {
+                content: '';
+                display: block;
+                background-color: #3658A2;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .buttonWrapper {
+                position: relative;
+                z-index: 20000;
+                padding-left: 7rem;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .buttonWrapper .nav-link {
+                background-color: #fff;
+                border-radius: 6px;
+                color: #3658A2;
+                font-weight: 500;
+                padding: .5rem 1.4rem;
+            }
+
+            .navbar .container .navbar-collapse .navbar-nav .getStarted .buttonWrapper .nav-link:hover {
+                background-color: #f2f2f2;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
@@ -91,34 +177,40 @@
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
                         <div class="carousel-indicators">
-                            @foreach (DB::table('ekskuls')->limit(3)->get() as $key => $item)
-                               @if ($key == 0)
-                               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$key}}"
-                               class="active" aria-current="true"></button>
-                               @else
-                               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$key}}"
-                               class="" aria-current="false"></button>
-                               @endif
+                            @foreach (DB::table('ekskuls')->limit(3)->get()
+    as $key => $item)
+                                @if ($key == 0)
+                                    <button type="button" data-bs-target="#carouselExampleCaptions"
+                                        data-bs-slide-to="{{ $key }}" class="active"
+                                        aria-current="true"></button>
+                                @else
+                                    <button type="button" data-bs-target="#carouselExampleCaptions"
+                                        data-bs-slide-to="{{ $key }}" class=""
+                                        aria-current="false"></button>
+                                @endif
                             @endforeach
                         </div>
 
                         <div class="carousel-inner">
-                            @foreach (DB::table('ekskuls')->limit(3)->get() as $key => $item)
-                               @if ($key == 0)
-                               <div class="carousel-item active">
-                                <img src="{{ url('thumbEskul/' . $item->image) }}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>{{ $item->title }}</h5>
-                                </div>
-                            </div>
-                            @else
-                            <div class="carousel-item ">
-                                <img src="{{ url('thumbEskul/' . $item->image) }}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>{{ $item->title }}</h5>
-                                </div>
-                            </div>
-                               @endif
+                            @foreach (DB::table('ekskuls')->limit(3)->get()
+    as $key => $item)
+                                @if ($key == 0)
+                                    <div class="carousel-item active">
+                                        <img src="{{ url('thumbEskul/' . $item->image) }}" class="d-block w-100"
+                                            alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>{{ $item->title }}</h5>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="carousel-item ">
+                                        <img src="{{ url('thumbEskul/' . $item->image) }}" class="d-block w-100"
+                                            alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>{{ $item->title }}</h5>
+                                        </div>
+                                    </div>
+                                @endif
                             @endforeach
                         </div>
                     </div>
@@ -135,7 +227,7 @@
                         <div class="beritaContainer">
                             <div class="firstRow">
                                 @foreach (DB::table('ekskuls')->get() as $item)
-                                    <a href="" class="news">
+                                    <a href="#" class="news">
                                         <center>
                                             <div class="imgNews">
                                                 <img src="{{ url('thumbEskul/' . $item->image) }}" alt="">
@@ -192,7 +284,8 @@
                             <h2 class="phone">{{ DB::table('contact')->first()->no_telp }}</h2>
                         </a>
                         <div class="linkToPages">
-                            <p class="address" style="margin-bottom: .5rem;">{{ DB::table('contact')->first()->alamat }}</p>
+                            <p class="address" style="margin-bottom: .5rem;">
+                                {{ DB::table('contact')->first()->alamat }}</p>
                         </div>
                         <div class="socialMedia">
                             <a href="{{ DB::table('contact')->first()->fb }}" class="social">

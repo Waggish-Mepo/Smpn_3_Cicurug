@@ -194,7 +194,7 @@ p {
 }
 
 .bannerNews .carousel .carousel-inner .carousel-item img {
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 @media screen and (max-width: 771px) {
